@@ -1,10 +1,13 @@
-import './App.css'
+import React from "react";
+import {Header} from "./Header/Header";
+
+import './App.scss'
 
 function App() {
 
     return (
-        <div className="App">
-            <h1>React Pizza</h1>
+        <div className="wrapper">
+            <Header />
         </div>
     )
 }
