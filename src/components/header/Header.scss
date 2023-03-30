@@ -4,7 +4,12 @@
   display: flex;
   justify-content: space-between;
   margin: 0 0 50px 0;
-  //padding: 49px 38px 0 77px;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 0 0 20px 0;
+  }
+
   .header-title-container {
     display: flex;
     gap: 10px;
@@ -16,18 +21,43 @@
       font-weight: 800;
       line-height: 29px;
       letter-spacing: 0.01em;
+
+      @media (max-width: 576px) {
+        display: flex;
+        justify-content: space-around;
+      }
     }
 
     .sub-title {
       margin: 0;
-      min-width: 282px;
+      min-width: 300px;
       color: $font-grey;
-      font-size: 17px;
+      font-size: 18px;
       font-family: unset, serif;
       font-weight: 400;
       line-height: 19px;
       letter-spacing: 0.01em;
       text-align: left;
+
+      @media (max-width: 576px) {
+        min-width: 0;
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  .summary-button {
+    @media (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
     }
   }
 }
@@ -38,9 +68,49 @@
   top: 140px;
   left: 17px;
   background-color: $light-grey;
+
+  @media (max-width: 768px) {
+    top: 190px;
+  }
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 }
 
-.buttons {
+.nav-panel {
+  display: flex;
+  justify-content: space-between;
   margin: 70px 0 0 0;
   box-sizing: content-box;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 10px 0 0 0;
+  }
+}
+
+.sort {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  .sort-list {
+    border: none;
+    text-decoration: underline dotted $orange;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    color: $orange;
+
+    .vector {
+      width: 10px;
+      padding-bottom: 1px;
+    }
+
+    .sort-title {
+      width: max-content;
+      white-space: nowrap;
+    }
+  }
 }

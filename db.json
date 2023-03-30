@@ -1,0 +1,60 @@
+{
+  "pizzas": [
+    {
+      "image": "pizzaImage",
+      "name": "Чизбургер-пицца",
+      "dough": "тонкое",
+      "size": "SMALL_PIZZA",
+      "price": 395
+    },
+    {
+      "image": "pizzaImage",
+      "name": "Сырная",
+      "dough": "тонкое",
+      "size": "SMALL_PIZZA",
+      "price": 450
+    },
+    {
+      "image": "pizzaImage",
+      "name": "Креветки по-азиатски",
+      "dough": "тонкое",
+      "size": "MIDDLE_PIZZA",
+      "price": 290
+    },
+    {
+      "image": "pizzaImage",
+      "name": "Сырный цыпленок",
+      "dough": "тонкое",
+      "size": "SMALL_PIZZA",
+      "price": 385
+    },
+    {
+      "image": "pizzaImage",
+      "name": "Чизбургер-пицца",
+      "dough": "тонкое",
+      "size": "SMALL_PIZZA",
+      "price": 395
+    },
+    {
+      "image": "pizzaImage",
+      "name": "Сырная",
+      "dough": "тонкое",
+      "size": "SMALL_PIZZA",
+      "price": 450
+    },
+    {
+      "image": "pizzaImage",
+      "name": "Креветки по-азиатски",
+      "dough": "тонкое",
+      "size": "MIDDLE_PIZZA",
+      "price": 290
+    },
+    {
+      "image": "pizzaImage",
+      "name": "Сырный цыпленок",
+      "dough": "тонкое",
+      "size": "SMALL_PIZZA",
+      "price": 385
+    }
+  ]
+}

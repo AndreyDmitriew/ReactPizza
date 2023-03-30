@@ -8,7 +8,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  background-color: #FFDF8C;
 }
 
 a {
@@ -20,6 +19,16 @@ a:hover {
   color: #535bf2;
 }
 
+p {
+  font-family: system-ui;
+  color: #2c2c2c;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.015em;
+}
+
 body {
   position: absolute;
   min-width: 120px;
@@ -28,14 +37,17 @@ body {
   right: 25px;
   top: 23px;
   bottom: 23px;
-  background: #FFFFFF;
+  background: #FFDF8C;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
-  border-radius: 10px;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h3 {
+  margin: 0;
 }
 
 button {
@@ -48,7 +60,6 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
   letter-spacing: 0.015em;
-  /*background-color: #fe5f1e;*/
 }
 button:hover {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
@@ -59,17 +70,3 @@ svg {
   margin: 0;
   padding: 0;
 }
-
-
-/*@media (prefers-color-scheme: light) {*/
-/*  :root {*/
-/*    color: #213547;*/
-/*    background-color: #ffffff;*/
-/*  }*/
-/*  a:hover {*/
-/*    color: #747bff;*/
-/*  }*/
-/*  button {*/
-/*    background-color: #f9f9f9;*/
-/*  }*/
-/*}*/

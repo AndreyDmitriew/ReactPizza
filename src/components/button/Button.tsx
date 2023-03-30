@@ -23,7 +23,6 @@ export const Button = (props: args) => {
             alt="Vertical divider"
             src={verticalDivider}
             style={{ padding: '0px 15px' }}
-            // className="divider"
           />
           <div className="cart-container">
             <img alt="shopping cart" src={shoppingCart} className="cart" />
