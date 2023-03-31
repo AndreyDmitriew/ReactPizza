@@ -16,4 +16,9 @@ export const usePizzasStore = create<StateType>((set) => ({
       throw new Error(`Error! status: ${error}`);
     }
   },
+  // updateState: (id: string, property: string, value: string) => set((state) => {
+  //
+  //   {...state, data: [...state.data]}
+  //
+  // }
 }));

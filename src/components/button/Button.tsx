@@ -3,6 +3,8 @@ import { CURRENCY } from '../../constants/constants';
 import shoppingCart from '../../assets/locale/shoppingСart.svg';
 import shoppingCartWheel from '../../assets/locale/shoppingCartWheel.svg';
 import verticalDivider from '../../assets/locale/verticalDivider.svg';
+import plus from '../../assets/locale/plus.svg';
+import plusOrange from '../../assets/locale/plusOrange.svg';
 import './Button.scss';
 
 type args = {
@@ -34,8 +36,26 @@ export const Button = (props: args) => {
           {orderSum}
         </button>
       )}
+
       {props.type === 'filter' && (
         <button className={props.type}>{props.name}</button>
+      )}
+
+      {props.type === 'add' && (
+        <button className={props.type}>
+          <img alt="shopping cart" src={plus} />
+          <p className="add-button-name">Добавить</p>
+        </button>
+      )}
+
+      {props.type === 'added' && (
+        <button className={props.type}>
+          <img alt="shopping cart" src={plusOrange} />
+          <p className="add-button-name">Добавить</p>
+          <div className="notification-round-container">
+            <span className="notification-container-text">2</span>
+          </div>
+        </button>
       )}
     </>
   );

@@ -1,56 +1,64 @@
 {
   "pizzas": [
     {
-      "image": "pizzaImage",
+      "id": "0adf3b14-a7c1-4dfe-8375-fcc29305af91",
+      "image": "https://imageup.ru/img220/4271686/image-2.jpg",
       "name": "Чизбургер-пицца",
       "dough": "тонкое",
       "size": "SMALL_PIZZA",
       "price": 395
     },
     {
-      "image": "pizzaImage",
+      "id": "b6fcbec0-7994-4355-a01d-524dea63d9d4",
+      "image": "https://imageup.ru/img281/4271689/image-7.jpg",
       "name": "Сырная",
       "dough": "тонкое",
       "size": "SMALL_PIZZA",
       "price": 450
     },
     {
-      "image": "pizzaImage",
+      "id": "fd1e18e3-9eb2-4a6a-9415-2c65edc25991",
+      "image": "https://imageup.ru/img117/4271688/image-6.jpg",
       "name": "Креветки по-азиатски",
       "dough": "тонкое",
       "size": "MIDDLE_PIZZA",
       "price": 290
     },
     {
-      "image": "pizzaImage",
+      "id": "f5822806-006c-4269-ab96-450c78764c06",
+      "image": "https://imageup.ru/img260/4271687/image-5.jpg",
       "name": "Сырный цыпленок",
       "dough": "тонкое",
       "size": "SMALL_PIZZA",
       "price": 385
     },
     {
-      "image": "pizzaImage",
+      "id": "e9baf571-c21a-43e7-96f3-e73cafa1347c",
+      "image": "https://imageup.ru/img220/4271686/image-2.jpg",
       "name": "Чизбургер-пицца",
       "dough": "тонкое",
       "size": "SMALL_PIZZA",
       "price": 395
     },
     {
-      "image": "pizzaImage",
+      "id": "27d6d0eb-0d04-4ab9-a6e7-330b94040b27",
+      "image": "https://imageup.ru/img281/4271689/image-7.jpg",
       "name": "Сырная",
       "dough": "тонкое",
       "size": "SMALL_PIZZA",
       "price": 450
     },
     {
-      "image": "pizzaImage",
+      "id": "42b16a63-6620-4f12-a817-c983dd0e9883",
+      "image": "https://imageup.ru/img117/4271688/image-6.jpg",
       "name": "Креветки по-азиатски",
       "dough": "тонкое",
       "size": "MIDDLE_PIZZA",
       "price": 290
     },
     {
-      "image": "pizzaImage",
+      "id": "56165f17-bfd5-4127-acbc-1e06a96018b1",
+      "image": "https://imageup.ru/img260/4271687/image-5.jpg",
       "name": "Сырный цыпленок",
       "dough": "тонкое",
       "size": "SMALL_PIZZA",

@@ -1,10 +1,18 @@
-type sizes = 26 | 30 | 40;
+import {
+  SMALL_PIZZA,
+  MIDDLE_PIZZA,
+  BIG_PIZZA,
+} from '../../constants/constants';
+
+const pizzaSizes = [SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA] as const;
+type PizzaSizes = (typeof pizzaSizes)[number];
 
 export type PizzaType = {
+  key: string;
   image: string;
   name: string;
   dough: string;
-  size: sizes;
+  size: PizzaSizes;
   price: number;
 };
 

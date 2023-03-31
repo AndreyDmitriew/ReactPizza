@@ -1,6 +1,6 @@
 import { ContentItem } from '../../components/contentItem/ContentItem';
 import './Main.scss';
-import { PizzaType } from '../../types/types';
+import { PizzaType } from '../../ts/types/types';
 import { usePizzasStore } from '../../store/usePizzasStore';
 import { useEffect } from 'react';
 
@@ -17,6 +17,7 @@ export const Main = () => {
     return pizzas?.map((el: PizzaType) => {
       return (
         <ContentItem
+          key={el.id}
           image={el.image}
           name={el.name}
           dough={el.dough}

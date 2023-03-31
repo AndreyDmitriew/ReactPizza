@@ -1,16 +1,18 @@
 import React from 'react';
 import { Header } from '../header/Header';
 import { Main } from '../main/Main';
+import { PrivateRoutes, PublicRoutes } from '../../router/Router';
 
 import './App.scss';
 
 function App() {
+  const login: boolean = true;
   return (
     <section className="wrapper">
-      <form onSubmit={(value) => console.log(value, 'Submit')}>
-        <Header />
-        <Main />
-      </form>
+      {/*{login ? <PrivateRoutes /> : <PublicRoutes />}*/}
+
+      <Header />
+      <Main />
     </section>
   );
 }
