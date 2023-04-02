@@ -1,0 +1,151 @@
+@import '../../styles/colors';
+
+
+.cart-container {
+  display: flex;
+  justify-content: space-between;
+
+  .cart-name-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .cart-container {
+      display: flex;
+      position: relative;
+
+      .cart {
+        padding: 0 5px 0 0;
+      }
+    }
+  }
+
+  .trash-name-container {
+    display: flex;
+    gap: 8px;
+
+  .trash-name {
+
+    color: $silver-grey;
+  }
+  }
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 25px 0;
+
+  .item-name-set {
+    display: block;
+    max-width: 280px;
+
+    .item-name {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .item-parameters {
+      margin: 3px 0 0 0;
+      font-size: 14px;
+      font-family: serif;
+      color: $middle-grey;
+    }
+
+  }
+
+  .item-image {
+    height: 80px;
+  }
+
+  .count{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  @media screen and (max-width: 860px) {
+    .item-container {
+      display: block;
+
+    }
+  }
+}
+
+.circle{
+  border:2px solid $orange;
+  width:26px;
+  height:26px;
+  border-radius:100%;
+  position:relative;
+  margin:4px;
+  display:inline-block;
+  vertical-align:middle;
+}
+.circle.plus:before,
+.circle.plus:after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  background:$orange;
+}
+.circle.plus:before{
+  width: 2px;
+  margin: 2px auto;
+}
+.circle.plus:after{
+  margin: auto 2px;
+  height: 2px;
+}
+
+.circle.minus:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 6px;
+  right: 6px;
+  bottom: 0;
+  background:$orange;
+  margin: auto 2px;
+  height: 2px;
+}
+
+.circle-cross{
+  border:2px solid $silver-grey;
+  width:26px;
+  height:26px;
+  border-radius:100%;
+  position:relative;
+  margin:4px;
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.circle-cross.cross:before,
+.circle-cross.cross:after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  background:$silver-grey;
+  transform: rotate(45deg);
+}
+.circle-cross.cross:before{
+  width: 2px;
+  margin: 2px auto;
+}
+.circle-cross.cross:after{
+  margin: auto 2px;
+  height: 2px;
+}
+
+.item-divider {
+
+}

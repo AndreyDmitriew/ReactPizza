@@ -16,9 +16,18 @@ export type PizzaType = {
   price: number;
 };
 
+export interface OrderType extends PizzaType  {
+  count: number
+}
+
 export type StateType = {
   data: object;
+  order: OrderType[];
   isLoading: boolean;
   error: null;
   getPizzas: () => void;
 };
+
+export type HeaderType = {
+  navPanel?: boolean
+}

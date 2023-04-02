@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from '../header/Header';
 import { Main } from '../main/Main';
+import { OrderCartPage } from '../../pages/OrderCartPage';
 import { PrivateRoutes, PublicRoutes } from '../../router/Router';
 
 import './App.scss';
@@ -11,8 +12,11 @@ function App() {
     <section className="wrapper">
       {/*{login ? <PrivateRoutes /> : <PublicRoutes />}*/}
 
-      <Header />
-      <Main />
+      {/*<Header navPanel />*/}
+      {/*<Main />*/}
+
+      <OrderCartPage/>
+
     </section>
   );
 }

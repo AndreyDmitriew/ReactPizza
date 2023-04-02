@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Homepage } from '../pages/Pages';
+import { Homepage } from '../pages/Homepage';
 
 export const PublicRoutes = () => <Routes></Routes>;
 
