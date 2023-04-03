@@ -5,6 +5,8 @@ import shoppingCartWheel from '../../assets/locale/shoppingCartWheel.svg';
 import verticalDivider from '../../assets/locale/verticalDivider.svg';
 import plus from '../../assets/locale/plus.svg';
 import plusOrange from '../../assets/locale/plusOrange.svg';
+import arrowBack from '../../assets/locale/arrowBack.svg';
+import { BrowserRouter, NavLink, Routes } from 'react-router-dom';
 import './Button.scss';
 
 type args = {
@@ -19,22 +21,18 @@ export const Button = (props: args) => {
   return (
     <>
       {props.type === 'summary' && (
-        <button className={props.type}>
+        <NavLink   to={'/summary'} >
+          <button className={props.type}>
           {props.price} {CURRENCY}
           <img
             alt="Vertical divider"
             src={verticalDivider}
             style={{ padding: '0px 15px' }}
           />
-          <div className="cart-container">
             <img alt="shopping cart" src={shoppingCart} className="cart" />
-            <span className="cart-wheel">
-              <img alt="shopping cart" src={shoppingCartWheel} />
-              <img alt="shopping cart" src={shoppingCartWheel} />
-            </span>
-          </div>
           {orderSum}
-        </button>
+          </button>
+        </NavLink >
       )}
 
       {props.type === 'filter' && (
@@ -56,6 +54,26 @@ export const Button = (props: args) => {
             <span className="notification-container-text">2</span>
           </div>
         </button>
+      )}
+
+      {props.type === 'back' && (
+          <NavLink to={'/'} >
+            <button className={props.type}>
+              <img
+                  alt="back"
+                  src={arrowBack}
+              />
+            <p className="button-back-title">Вернуться назад</p>
+            </button>
+          </NavLink>
+      )}
+
+      {props.type === 'pay' && (
+          <NavLink to={'/'} >
+            <button className={props.type}>
+              <p className="pay">Оплатить сейчас</p>
+            </button>
+          </NavLink>
       )}
     </>
   );

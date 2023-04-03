@@ -4,23 +4,21 @@ import {OrderType} from '../../ts/types/types';
 import {usePizzasStore} from '../../store/usePizzasStore';
 import {CURRENCY} from '../../constants/constants';
 
-import {ContentItem} from '../../components/contentItem/ContentItem';
-
-import shoppingCart from "../../assets/locale/shoppingСartGrey.svg";
+import shoppingCart from '../../assets/locale/shoppingСartGrey.svg';
 
 import trash from "../../assets/locale/trash.svg";
 
 import './SummaryCart.scss';
 import horisontalDivider from "../../assets/locale/horizontalDivider.svg";
+import {Button} from "../button/Button";
 
 export const SummaryCart = () => {
     const order = usePizzasStore((state: any) => state.order); //any
     const isLoading = usePizzasStore((state: any) => state.isLoading); //any
-    console.log(order, 'order')
     const userOrder = () => {
         return order?.map((el: OrderType) => {
             return (
-                <div>
+                <div key={el.id}>
                     <img alt={'Divider'} className="item-divider" src={horisontalDivider}/>
 
                     <div className="item-container">
@@ -38,11 +36,7 @@ export const SummaryCart = () => {
                             </div>
                         </div>
 
-                        <div style={{
-                            display: 'flex',
-                            width: '300px',
-                            justifyContent: 'space-between'
-                        }}>
+                        <div className="item-set-container">
                             <div className="count">
                                 <span className="circle minus"></span>
                                 <p>{el.count}</p>
@@ -61,14 +55,10 @@ export const SummaryCart = () => {
     };
 
     return (
-        <main style={{
-            // padding: '0 351px'
-            width: '680px',
-            margin: '0 auto',
-        }}>
+        <main className="main-cart-wrapper">
             <article className="cart-container">
                 <div className="cart-name-container">
-                    <div className="cart-container">
+                    <div className="cart-image-container">
                         <img alt="shopping cart" src={shoppingCart} className="cart"/>
                     </div>
 
@@ -81,8 +71,16 @@ export const SummaryCart = () => {
                 </div>
             </article>
 
-            <div>
                 {userOrder()}
+
+                <div className="summary-text-container">
+                    <p style={{fontWeight: "400",   fontSize: '15px'}}>Всего пицц: <strong>3шт.</strong> </p>
+                    <p style={{fontWeight: "400",   fontSize: '15px'}}>Сумма заказа: <span style={{fontWeight: "700", color:'orange'}}>900 {CURRENCY}</span></p>
+                </div>
+
+            <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '27px'}}>
+                <Button type={'back'}/>
+                <Button type={'pay'}/>
             </div>
         </main>
     );

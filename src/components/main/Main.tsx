@@ -1,4 +1,4 @@
-import { ContentItem } from '../../components/contentItem/ContentItem';
+import { ContentItem } from '../contentItem/ContentItem';
 import './Main.scss';
 import { PizzaType } from '../../ts/types/types';
 import { usePizzasStore } from '../../store/usePizzasStore';

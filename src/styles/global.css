@@ -20,7 +20,7 @@ a:hover {
 }
 
 p {
-  font-family: system-ui;
+  font-family: system-ui, sans-serif;
   color: #2c2c2c;
   font-style: normal;
   font-weight: 700;
@@ -63,7 +63,7 @@ button {
   letter-spacing: 0.015em;
 }
 button:hover {
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
 svg {

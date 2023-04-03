@@ -6,7 +6,7 @@ import { Main } from '../components/main/Main';
 export const Homepage = () => {
   return (
     <div>
-      <Header />
+      <Header navPanel />
       <Main />
     </div>
   );

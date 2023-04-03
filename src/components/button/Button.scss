@@ -25,14 +25,6 @@
     padding: 0 5px 0 0;
   }
 
-  .cart-wheel {
-    display: flex;
-    justify-content: space-evenly;
-    width: 20px;
-    height: 6px;
-    position: absolute;
-    bottom: -2px;
-  }
 }
 
 .filter {
@@ -100,4 +92,33 @@
     line-height: 21px;
     text-align: center;
   }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 46px;
+  //left: 1197px;
+  //top: 95px;
+  color: $white;
+  background-color: $white;
+  border: 1px solid $light-grey;
+  border-radius: 30px;
+  padding: 0 25px;
+  gap: 10px;
+
+  .button-back-title {
+    font-weight: 400;
+    color: $light-grey;
+  }
+
+}
+
+.pay {
+  //height: 50px;
+  color: $white;
+  background-color: $orange;
+  padding: 0 15px;
 }
