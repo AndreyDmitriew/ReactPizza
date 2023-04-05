@@ -6,7 +6,7 @@ import verticalDivider from '../../assets/locale/verticalDivider.svg';
 import plus from '../../assets/locale/plus.svg';
 import plusOrange from '../../assets/locale/plusOrange.svg';
 import arrowBack from '../../assets/locale/arrowBack.svg';
-import { BrowserRouter, NavLink, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Routes, useNavigate } from 'react-router-dom';
 import './Button.scss';
 
 type args = {
@@ -16,23 +16,24 @@ type args = {
 };
 
 export const Button = (props: args) => {
+  const navigate = useNavigate();
   const orderSum: number = 3;
 
   return (
     <>
       {props.type === 'summary' && (
-        <NavLink   to={'/summary'} >
+        <NavLink to={'/summary'}>
           <button className={props.type}>
-          {props.price} {CURRENCY}
-          <img
-            alt="Vertical divider"
-            src={verticalDivider}
-            style={{ padding: '0px 15px' }}
-          />
+            {props.price} {CURRENCY}
+            <img
+              alt="Vertical divider"
+              src={verticalDivider}
+              style={{ padding: '0px 15px' }}
+            />
             <img alt="shopping cart" src={shoppingCart} className="cart" />
-          {orderSum}
+            {orderSum}
           </button>
-        </NavLink >
+        </NavLink>
       )}
 
       {props.type === 'filter' && (
@@ -57,23 +58,24 @@ export const Button = (props: args) => {
       )}
 
       {props.type === 'back' && (
-          <NavLink to={'/'} >
-            <button className={props.type}>
-              <img
-                  alt="back"
-                  src={arrowBack}
-              />
-            <p className="button-back-title">Вернуться назад</p>
-            </button>
-          </NavLink>
+        <button onClick={() => navigate('/')} className={props.type}>
+          {/*<span>*/}
+          <img alt="back" src={arrowBack} />
+          <p className="button-back-title">Вернуться назад</p>
+          {/*</span>*/}
+        </button>
       )}
 
       {props.type === 'pay' && (
-          <NavLink to={'/'} >
-            <button className={props.type}>
-              <p className="pay">Оплатить сейчас</p>
-            </button>
-          </NavLink>
+        <button onClick={() => navigate('/')} className={props.type}>
+          <p className="button-pay-title">Оплатить сейчас</p>
+        </button>
+      )}
+
+      {props.type === 'backBlack' && (
+        <button onClick={() => navigate('/')} className={props.type}>
+          <p className="button-backBlack-title">Вернуться назад</p>
+        </button>
       )}
     </>
   );

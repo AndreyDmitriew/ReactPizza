@@ -1,0 +1,20 @@
+.main-cart-wrapper {
+  //width: 680px;
+  margin: 0 auto;
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .sub-title {
+    text-align: center;
+  }
+
+  .shoper {
+    display: block;
+    margin: 47px auto 87px;
+  }
+}
