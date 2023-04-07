@@ -21,7 +21,7 @@ export const EmptyTrash = () => {
         Вероятней всего, вы не заказывали ещё пиццу.
         <br /> Для того, чтобы заказать пиццу, перейди на главную страницу.
       </p>
-      <img alt={'Shoper men'} className="shoper" src={shopper} />
+      <img alt={'Shopper men'} className="shopper" src={shopper} />
       <Button type={'backBlack'} />
     </main>
   );

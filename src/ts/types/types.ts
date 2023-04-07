@@ -13,11 +13,12 @@ export type PizzaType = {
   name: string;
   dough: string;
   size: PizzaSizes;
+  available: string[];
   price: number;
 };
 
-export interface OrderType extends PizzaType  {
-  count: number
+export interface OrderType extends PizzaType {
+  count: number;
 }
 
 export type StateType = {
@@ -29,5 +30,5 @@ export type StateType = {
 };
 
 export type HeaderType = {
-  navPanel?: boolean
-}
+  navPanel?: boolean;
+};

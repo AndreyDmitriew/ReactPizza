@@ -37,20 +37,6 @@
     padding: 3px 0;
   }
 
-  //.form_radio_group input[type='radio']:checked + label {
-
-  .form-radio-group-item {
-    width: 100%;
-    display: inline-block;
-    float: left;
-    font-weight: 700;
-    font-size: 14px;
-
-    //.unit-of-measurement {
-    //  gap: 3px;
-    //}
-  }
-
   .form-radio-group input[type='radio'] {
     display: none;
   }
@@ -90,6 +76,38 @@
   .form-radio-group input[type='radio']:disabled + label {
     background: #efefef;
     color: #667;
+  }
+
+  .form-radio-group-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: $silver-grey;
+    float: left;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  //.form-radio-group-label-checked {
+  //  display: flex;
+  //  justify-content: center;
+  //}
+
+  .form-radio-group-label {
+    display: flex;
+    justify-content: center;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .form-radio-group-label-checked {
+    min-width: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 14px;
   }
 
   .price-container {

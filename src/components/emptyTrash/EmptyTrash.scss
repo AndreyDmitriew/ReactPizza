@@ -1,5 +1,6 @@
+@import '../../styles/colors';
+
 .main-cart-wrapper {
-  //width: 680px;
   margin: 0 auto;
 
   .title {
@@ -11,10 +12,17 @@
 
   .sub-title {
     text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: $middle-grey;
   }
 
-  .shoper {
+  .shopper {
     display: block;
     margin: 47px auto 87px;
+
+    @media only screen and (max-width: 576px) {
+      height: 160px;
+    }
   }
 }

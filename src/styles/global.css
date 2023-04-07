@@ -8,6 +8,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  background-color: #FFDF8C;
 }
 
 a {
@@ -30,15 +31,10 @@ p {
 }
 
 body {
-  position: absolute;
   min-width: 120px;
   min-height: 90vh;
-  left: 25px;
-  right: 25px;
-  top: 23px;
-  bottom: 23px;
-  background: #FFDF8C;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
 }
 
 h1 {
@@ -55,7 +51,6 @@ button {
   width: max-content;
   border-radius: 30px;
   border: none;
-  /*padding: 0.6em 1.2em;*/
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

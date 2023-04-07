@@ -20,8 +20,16 @@ export const ContentItem: FC<PizzaType> = ({
   name,
   dough,
   size,
+  available,
   price,
 }) => {
+  console.log(dough, 'doug');
+
+  const type =
+    dough === 'тонкое'
+      ? 'form-radio-group-item-checked'
+      : 'form-radio-group-item';
+
   return (
     <article className="content-item-container">
       <img className="pizza" alt="Pizza" src={image} />
@@ -29,13 +37,58 @@ export const ContentItem: FC<PizzaType> = ({
 
       <div className="toggle-set">
         <div className="form-radio-group">
-          <div className="form-radio-group-item">
-            <input id="radio-1" type="radio" name="dough" value="1" checked />
-            <label htmlFor="radio-1">{THIN}</label>
+          {/*<div className="form-radio-group-item">*/}
+
+          <div
+            className={
+              dough === 'тонкое'
+                ? 'form-radio-group-item-checked'
+                : 'form-radio-group-item'
+            }
+          >
+            <input
+              id="radio-1"
+              type="radio"
+              name="dough"
+              value="1"
+              checked={dough === 'тонкое'}
+            />
+            <label
+              className={
+                dough === 'тонкое'
+                  ? 'form-radio-group-label-checked'
+                  : 'form-radio-group-label'
+              }
+              htmlFor="radio-1"
+            >
+              {THIN}
+            </label>
           </div>
-          <div className="form-radio-group-item">
-            <input id="radio-2" type="radio" name="dough" value="2" />
-            <label htmlFor="radio-2">{TRADITIONAL}</label>
+
+          <div
+            className={
+              dough === 'традиционное'
+                ? 'form-radio-group-item-checked'
+                : 'form-radio-group-item'
+            }
+          >
+            <input
+              id="radio-2"
+              type="radio"
+              name="dough"
+              value="2"
+              checked={dough === 'традиционное'}
+            />
+            <label
+              className={
+                dough === 'традиционное'
+                  ? 'form-radio-group-label-checked'
+                  : 'form-radio-group-label'
+              }
+              htmlFor="radio-2"
+            >
+              {TRADITIONAL}
+            </label>
           </div>
         </div>
 

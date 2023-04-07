@@ -13,25 +13,24 @@ export const Main = () => {
     getPizzas();
   }, []);
 
-  const pizza = () => {
-    return pizzas?.map((el: PizzaType) => {
-      return (
-        <ContentItem
-          key={el.id}
-          image={el.image}
-          name={el.name}
-          dough={el.dough}
-          size={el.size}
-          price={el.price}
-        />
-      );
-    });
-  };
-
   return (
     <main>
       <h3>Все пиццы</h3>
-      <section className="main-content">{pizza()}</section>
+      <section className="main-content">
+        {pizzas?.map((el: PizzaType) => {
+          return (
+            <ContentItem
+              key={el.id}
+              image={el.image}
+              name={el.name}
+              dough={el.dough}
+              size={el.size}
+              available={el.available}
+              price={el.price}
+            />
+          );
+        })}
+      </section>
     </main>
   );
 };
