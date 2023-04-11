@@ -4,13 +4,13 @@ import { OrderType } from '../../ts/types/types';
 import { usePizzasStore } from '../../store/usePizzasStore';
 import { CURRENCY } from '../../constants/constants';
 
+import horisontalDivider from '../../assets/locale/horizontalDivider.svg';
 import shoppingCart from '../../assets/locale/shoppingСartGrey.svg';
-
 import trash from '../../assets/locale/trash.svg';
 
-import './SummaryCart.scss';
-import horisontalDivider from '../../assets/locale/horizontalDivider.svg';
 import { Button } from '../button/Button';
+
+import './SummaryCart.scss';
 
 export const SummaryCart = () => {
   const order = usePizzasStore((state: any) => state.order); //any
@@ -29,10 +29,8 @@ export const SummaryCart = () => {
             <div
               style={{
                 display: 'flex',
-                // justifyContent:' space-between',
                 alignItems: 'center',
                 gap: '18px',
-                // minWidth: '255px'
               }}
             >
               <img alt={'pizza'} className="item-image" src={el.image} />

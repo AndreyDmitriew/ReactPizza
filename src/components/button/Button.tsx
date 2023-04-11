@@ -1,12 +1,14 @@
 import React from 'react';
-import { CURRENCY } from '../../constants/constants';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 import shoppingCart from '../../assets/locale/shoppingСart.svg';
-import shoppingCartWheel from '../../assets/locale/shoppingCartWheel.svg';
 import verticalDivider from '../../assets/locale/verticalDivider.svg';
 import plus from '../../assets/locale/plus.svg';
 import plusOrange from '../../assets/locale/plusOrange.svg';
 import arrowBack from '../../assets/locale/arrowBack.svg';
-import { BrowserRouter, NavLink, Routes, useNavigate } from 'react-router-dom';
+
+import { CURRENCY } from '../../constants/constants';
+
 import './Button.scss';
 
 type args = {
@@ -59,10 +61,8 @@ export const Button = (props: args) => {
 
       {props.type === 'back' && (
         <button onClick={() => navigate('/')} className={props.type}>
-          {/*<span>*/}
           <img alt="back" src={arrowBack} />
           <p className="button-back-title">Вернуться назад</p>
-          {/*</span>*/}
         </button>
       )}
 

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { getAllPizzas } from '../core/api';
 import { StateType } from '../ts/types/types';
-import { SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA } from '../constants/constants';
+import { SMALL_PIZZA, MIDDLE_PIZZA } from '../constants/constants';
 
 const fakeOrder: any = [
   {

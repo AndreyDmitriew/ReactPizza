@@ -45,38 +45,8 @@
     cursor: pointer;
     padding: 0 15px;
     line-height: 34px;
-    //border: 1px solid #999;
-    //border-right: none;
     user-select: none;
   }
-
-  //.form-radio-group .form-radio-group-item:first-child label {
-  //  border-radius: 6px 0 0 6px;
-  //}
-  //.form-radio-group .form-radio-group-item:last-child label {
-  //  //border-radius: 0 6px 6px 0;
-  //  //border-right: 1px solid #999;
-  //}
-  //
-  /* Checked */
-  //.form-radio-group input[type='radio']:checked + label {
-  //  background: $white; //Checked   color
-  //  border-radius: 5px;
-  //  //width: 100%;
-  //  //padding: 0;
-  //  //text-align: center;
-  //}
-  //
-  ///* Hover */
-  //.form-radio-group label:hover {
-  //  color: #665;
-  //}
-
-  ///* Disabled */
-  //.form-radio-group input[type='radio']:disabled + label {
-  //  background: #efefef;
-  //  color: #667;
-  //}
 
   .form-radio-group-item {
     display: flex;
@@ -91,20 +61,13 @@
 
   .form-radio-group-item-checked {
     @extend .form-radio-group-item;
-    background: $white
+    background: $white;
   }
 
   .form-radio-group-item-unavailable {
     @extend .form-radio-group-item;
     color: $disable-grey;
-    //background-color: #d18b8b;
-
   }
-
-  //.form-radio-group-label-checked {
-  //  display: flex;
-  //  justify-content: center;
-  //}
 
   .form-radio-group-label {
     display: flex;

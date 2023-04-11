@@ -1,12 +1,14 @@
 import React, { FC, useState } from 'react';
 import { v4 as uuid } from 'uuid';
+
 import icon from '../../assets/locale/pizzaLogo.svg';
 import horisontalDivider from '../../assets/locale/horizontalDivider.svg';
 import vector from '../../assets/locale/vector.svg';
 
-import './Header.scss';
 import { Button } from '../button/Button';
 import { HeaderType } from '../../ts/types/types';
+
+import './Header.scss';
 
 export const Header: FC<HeaderType> = ({ navPanel }) => {
   const price: number = 520;
@@ -55,24 +57,12 @@ export const Header: FC<HeaderType> = ({ navPanel }) => {
           <label style={{ position: 'relative' }} className="sort">
             <img alt={'Vector'} className="vector" src={vector} />
             <p className="sort-title">Сортировка по:</p>
-            {/*<select*/}
-            {/*  className="sort-list"*/}
-            {/*  style={{ position: 'absolute' }}*/}
-            {/*  onChange={() => console.log('onCh')}*/}
-            {/*>*/}
-            {/*  <option style={{ top: '10px' }} value="grapefruit">*/}
-            {/*    популярности*/}
-            {/*  </option>*/}
-            {/*  <option value="lime">по цене</option>*/}
-            {/*  <option value="coconut">по алфавиту</option>*/}
-            {/*</select>*/}
             <p
               className="sort-value"
               onClick={() => setIsSortListOpen(!isSortListOpen)}
             >
               по популярности
             </p>
-
             {isSortListOpen && (
               <div className="list-container">
                 <ul className="sort-list">

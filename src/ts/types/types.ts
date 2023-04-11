@@ -17,6 +17,12 @@ export type PizzaType = {
   price: number;
 };
 
+export type ChangeParameterType = {
+  type: string;
+  isTypeAvailable: boolean;
+  pizzaType: string;
+};
+
 export interface OrderType extends PizzaType {
   count: number;
 }
