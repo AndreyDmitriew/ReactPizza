@@ -18,9 +18,11 @@ export const Main = () => {
       <h3>Все пиццы</h3>
       <section className="main-content">
         {pizzas?.map((el: PizzaType) => {
+
           return (
             <ContentItem
               key={el.id}
+              id={el.id}
               image={el.image}
               name={el.name}
               dough={el.dough}

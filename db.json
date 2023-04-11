@@ -5,17 +5,17 @@
       "image": "https://imageup.ru/img220/4271686/image-2.jpg",
       "name": "Чизбургер-пицца",
       "dough": "тонкое",
-      "size": "SMALL_PIZZA",
-      "available": ["тонкое", "традиционное", "SMALL_PIZZA", "MIDDLE_PIZZA", "BIG_PIZZA"],
+      "size": 26,
+      "available": ["тонкое", "традиционное", "26", "30", "40"],
       "price": 395
     },
     {
       "id": "b6fcbec0-7994-4355-a01d-524dea6389d4",
       "image": "https://imageup.ru/img281/4271689/image-7.jpg",
       "name": "Сырная",
-      "dough": "традиционное",
-      "size": "SMALL_PIZZA",
-      "available": ["тонкое", "традиционное", "SMALL_PIZZA"],
+      "dough": "тонкое",
+      "size": 26,
+      "available": ["тонкое", "традиционное", "26", "30"],
       "price": 450
     },
     {
@@ -23,8 +23,8 @@
       "image": "https://imageup.ru/img117/4271688/image-6.jpg",
       "name": "Креветки по-азиатски",
       "dough": "тонкое",
-      "size": "MIDDLE_PIZZA",
-      "available": ["тонкое", "MIDDLE_PIZZA"],
+      "size": 30,
+      "available": ["тонкое", "30"],
       "price": 290
     },
     {
@@ -32,8 +32,8 @@
       "image": "https://imageup.ru/img260/4271687/image-5.jpg",
       "name": "Сырный цыпленок",
       "dough": "тонкое",
-      "size": "SMALL_PIZZA",
-      "available": ["тонкое", "традиционное", "SMALL_PIZZA", "MIDDLE_PIZZA", "BIG_PIZZA"],
+      "size": 26,
+      "available": ["тонкое", "традиционное", "26", "30", "40"],
       "price": 385
     },
     {
@@ -41,7 +41,8 @@
       "image": "https://imageup.ru/img220/4271686/image-2.jpg",
       "name": "Чизбургер-пицца",
       "dough": "тонкое",
-      "size": "SMALL_PIZZA",
+      "size": 26,
+      "available": ["тонкое", "традиционное", "26", "30", "40"],
       "price": 395
     },
     {
@@ -49,7 +50,8 @@
       "image": "https://imageup.ru/img281/4271689/image-7.jpg",
       "name": "Сырная",
       "dough": "тонкое",
-      "size": "SMALL_PIZZA",
+      "size": 26,
+      "available": ["тонкое", "традиционное", "26"],
       "price": 450
     },
     {
@@ -57,7 +59,8 @@
       "image": "https://imageup.ru/img117/4271688/image-6.jpg",
       "name": "Креветки по-азиатски",
       "dough": "тонкое",
-      "size": "MIDDLE_PIZZA",
+      "size": 30,
+      "available": ["тонкое", "30"],
       "price": 290
     },
     {
@@ -65,7 +68,8 @@
       "image": "https://imageup.ru/img260/4271687/image-5.jpg",
       "name": "Сырный цыпленок",
       "dough": "тонкое",
-      "size": "SMALL_PIZZA",
+      "size": 26,
+      "available": ["тонкое", "традиционное", "26", "30", "40"],
       "price": 385
     }
   ]
