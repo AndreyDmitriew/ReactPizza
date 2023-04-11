@@ -88,21 +88,11 @@
     display: block;
     margin: 10px 0 0 0;
   }
-}
-
-.sort {
-  display: flex;
-  align-items: baseline;
-  white-space: nowrap;
-  gap: 6px;
-
-  .sort-list {
-    border: none;
-    text-decoration: underline dotted $orange;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-    color: $orange;
+  .sort {
+    display: flex;
+    align-items: baseline;
+    white-space: nowrap;
+    gap: 6px;
 
     .vector {
       width: 10px;
@@ -111,6 +101,43 @@
 
     .sort-title {
       width: max-content;
+    }
+
+    .sort-value {
+      border: none;
+      text-decoration: underline dotted $orange;
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer;
+      color: $orange;
+      font-weight: 400;
+    }
+
+    .list-container {
+      //width: max-content;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+      border-radius: 10px;
+
+      position: absolute;
+      top: 37px;
+      left: 115px;
+
+      .sort-list {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+          padding: 10px 20px;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 17px;
+          cursor: pointer;
+        }
+        li:hover {
+          color: $orange;
+          background-color: $orange-light;
+        }
+      }
     }
   }
 }

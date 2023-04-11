@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import icon from '../../assets/locale/pizzaLogo.svg';
 import horisontalDivider from '../../assets/locale/horizontalDivider.svg';
@@ -10,6 +10,7 @@ import { HeaderType } from '../../ts/types/types';
 
 export const Header: FC<HeaderType> = ({ navPanel }) => {
   const price: number = 520;
+  const [isSortListOpen, setIsSortListOpen] = useState(false);
 
   interface Buttons {
     id: string;
@@ -54,17 +55,33 @@ export const Header: FC<HeaderType> = ({ navPanel }) => {
           <label style={{ position: 'relative' }} className="sort">
             <img alt={'Vector'} className="vector" src={vector} />
             <p className="sort-title">Сортировка по:</p>
-            <select
-              className="sort-list"
-              style={{ position: 'absolute' }}
-              onChange={() => console.log('onCh')}
+            {/*<select*/}
+            {/*  className="sort-list"*/}
+            {/*  style={{ position: 'absolute' }}*/}
+            {/*  onChange={() => console.log('onCh')}*/}
+            {/*>*/}
+            {/*  <option style={{ top: '10px' }} value="grapefruit">*/}
+            {/*    популярности*/}
+            {/*  </option>*/}
+            {/*  <option value="lime">по цене</option>*/}
+            {/*  <option value="coconut">по алфавиту</option>*/}
+            {/*</select>*/}
+            <p
+              className="sort-value"
+              onClick={() => setIsSortListOpen(!isSortListOpen)}
             >
-              <option style={{ top: '10px' }} value="grapefruit">
-                популярности
-              </option>
-              <option value="lime">по цене</option>
-              <option value="coconut">по алфавиту</option>
-            </select>
+              по популярности
+            </p>
+
+            {isSortListOpen && (
+              <div className="list-container">
+                <ul className="sort-list">
+                  <li>по пулярности</li>
+                  <li>по цене</li>
+                  <li>по алфавиту</li>
+                </ul>
+              </div>
+            )}
           </label>
         </article>
       )}
