@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react';
-import { v4 as uuid } from 'uuid';
 
 import icon from '../../assets/locale/pizzaLogo.svg';
 import horisontalDivider from '../../assets/locale/horizontalDivider.svg';
@@ -7,29 +6,20 @@ import vector from '../../assets/locale/vector.svg';
 
 import { Button } from '../button/Button';
 import { HeaderType } from '../../ts/types/types';
+import { usePizzasStore } from '../../store/usePizzasStore';
+import { ButtonInterface } from '../../ts/interfaces/interfaces';
 
 import './Header.scss';
 
 export const Header: FC<HeaderType> = ({ navPanel }) => {
   const price: number = 520;
   const [isSortListOpen, setIsSortListOpen] = useState(false);
+  const navButtons = usePizzasStore((state: any) => state.navButtons); //any
 
-  interface Buttons {
-    id: string;
-    name: string;
-  }
-
-  const navButtons: Buttons[] = [
-    { id: uuid(), name: 'Все' },
-    { id: uuid(), name: 'Мясные' },
-    { id: uuid(), name: 'Вегетарианская' },
-    { id: uuid(), name: 'Гриль' },
-    { id: uuid(), name: 'Острые' },
-    { id: uuid(), name: 'Закрытые' },
-  ];
+  const handleChangeButtonType = () => {};
 
   const renderButtons = () => {
-    return navButtons.map((button) => (
+    return navButtons.map((button: ButtonInterface) => (
       <Button key={button.id} type={'filter'} name={button.name} />
     ));
   };

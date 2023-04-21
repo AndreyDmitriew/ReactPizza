@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { getAllPizzas } from '../core/api';
 import { StateType } from '../ts/types/types';
 import { SMALL_PIZZA, MIDDLE_PIZZA } from '../constants/constants';
+import { v4 as uuid } from 'uuid';
 
 const fakeOrder: any = [
   {
@@ -36,6 +37,15 @@ const fakeOrder: any = [
 export const usePizzasStore = create<StateType>((set) => ({
   data: [],
   order: fakeOrder,
+  navButtons: [
+    { id: uuid(), name: 'Все', status: 'active' },
+    { id: uuid(), name: 'Мясные', status: 'inactive' },
+    { id: uuid(), name: 'Вегетарианская', status: 'inactive' },
+    { id: uuid(), name: 'Гриль', status: 'inactive' },
+    { id: uuid(), name: 'Острые', status: 'inactive' },
+    { id: uuid(), name: 'Закрытые', status: 'inactive' },
+  ],
+  type: null,
   sort: 'по популярности',
   isLoading: false,
   error: null,
@@ -49,6 +59,16 @@ export const usePizzasStore = create<StateType>((set) => ({
       throw new Error(`Error! status: ${error}`);
     }
   },
+  handleChangeButtonType: (button) =>
+    set((state) => ({
+      navButtons: state.navButtons.map((item) => {
+        if (item.id === button.id) {
+          set((state) => ({ type: button.id }));
+        } else {
+          return item;
+        }
+      }),
+    })),
   // updateState: (id: string, property: string, value: string) => set((state) => {
   //
   //   {...state, data: [...state.data]}
