@@ -6,6 +6,8 @@
   <img src="https://user-images.githubusercontent.com/46495940/227509842-bbc0474a-0c91-45b3-805f-e37526ef9359.png" title="React" alt="React" width="700"    height="700"/>&nbsp;
 </p>
 
+[Figma layout](https://www.figma.com/file/A04JYuHDE5VYge8xwrrd6D/React-Pizza?node-id=0-1&t=QqUvlZJhOCbWv6Y5-0)
+
 ### 🛠 &nbsp;Languages and Tools :
 <p>
 <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
