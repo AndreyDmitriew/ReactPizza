@@ -1,10 +1,9 @@
 import React, { FC, useState } from 'react';
 
 import icon from '../../assets/locale/pizzaLogo.svg';
-import horisontalDivider from '../../assets/locale/horizontalDivider.svg';
 import vector from '../../assets/locale/vector.svg';
 
-import { Button } from '../button/Button';
+import Button from '../button/Button';
 import { HeaderType } from '../../ts/types/types';
 import { usePizzasStore } from '../../store/usePizzasStore';
 import { ButtonInterface } from '../../ts/interfaces/interfaces';
@@ -40,7 +39,7 @@ export const Header: FC<HeaderType> = ({ navPanel }) => {
           </div>
         )}
       </article>
-      <img alt={'Divider'} className="divider" src={horisontalDivider} />
+      <hr className="divider" />
       {navPanel && (
         <article className="nav-panel">
           <div>{renderButtons()}</div>

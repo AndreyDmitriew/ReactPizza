@@ -3,7 +3,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 50px 0;
+  margin: 0 0 45px 0;
 
   @media (max-width: 768px) {
     display: block;
@@ -61,13 +61,10 @@
     }
   }
 }
+
 .divider {
-  position: absolute;
-  width: 97%;
-  height: 1px;
-  top: 140px;
-  left: 17px;
-  background-color: $light-grey;
+  width: 100%;
+  border-top: 1px solid $divider-grey;
 
   @media (max-width: 768px) {
     top: 190px;
@@ -81,7 +78,7 @@
 .nav-panel {
   display: flex;
   justify-content: space-between;
-  margin: 70px 0 15px 0;
+  margin: 36px 0 15px 0;
   box-sizing: content-box;
 
   @media (max-width: 768px) {
