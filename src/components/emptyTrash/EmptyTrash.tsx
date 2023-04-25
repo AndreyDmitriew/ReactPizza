@@ -1,11 +1,11 @@
 import React from 'react';
 import { usePizzasStore } from '../../store/usePizzasStore';
 
-import sadSmile from '../../assets/locale/sadSmile.svg';
+import sadSmile from '../../assets/locale/sadSmile.png';
 import shopper from '../../assets/locale/shopper.svg';
 
 import './EmptyTrash.scss';
-import { Button } from '../button/Button';
+import Button from '../button/Button';
 
 export const EmptyTrash = () => {
   const order = usePizzasStore((state: any) => state.order); //any
@@ -22,7 +22,7 @@ export const EmptyTrash = () => {
         <br /> Для того, чтобы заказать пиццу, перейди на главную страницу.
       </p>
       <img alt={'Shopper men'} className="shopper" src={shopper} />
-      <Button type={'backBlack'} />
+      <Button type={'backwards'} />
     </main>
   );
 };

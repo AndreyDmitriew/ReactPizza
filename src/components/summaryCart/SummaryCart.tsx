@@ -4,11 +4,10 @@ import { OrderType } from '../../ts/types/types';
 import { usePizzasStore } from '../../store/usePizzasStore';
 import { CURRENCY } from '../../constants/constants';
 
-import horisontalDivider from '../../assets/locale/horizontalDivider.svg';
 import shoppingCart from '../../assets/locale/shoppingСartGrey.svg';
 import trash from '../../assets/locale/trash.svg';
 
-import { Button } from '../button/Button';
+import Button from '../button/Button';
 
 import './SummaryCart.scss';
 
@@ -19,12 +18,6 @@ export const SummaryCart = () => {
     return order?.map((el: OrderType) => {
       return (
         <div key={el.id}>
-          <img
-            alt={'Divider'}
-            className="item-divider"
-            src={horisontalDivider}
-          />
-
           <div className="item-container">
             <div
               style={{

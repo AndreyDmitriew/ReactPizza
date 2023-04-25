@@ -12,8 +12,10 @@
   background-color: $orange;
   border-radius: 30px;
 
-  .divider {
-    padding: 0 15px;
+  .vertical-divider {
+    border-left: 1px solid rgba(220, 211, 211, 0.64);
+    height: 20px;
+    margin: 0 11px;
   }
 
   .cart-container {
@@ -129,14 +131,14 @@
   }
 }
 
-.backBlack {
+.backwards {
   display: block;
   height: 45px;
   margin: 0 auto;
   padding: 0 18px;
   background-color: $black;
 
-  .button-backBlack-title {
+  .button-backwards-title {
     padding: 0 14px;
     color: $white;
     font-weight: 500;

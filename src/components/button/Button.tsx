@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 
 import shoppingCart from '../../assets/locale/shoppingСart.svg';
-import verticalDivider from '../../assets/locale/verticalDivider.svg';
 import plus from '../../assets/locale/plus.svg';
 import plusOrange from '../../assets/locale/plusOrange.svg';
 import arrowBack from '../../assets/locale/arrowBack.svg';
@@ -22,26 +21,22 @@ type args = {
     t: any;
 };
 
-export const Button = (props: args) => {
-    console.log(props.t, 'tt')
-    const navigate = useNavigate();
-    const orderSum: number = 3;
-    return (
-        <>
-            {props.type === 'summary' && (
-                <NavLink to={'/summary'}>
-                    <button className={props.type}>
-                        {props.price} {CURRENCY}
-                        <img
-                            alt="Vertical divider"
-                            src={verticalDivider}
-                            style={{padding: '0px 15px'}}
-                        />
-                        <img alt="shopping cart" src={shoppingCart} className="cart"/>
-                        {orderSum}
-                    </button>
-                </NavLink>
-            )}
+export default function Button(props: args) {
+  const navigate = useNavigate();
+  const orderSum: number = 3;
+
+  return (
+    <>
+      {props.type === 'summary' && (
+        <NavLink to={'/summary'}>
+          <button className={props.type}>
+            {props.price} {CURRENCY}
+            <div className="vertical-divider"></div>
+            <img alt="shopping cart" src={shoppingCart} className="cart" />
+            {orderSum}
+          </button>
+        </NavLink>
+      )}
 
             {props.type === 'filter' && (
                 // <button className={props.type}>{props.name}</button>
@@ -82,11 +77,11 @@ export const Button = (props: args) => {
                 </button>
             )}
 
-            {props.type === 'backBlack' && (
-                <button onClick={() => navigate('/')} className={props.type}>
-                    <p className="button-backBlack-title">Вернуться назад</p>
-                </button>
-            )}
-        </>
-    );
-};
+      {props.type === 'backwards' && (
+        <button onClick={() => navigate('/')} className={props.type}>
+          <p className="button-backwards-title">Вернуться назад</p>
+        </button>
+      )}
+    </>
+  );
+}
