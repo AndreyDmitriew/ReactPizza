@@ -18,7 +18,6 @@ type args = {
     isActive?: boolean;
     id?: string;
     handleChangeActiveButton: any;
-    t: any;
 };
 
 export default function Button(props: args) {

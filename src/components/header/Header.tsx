@@ -22,7 +22,7 @@ export const Header: FC<HeaderType> = ({navPanel}) => {
         return navButtons.map((button: ButtonInterface) => {
             const isActive = type === button.id
             return <Button key={button.id} type={'filter'} name={button.name} isActive={isActive} id={button.id}
-                           handleChangeActiveButton={handleChangeActiveButton} t={type}/>
+                           handleChangeActiveButton={handleChangeActiveButton}/>
         });
     };
 
