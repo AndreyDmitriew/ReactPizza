@@ -34,6 +34,12 @@
   border-radius: 30px;
 }
 
+.filter-active {
+  @extend .filter;
+  color: $white;
+  background-color: $orange;
+}
+
 .add {
   width: 132px;
   color: $white;

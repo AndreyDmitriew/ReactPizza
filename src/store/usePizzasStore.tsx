@@ -38,14 +38,14 @@ export const usePizzasStore = create<StateType>((set) => ({
   data: [],
   order: fakeOrder,
   navButtons: [
-    { id: uuid(), name: 'Все', status: 'active' },
-    { id: uuid(), name: 'Мясные', status: 'inactive' },
-    { id: uuid(), name: 'Вегетарианская', status: 'inactive' },
-    { id: uuid(), name: 'Гриль', status: 'inactive' },
-    { id: uuid(), name: 'Острые', status: 'inactive' },
-    { id: uuid(), name: 'Закрытые', status: 'inactive' },
+    { id: "42b16a63-64п0-4f12-a817-c9856456e1111", name: 'Все'},
+    { id: "42b16a63-6620-4f12-a4е7-c98куе56e9883", name: 'Мясные' },
+    { id: "42b16a63-6пк20-4f12-a817-c983446e9821", name: 'Вегетарианская'},
+    { id: "42b16aке3-6620-4f12-a817-c934456e9843", name: 'Гриль'},
+    { id: "42bв6aро3-6620-4f12-a817-c985к56e9883", name: 'Острые'},
+    { id: "42b1ап63-6620-4f12-a817-c985645кe9883", name: 'Закрытые'},
   ],
-  type: null,
+  type: "42b16a63-64п0-4f12-a817-c9856456e1111",
   sort: 'по популярности',
   isLoading: false,
   error: null,
@@ -59,15 +59,9 @@ export const usePizzasStore = create<StateType>((set) => ({
       throw new Error(`Error! status: ${error}`);
     }
   },
-  handleChangeButtonType: (button) =>
+  handleChangeActiveButton: (button) =>
     set((state) => ({
-      navButtons: state.navButtons.map((item) => {
-        if (item.id === button.id) {
-          set((state) => ({ type: button.id }));
-        } else {
-          return item;
-        }
-      }),
+      type: button.id
     })),
   // updateState: (id: string, property: string, value: string) => set((state) => {
   //
