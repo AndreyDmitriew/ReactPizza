@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Header } from '../components/header/Header';
 import { EmptyTrash } from '../components/emptyTrash/EmptyTrash';
 

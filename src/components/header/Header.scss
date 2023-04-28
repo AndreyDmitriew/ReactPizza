@@ -31,7 +31,7 @@
     .sub-title {
       margin: 0;
       min-width: 300px;
-      color: $font-grey;
+      color: $subTitleFontColor;
       font-size: 18px;
       font-family: unset, serif;
       font-weight: 400;
@@ -64,7 +64,7 @@
 
 .divider {
   width: 100%;
-  border-top: 1px solid $divider-grey;
+  border-top: 1px solid $dividerColor;
 
   @media (max-width: 768px) {
     top: 190px;
@@ -85,6 +85,19 @@
     display: block;
     margin: 10px 0 0 0;
   }
+
+  .filter-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    @media (max-width: 1210px) {
+      display: block;
+      //margin: 10px 30px;
+      //padding: 30px;
+    }
+  }
+
   .sort {
     display: flex;
     align-items: baseline;
@@ -102,11 +115,11 @@
 
     .sort-value {
       border: none;
-      text-decoration: underline dotted $orange;
+      text-decoration: underline dotted $contractFontColor;
       -webkit-appearance: none;
       outline: none;
       cursor: pointer;
-      color: $orange;
+      color: $contractFontColor;
       font-weight: 400;
     }
 
@@ -131,8 +144,8 @@
           cursor: pointer;
         }
         li:hover {
-          color: $orange;
-          background-color: $orange-light;
+          color: $contractFontColor;
+          background-color: $darkContractFontColor;
         }
       }
     }

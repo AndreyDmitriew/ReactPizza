@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   BIG_PIZZA,
   MIDDLE_PIZZA,

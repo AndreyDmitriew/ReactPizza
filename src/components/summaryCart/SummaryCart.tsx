@@ -1,18 +1,16 @@
-import React from 'react';
-
 import { OrderType } from '../../ts/types/types';
-import { usePizzasStore } from '../../store/usePizzasStore';
+import { useOrderStore, usePizzasStore } from '../../store/usePizzasStore';
 import { CURRENCY } from '../../constants/constants';
 
-import shoppingCart from '../../assets/locale/shoppingСartGrey.svg';
-import trash from '../../assets/locale/trash.svg';
+import shoppingCart from '../../assets/shoppingСartGrey.svg';
+import trash from '../../assets/trash.svg';
 
 import Button from '../button/Button';
 
 import './SummaryCart.scss';
 
 export const SummaryCart = () => {
-  const order = usePizzasStore((state: any) => state.order); //any
+  const order = useOrderStore((state: any) => state.order); //any
   const isLoading = usePizzasStore((state: any) => state.isLoading); //any
   const userOrder = () => {
     return order?.map((el: OrderType) => {
@@ -26,7 +24,7 @@ export const SummaryCart = () => {
                 gap: '18px',
               }}
             >
-              <img alt={'pizza'} className="item-image" src={el.image} />
+              <img alt="pizza" className="item-image" src={el.image} />
               <div className="item-name-set">
                 <h6 className="item-name">{el.name}</h6>
                 <p className="item-parameters">

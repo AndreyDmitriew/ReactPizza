@@ -40,7 +40,7 @@
       }
 
       .trash-name {
-        color: $silver-grey;
+        color: $crossColor;
       }
     }
   }
@@ -70,7 +70,7 @@
         font-size: 14px;
         font-family: serif;
         white-space: nowrap;
-        color: $middle-grey;
+        color: $buttonTitleColor;
       }
     }
 
@@ -103,7 +103,7 @@
   }
 
   .circle {
-    border: 2px solid $orange;
+    border: 2px solid $contractFontColor;
     width: 26px;
     height: 26px;
     border-radius: 100%;
@@ -120,7 +120,7 @@
     left: 6px;
     right: 6px;
     bottom: 6px;
-    background: $orange;
+    background: $contractFontColor;
   }
   .circle.plus:before {
     width: 2px;
@@ -138,13 +138,13 @@
     left: 6px;
     right: 6px;
     bottom: 0;
-    background: $orange;
+    background: $contractFontColor;
     margin: auto 2px;
     height: 2px;
   }
 
   .circle-cross {
-    border: 2px solid $silver-grey;
+    border: 2px solid $crossColor;
     width: 26px;
     height: 26px;
     border-radius: 100%;
@@ -162,7 +162,7 @@
     left: 6px;
     right: 6px;
     bottom: 6px;
-    background: $silver-grey;
+    background: $crossColor;
     transform: rotate(45deg);
   }
   .circle-cross.cross:before {

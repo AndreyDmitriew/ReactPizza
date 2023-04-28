@@ -5,7 +5,10 @@
 }
 
 .content-item-container {
-  margin: 35px 55px 65px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 10px;
 
   .item-name {
     text-align: center;
@@ -26,7 +29,7 @@
   .toggle-set {
     min-width: 280px;
     border-radius: 10px;
-    background-color: $lighter-grey;
+    background-color: $toggleBackground;
     padding: 5px;
   }
 
@@ -41,7 +44,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    color: $black;
+    color: $mainFontColor;
     float: left;
     font-weight: 700;
     font-size: 14px;
@@ -50,12 +53,12 @@
 
   .form-radio-group-item-checked {
     @extend .form-radio-group-item;
-    background: $white;
+    background: $mainBackgroundColor;
   }
 
   .form-radio-group-item-unavailable {
     @extend .form-radio-group-item;
-    color: $disable-grey;
+    color: $groupFormColor;
   }
 
   .form-radio-group input[type='radio'] {

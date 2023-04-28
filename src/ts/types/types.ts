@@ -32,8 +32,13 @@ export type StateType = {
   order: OrderType[];
   isLoading: boolean;
   error: null;
-  getPizzas: () => void;
+  // getPizzas: () => void;
+  // getPizzas: any;
 };
+
+// export type OrderType = {
+//   order: [];
+// };
 
 export type HeaderType = {
   navPanel?: boolean;

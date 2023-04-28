@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import { getAllPizzas } from '../core/api';
-import { StateType } from '../ts/types/types';
+import { OrderType, StateType } from '../ts/types/types';
 import { SMALL_PIZZA, MIDDLE_PIZZA } from '../constants/constants';
 import { v4 as uuid } from 'uuid';
+import { getAllPizza } from '../queries/queries';
 
 const fakeOrder: any = [
   {
@@ -37,35 +38,22 @@ const fakeOrder: any = [
 export const usePizzasStore = create<StateType>((set) => ({
   data: [],
   order: fakeOrder,
-  navButtons: [
-    { id: "42b16a63-64п0-4f12-a817-c9856456e1111", name: 'Все'},
-    { id: "42b16a63-6620-4f12-a4е7-c98куе56e9883", name: 'Мясные' },
-    { id: "42b16a63-6пк20-4f12-a817-c983446e9821", name: 'Вегетарианская'},
-    { id: "42b16aке3-6620-4f12-a817-c934456e9843", name: 'Гриль'},
-    { id: "42bв6aро3-6620-4f12-a817-c985к56e9883", name: 'Острые'},
-    { id: "42b1ап63-6620-4f12-a817-c985645кe9883", name: 'Закрытые'},
-  ],
-  type: "42b16a63-64п0-4f12-a817-c9856456e1111",
+  type: 'Все',
   sort: 'по популярности',
   isLoading: false,
   error: null,
-  getPizzas: async () => {
-    try {
-      set({ isLoading: true });
-      const response = await getAllPizzas();
-      set({ isLoading: false, data: response });
-    } catch (error) {
-      set({ error: error, isLoading: false });
-      throw new Error(`Error! status: ${error}`);
-    }
-  },
-  handleChangeActiveButton: (button) =>
+  // getPizzas: getAllPizza(set),
+  handleChangeActiveButton: (name) =>
     set((state) => ({
-      type: button.id
+      type: name,
     })),
   // updateState: (id: string, property: string, value: string) => set((state) => {
   //
   //   {...state, data: [...state.data]}
   //
   // }
+}));
+
+export const useOrderStore = create<OrderType>((set) => ({
+  order: fakeOrder,
 }));

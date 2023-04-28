@@ -4,73 +4,17 @@
       "id": "0adf3b14-a7c1-4dfe-8375-fcc29306f91",
       "image": "https://imageup.ru/img220/4271686/image-2.jpg",
       "name": "Чизбургер-пицца",
-      "dough": "тонкое",
-      "size": 26,
-      "available": ["тонкое", "традиционное", "26", "30", "40"],
-      "price": 395
-    },
-    {
-      "id": "b6fcbec0-7994-4355-a01d-524dea6389d4",
-      "image": "https://imageup.ru/img281/4271689/image-7.jpg",
-      "name": "Сырная",
-      "dough": "тонкое",
-      "size": 26,
-      "available": ["тонкое", "традиционное", "26", "30"],
-      "price": 450
-    },
-    {
-      "id": "fd1e18e3-9eb2-4a6a-9415-2c5edc25991",
-      "image": "https://imageup.ru/img117/4271688/image-6.jpg",
-      "name": "Креветки по-азиатски",
-      "dough": "тонкое",
-      "size": 30,
-      "available": ["тонкое", "30"],
-      "price": 290
-    },
-    {
-      "id": "f5822806-006c-4269-ab96-450c78764c06",
-      "image": "https://imageup.ru/img260/4271687/image-5.jpg",
-      "name": "Сырный цыпленок",
-      "dough": "тонкое",
-      "size": 26,
-      "available": ["тонкое", "традиционное", "26", "30", "40"],
-      "price": 385
-    },
-    {
-      "id": "e9baf571-c21a-43e7-96f3-e73ca67347c",
-      "image": "https://imageup.ru/img220/4271686/image-2.jpg",
-      "name": "Чизбургер-пицца",
-      "dough": "тонкое",
-      "size": 26,
-      "available": ["тонкое", "традиционное", "26", "30", "40"],
-      "price": 395
-    },
-    {
-      "id": "27d6d0eb-0d04-4ab9-a6e7-330b9675b27",
-      "image": "https://imageup.ru/img281/4271689/image-7.jpg",
-      "name": "Сырная",
-      "dough": "тонкое",
-      "size": 26,
-      "available": ["тонкое", "традиционное", "26"],
-      "price": 450
-    },
-    {
-      "id": "42b16a63-6620-4f12-a817-c9856456e9883",
-      "image": "https://imageup.ru/img117/4271688/image-6.jpg",
-      "name": "Креветки по-азиатски",
-      "dough": "тонкое",
-      "size": 30,
-      "available": ["тонкое", "30"],
-      "price": 290
-    },
-    {
-      "id": "56165f17-bfd5-4127-acbc-1e06345418b1",
-      "image": "https://imageup.ru/img260/4271687/image-5.jpg",
-      "name": "Сырный цыпленок",
-      "dough": "тонкое",
-      "size": 26,
-      "available": ["тонкое", "традиционное", "26", "30", "40"],
-      "price": 385
+      "price": {
+        "thin": {
+          "26": 340,
+          "40": 369
+        },
+        "traditional": {
+          "26": 360,
+          "30": 380,
+          "40": 396
+        }
+      }
     }
   ]
 }

@@ -1,27 +1,24 @@
-import React from 'react';
 import { usePizzasStore } from '../../store/usePizzasStore';
 
-import sadSmile from '../../assets/locale/sadSmile.png';
-import shopper from '../../assets/locale/shopper.svg';
+import sadSmile from '../../assets/sadSmile.png';
+import shopper from '../../assets/shopper.svg';
 
 import './EmptyTrash.scss';
 import Button from '../button/Button';
 
+import emptyPage from '../../assets/locale/ru.json';
+
 export const EmptyTrash = () => {
   const order = usePizzasStore((state: any) => state.order); //any
   const isLoading = usePizzasStore((state: any) => state.isLoading); //any
-
+  const t = emptyPage.emptyPage;
   return (
     <main className="main-cart-wrapper">
       <div className="title">
-        <h3>Корзина пустая</h3>
-        <img alt={'Divider'} src={sadSmile} />
+        <h3>{t.emptyTrash}</h3>
       </div>
-      <p className={'sub-title'}>
-        Вероятней всего, вы не заказывали ещё пиццу.
-        <br /> Для того, чтобы заказать пиццу, перейди на главную страницу.
-      </p>
-      <img alt={'Shopper men'} className="shopper" src={shopper} />
+      <p className={'sub-title'}>{t.emptyOrder}</p>
+      <img alt="Shopper men" className="shopper" src={shopper} />
       <Button type={'backwards'} />
     </main>
   );

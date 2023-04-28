@@ -1,10 +1,8 @@
-import React from 'react';
-
 import { Homepage } from '../pages/Homepage';
 import { OrderCartPage } from '../pages/OrderCartPage';
 import { Empty } from '../pages/Empty';
 
-import { ROUTES } from '../constants/routes.constants';
+import { ROUTES } from '../constants/routes';
 
 const { MAIN, SUMMARY, EMPTY } = ROUTES;
 
