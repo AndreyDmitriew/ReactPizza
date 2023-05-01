@@ -137,14 +137,14 @@
         list-style-type: none;
         padding: 0;
 
-        option {
+        li {
           padding: 10px 20px;
           font-weight: 500;
           font-size: 14px;
           line-height: 17px;
           cursor: pointer;
         }
-        option:hover {
+        li:hover {
           color: $contractFontColor;
           background-color: $darkContractFontColor;
         }
