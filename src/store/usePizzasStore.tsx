@@ -33,25 +33,39 @@ const fakeOrder: any = [
     price: 350,
     count: 3,
   },
+
+  {
+    id: "0adf3b14-a7c1-4dfe-8375-fcc29306f91",
+    image: "https://imageup.ru/img220/4271686/image-2.jpg",
+    name: "Чизбургер-пицца",
+    price: {
+      traditional: {
+        "30": 380,
+      }
+    }
+  }
 ];
 
 export const usePizzasStore = create<StateType>((set) => ({
   data: [],
-  order: fakeOrder,
-  type: 'Все',
+  pizzas: [],
+  filter: 'Все',
   sort: 'по популярности',
   isLoading: false,
   error: null,
   // getPizzas: getAllPizza(set),
   handleChangeActiveButton: (name) =>
     set((state) => ({
-      type: name,
+      filter: name,
     })),
-  // updateState: (id: string, property: string, value: string) => set((state) => {
-  //
-  //   {...state, data: [...state.data]}
-  //
-  // }
+  updatePizzas: (pizzasState) =>
+      set((state) => ({
+        pizzas: pizzasState,
+      })),
+  handleUpdateType: (updatedPizzas) =>
+      set((state) => ({
+        pizzas: updatedPizzas,
+      }))
 }));
 
 export const useOrderStore = create<OrderType>((set) => ({

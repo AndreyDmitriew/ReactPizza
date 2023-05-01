@@ -21,7 +21,10 @@ export function ContentItem({ pizza }) {
   //   price,
   // });
   // const { image, name, dough, size, available, price } = pizza;
-  const { image, name, price } = pizza;
+  const {id, image, name, price } = pizza;
+  // const price = Object.values(Object.values(pizza.preorder)[0])
+  //   console.log(Object.values(Object.values(pizza.preorder)[0]), 'pizza')
+    // const [pizzaOrder, setPizzaOrder] = useState(pizza);
 
   return (
     <article className="content-item-container">
@@ -29,16 +32,17 @@ export function ContentItem({ pizza }) {
       <h3 className="item-name">{name}</h3>
 
       <div className="toggle-set">
-        <div className="form-radio-group">{pizzaType(price)}</div>
-        {/* <div className="form-radio-group">{pizzaSize(size, available)}</div> */}
+        {/*<div className="form-radio-group">{pizzaType(id, price)}</div>*/}
+        <div className="form-radio-group">{pizzaType(pizza)}</div>
+        <div className="form-radio-group">{pizzaSize(pizza)}</div>
       </div>
 
       <div className="price-container">
         <p className="price">
-          {/* от {price} */}
+           от {Object.values(Object.values(pizza.preorder)[0])}
           {CURRENCY}
         </p>
-        <Button type="added" />
+        <Button type="add" />
       </div>
     </article>
   );

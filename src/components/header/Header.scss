@@ -127,6 +127,7 @@
       //width: max-content;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
       border-radius: 10px;
+      background-color: $mainBackgroundColor;
 
       position: absolute;
       top: 37px;
@@ -136,14 +137,14 @@
         list-style-type: none;
         padding: 0;
 
-        li {
+        option {
           padding: 10px 20px;
           font-weight: 500;
           font-size: 14px;
           line-height: 17px;
           cursor: pointer;
         }
-        li:hover {
+        option:hover {
           color: $contractFontColor;
           background-color: $darkContractFontColor;
         }

@@ -1,9 +1,9 @@
 import { filterButtons } from '../../config/config';
 import Button from '../button/Button';
 
-export const useRenderButtons = (type, handleChangeActiveButton) => {
+export const useRenderButtons = (filter, handleChangeActiveButton) => {
   return filterButtons.map((name) => {
-    const isActive = type === name;
+    const isActive = filter === name;
     return (
       <Button
         key={name}
