@@ -47,23 +47,23 @@
   background-color: $contractFontColor;
 }
 
-.add {
-  width: 132px;
-  color: $mainBackgroundColor;
-  background-color: $contractFontColor;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 40px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
-
-  .add-button-name {
-    color: white;
-    font-size: 15px;
-    font-family: sans-serif;
-  }
-}
+//.add {
+//  width: 132px;
+//  color: $mainBackgroundColor;
+//  background-color: $contractFontColor;
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  gap: 6px;
+//  height: 40px;
+//  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
+//
+//  .add-button-name {
+//    color: white;
+//    font-size: 15px;
+//    font-family: sans-serif;
+//  }
+//}
 
 .added {
   width: 153px;

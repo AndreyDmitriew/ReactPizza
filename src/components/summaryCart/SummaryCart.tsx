@@ -28,7 +28,7 @@ export const SummaryCart = () => {
               <div className="item-name-set">
                 <h6 className="item-name">{el.name}</h6>
                 <p className="item-parameters">
-                  {el.dough} тесто, {el.size} см.{' '}
+                  {el.orderPizzaType} тесто, {el.orderPizzaSize} см.{' '}
                 </p>
               </div>
             </div>

@@ -4,19 +4,25 @@ import {
   SMALL_PIZZA,
   UNIT_OF_MEASUREMENT,
 } from '../../../constants/constants';
-import {useOrderStore} from "../../../store/usePizzasStore";
+import { useOrderStore } from '../../../store/usePizzasStore';
 
-export default function pizzaSize(pizza) {
+export default function pizzaSize(pizza, orderPizzaSize, setOrderPizzaSize) {
   const pizzaSizes = [SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA];
   const order = useOrderStore((state: any) => state.order); //any
 
   return pizzaSizes.map((pizzaSize, index) => {
     const idIndex = `radio-${index + 1}`;
-    const isOrdered = order.find((order: object)=> order.id === pizza.id )?.price
-    const isItemCheck = Object.keys(Object.values(pizza.preorder)[0])[0] === pizzaSize
+    const isOrdered = order.find(
+      (order: object) => order.id === pizza.id
+    )?.price;
+    const isItemCheck =
+      Object.keys(Object.values(pizza.preorder)[0])[0] === pizzaSize;
     // console.log(Object.keys(pizza.preorder)[0], 'Object.keys(pizza.preorder)[0][0]')
     // console.log(Object.keys(Object.values(pizza.preorder)[0])[0], 'Object.keys(pizza.preorder)[0][0]')
-    const isNotOrderedAndFirst = !isOrdered && pizza.price?.hasOwnProperty(pizzaSizes) && Object.keys(Object.values(pizza.preorder)[0])[0] === pizzaSizes
+    const isNotOrderedAndFirst =
+      !isOrdered &&
+      pizza.price?.hasOwnProperty(pizzaSizes) &&
+      Object.keys(Object.values(pizza.preorder)[0])[0] === pizzaSizes;
     // console.log(Object.keys(pizza.price), 'Object.keys(Object.values(pizza.preorder)[0])[0]')
     // console.log(pizzaSize, 'pizzaSize')
 
@@ -24,13 +30,16 @@ export default function pizzaSize(pizza) {
     //   console.log(Object.keys(pizza.price[key]).find((el)=>el==pizzaSize), 'key')
     // }
 
-    const containerStyle = isItemCheck
-        ? 'form-radio-group-item-checked'
-        // : isNotOrderedAndFirst ? 'form-radio-group-item-checked'
-        : !pizza.price.hasOwnProperty(pizzaSize)
-        ? 'form-radio-group-item-unavailable'
-        : 'form-radio-group-item';
+    const changeSize = (value) => {
+      setOrderPizzaSize(value);
+    };
 
+    const containerStyle = isItemCheck
+      ? 'form-radio-group-item-checked'
+      : // : isNotOrderedAndFirst ? 'form-radio-group-item-checked'
+      !pizza.price.hasOwnProperty(pizzaSize)
+      ? 'form-radio-group-item-unavailable'
+      : 'form-radio-group-item';
 
     // const containerStyle = isItemCheck
     //     ? 'form-radio-group-item-checked'
@@ -53,7 +62,7 @@ export default function pizzaSize(pizza) {
       <div
         className={containerStyle}
         key={pizzaSize}
-        onClick={() => console.log('Size click!')}
+        onClick={() => changeSize(pizzaSize)}
       >
         <input
           id={idIndex}

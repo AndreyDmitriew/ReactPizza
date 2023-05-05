@@ -29,7 +29,7 @@ export interface OrderType extends PizzaType {
 
 export type StateType = {
   data: object;
-  pizzas: OrderType[];
+  order: OrderType[];
   isLoading: boolean;
   error: null;
   // getPizzas: () => void;

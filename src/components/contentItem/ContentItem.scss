@@ -101,4 +101,26 @@
     font-weight: 700;
     font-size: 22px;
   }
+
+  .add {
+    width: 132px;
+    color: $mainBackgroundColor;
+    background-color: $contractFontColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 40px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
+
+    .add-button-name {
+      color: white;
+      font-size: 15px;
+      font-family: sans-serif;
+    }
+  }
+  .add:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    opacity: 0.98;
+  }
 }
