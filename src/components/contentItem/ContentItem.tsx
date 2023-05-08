@@ -3,7 +3,7 @@ import React, { useState, FC, useEffect } from 'react';
 import Button from '@components/button/Button';
 import { ChangeParameterType } from '../../ts/types/types';
 // import Button from '../../../src/components/button/Button';
-import pizzaSize from './pizzaSize/PizzaSize';
+import PizzaSize from './pizzaSize/PizzaSize';
 import PizzaType from './pizzaType/PizzaType';
 import {
   CURRENCY,
@@ -19,15 +19,15 @@ import plus from '@assets/plus.svg';
 // export const ContentItem: FC<PizzaType> = ({
 export function ContentItem({ pizza }) {
   const [type, setType] = useState();
-  const [orderPizzaSize, setOrderPizzaSize] = useState(26);
+  const [size, setSize] = useState(26);
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(0);
   // const addPizzaToStore = useOrderStore((state: any) => state.addPizza); //any
   // const getOrder = useOrderStore((state: any) => state.order); //any
 
-  useEffect(() => {
-    // setPrice(pizza.price[type][orderPizzaSize * count]);
-  }, [type, orderPizzaSize, count]);
+  // useEffect(() => {
+  //   // setPrice(pizza.price[type][orderPizzaSize * count]);
+  // }, [type, orderPizzaSize, count]);
 
   useEffect(() => {
     setType(Object.keys(pizza.price)[0]);
@@ -45,7 +45,7 @@ export function ContentItem({ pizza }) {
   //     orderPizzaSize: 26,
   //   });
   // };
-
+  console.log(type, 'typeee');
   return (
     <article className="content-item-container">
       <img className="pizza" alt="Pizza" src={pizza.image} />
@@ -57,8 +57,8 @@ export function ContentItem({ pizza }) {
           <PizzaType pizza={pizza} type={type} onChange={setType} />
         </div>
         <div className="form-radio-group">
-          {/* put like JSX here */}
-          {pizzaSize(pizza, orderPizzaSize, setOrderPizzaSize)}{' '}
+          {/* {pizzaSize(pizza, orderPizzaSize, setOrderPizzaSize)}{' '} */}
+          <PizzaSize pizza={pizza} type={type} size={size} onChange={setSize} />
         </div>
       </div>
       <div className="price-container">

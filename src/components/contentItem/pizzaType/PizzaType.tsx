@@ -3,9 +3,6 @@ import { THIN, TRADITIONAL } from '../../../constants/constants';
 export default function PizzaType({ pizza, type, onChange }) {
   const pizzaTypes = [THIN, TRADITIONAL];
 
-  // const changeParameter = (pizzaType) => {
-  //   onChange(pizzaType);
-  // };
   const getClassName = (index) => {
     const pizzaType = pizzaTypes[index];
     const isEnabled = pizza.price[pizzaType];
