@@ -18,3 +18,7 @@
 <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" title="Redux" alt="Redux " width="40" height="40"/>&nbsp;
 <img src="https://github.com/devicons/devicon/blob/master/icons/nextjs/nextjs-original.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
 </p>
+
+### ▶ Start the project
+- The file  **db.json**  open in terminal, start it with the command: **npm run server**
+- **Main project folder** open in terminal, start with the command:  **npm run dev**
