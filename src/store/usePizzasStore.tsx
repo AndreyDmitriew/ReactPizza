@@ -53,7 +53,7 @@ export const usePizzasStore = create<StateType>((set) => ({
   sort: 'по популярности',
   isLoading: false,
   error: null,
-  // getPizzas: getAllPizza(set),
+
   handleChangeActiveButton: (name) =>
     set((state) => ({
       filter: name,
@@ -69,21 +69,21 @@ export const usePizzasStore = create<StateType>((set) => ({
 }));
 
 export const useOrderStore = create<OrderType>((set) => ({
-  order: [
-    // {
-    //   id: '0ad45et14-a7c1-4dfe-8375-fc55654346af91',
-    //   image: 'https://imageup.ru/img220/4271686/image-2.jpg',
-    //   name: 'Чизбургер-пицца',
-    //   rating: 3.5,
-    //   price: 380,
-    //   count: 2,
-    //   orderPizzaType: 'traditional',
-    //   orderPizzaSize: 30,
-    // },
-  ],
-
+  order: [],
   addPizza: (pizza) =>
     set((state) => ({
       order: [...state.order, pizza],
     })),
+
+    // incrementPizzaCount: (id) => set((state) => ({
+    //     order: [...state.order, state.order.find((el) => {
+    //        if(el.id === id) {
+    //            return(
+    //                {...el, count += 1}
+    //            )
+    //        }
+    //        return false
+    //     })],
+    // })),
+
 }));

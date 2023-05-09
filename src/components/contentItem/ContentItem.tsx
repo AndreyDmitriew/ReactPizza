@@ -14,16 +14,16 @@ import {
 
 import './ContentItem.scss';
 import plus from '@assets/plus.svg';
-// import { useOrderStore, usePizzasStore } from '../../store/usePizzasStore';
+import { useOrderStore, usePizzasStore } from '../../store/usePizzasStore';
 
 // export const ContentItem: FC<PizzaType> = ({
 export function ContentItem({ pizza }) {
   const [type, setType] = useState();
-  const [size, setSize] = useState(26);
+  const [size, setSize] = useState(0);
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(0);
-  // const addPizzaToStore = useOrderStore((state: any) => state.addPizza); //any
-  // const getOrder = useOrderStore((state: any) => state.order); //any
+  const addPizzaToStore = useOrderStore((state: any) => state.addPizza); //any
+  const getOrder = useOrderStore((state: any) => state.order); //any
 
   // useEffect(() => {
   //   // setPrice(pizza.price[type][orderPizzaSize * count]);
@@ -31,21 +31,25 @@ export function ContentItem({ pizza }) {
 
   useEffect(() => {
     setType(Object.keys(pizza.price)[0]);
+    setSize(Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0]);
+    // console.log(Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0], 'pp')
   }, []);
 
-  // const addPizza = () => {
-  //   addPizzaToStore({
-  //     id: pizza.id,
-  //     image: pizza.image,
-  //     name: pizza.name,
-  //     rating: pizza.rating,
-  //     price: price,
-  //     count: count,
-  //     orderPizzaType: type,
-  //     orderPizzaSize: 26,
-  //   });
-  // };
-  console.log(type, 'typeee');
+  const addPizza = () => {
+    console.log(getOrder.find(({id})=> id===pizza.id),'go')
+
+    addPizzaToStore({
+      id: pizza.id,
+      image: pizza.image,
+      name: pizza.name,
+      rating: pizza.rating,
+      price: price,
+      count: count,
+      orderPizzaType: type,
+      orderPizzaSize: size,
+    });
+  };
+
   return (
     <article className="content-item-container">
       <img className="pizza" alt="Pizza" src={pizza.image} />
@@ -68,7 +72,7 @@ export function ContentItem({ pizza }) {
         </p>
         {/* <Button type="add" /> */}
         {/* <button onClick={addPizza} type="button" className="add"> */}
-        <button type="button" className="add">
+        <button type="button" className="add" onClick={addPizza}>
           <img alt="shopping cart" src={plus} />
           <p className="add-button-name">Добавить</p>
         </button>
