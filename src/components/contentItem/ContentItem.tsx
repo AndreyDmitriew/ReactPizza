@@ -23,7 +23,10 @@ export function ContentItem({ pizza }) {
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(0);
   const addPizzaToStore = useOrderStore((state: any) => state.addPizza); //any
-  const getOrder = useOrderStore((state: any) => state.order); //any
+  // const getOrder = useOrderStore((state: any) => state.order); //any
+  // const incrementPizzaCount = useOrderStore(
+  //   (state: any) => state.incrementPizzaCount
+  // ); //any
 
   // useEffect(() => {
   //   // setPrice(pizza.price[type][orderPizzaSize * count]);
@@ -32,22 +35,22 @@ export function ContentItem({ pizza }) {
   useEffect(() => {
     setType(Object.keys(pizza.price)[0]);
     setSize(Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0]);
-    // console.log(Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0], 'pp')
   }, []);
 
   const addPizza = () => {
-    console.log(getOrder.find(({id})=> id===pizza.id),'go')
+    // const isAlreadyOrdered = !!getOrder.find(({id}) => id === pizza.id);
 
+    // if (isAlreadyOrdered) {
+    //   incrementPizzaCount(pizza.id);
+    // } else {
     addPizzaToStore({
-      id: pizza.id,
-      image: pizza.image,
-      name: pizza.name,
-      rating: pizza.rating,
-      price: price,
-      count: count,
-      orderPizzaType: type,
-      orderPizzaSize: size,
+      pizza: pizza,
+      params: {
+        price: price,
+        count: count,
+      },
     });
+    // }
   };
 
   return (
@@ -55,13 +58,10 @@ export function ContentItem({ pizza }) {
       <img className="pizza" alt="Pizza" src={pizza.image} />
       <h3 className="item-name">{pizza.name}</h3>
       <div className="toggle-set">
-        {/* <div className="form-radio-group">{pizzaType(id, price)}</div> */}
         <div className="form-radio-group">
-          {/* {pizzaType(pizza, type, setType)} */}
           <PizzaType pizza={pizza} type={type} onChange={setType} />
         </div>
         <div className="form-radio-group">
-          {/* {pizzaSize(pizza, orderPizzaSize, setOrderPizzaSize)}{' '} */}
           <PizzaSize pizza={pizza} type={type} size={size} onChange={setSize} />
         </div>
       </div>
@@ -70,8 +70,6 @@ export function ContentItem({ pizza }) {
           {/* от {Object.values(Object.values(pizza.preorder)[0])} */}
           {CURRENCY}
         </p>
-        {/* <Button type="add" /> */}
-        {/* <button onClick={addPizza} type="button" className="add"> */}
         <button type="button" className="add" onClick={addPizza}>
           <img alt="shopping cart" src={plus} />
           <p className="add-button-name">Добавить</p>

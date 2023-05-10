@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { v4 as uuid } from 'uuid';
 import { getAllPizzas } from '../core/api';
-import { OrderType, StateType } from '../ts/types/types';
+import { OrderType, StateType, PizzaOrder } from '../ts/types/types';
 import { SMALL_PIZZA, MIDDLE_PIZZA } from '../constants/constants';
 import { getAllPizza } from '../queries/queries';
 
@@ -70,20 +70,41 @@ export const usePizzasStore = create<StateType>((set) => ({
 
 export const useOrderStore = create<OrderType>((set) => ({
   order: [],
-  addPizza: (pizza) =>
+  addPizza: (pizza: PizzaOrder): void => {
     set((state) => ({
-      order: [...state.order, pizza],
-    })),
+     isAlreadyOrdered = !!state[order].pizza.find(({ id }) => id === pizza.id)
+      if(isAlreadyOrdered) {
 
-    // incrementPizzaCount: (id) => set((state) => ({
-    //     order: [...state.order, state.order.find((el) => {
-    //        if(el.id === id) {
-    //            return(
-    //                {...el, count += 1}
-    //            )
-    //        }
-    //        return false
-    //     })],
-    // })),
-
+      }
+    }));
+  },
 }));
+
+// return (
+//     order: [
+//       ...state.order,
+//       state.order.map((el) => {
+//       if (el.id === state.pizza.id) {
+//          return {...el, count: state.pizza.count + 1};
+//        }
+//       return false;
+//       }),],)
+//     }
+// else {
+//   order: [...state.order, pizza],
+// }
+
+
+
+// incrementPizzaCount: (id) =>
+//   set((state) => ({
+//     order: [
+//       ...state.order,
+//       state.order.map((el) => {
+//         if (el.id === id) {
+//           return { ...el, count: state.count + 1 };
+//         }
+//         return false;
+//       }),
+//     ],
+//   })),

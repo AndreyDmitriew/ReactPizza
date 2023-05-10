@@ -17,14 +17,23 @@ export type PizzaType = {
   price: number;
 };
 
+export interface PizzaOrder extends PizzaType {
+  params: {
+    price: number;
+    count: number;
+  };
+}
+
 export type ChangeParameterType = {
   type: string;
   isTypeAvailable: boolean;
   pizzaType: string;
 };
 
-export interface OrderType extends PizzaType {
-  count: number;
+export interface OrderType {
+  order: object[];
+  // addPizza: object[];
+  addPizza: any;
 }
 
 export type StateType = {
