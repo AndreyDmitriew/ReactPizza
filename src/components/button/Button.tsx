@@ -8,6 +8,7 @@ import arrowBack from '@assets/arrowBack.svg';
 import { CURRENCY } from '@constants/constants';
 
 import './Button.scss';
+import { useOrderStore } from '../../store/usePizzasStore';
 
 type args = {
   price?: number;
@@ -35,7 +36,9 @@ export default function Button(props: Args) {
   //   config.onClick = () => props.handleChangeActiveButton(props.id);
   //   config.name = props.name
   // }
-
+  const price = useOrderStore((state: any) => state.order).map(
+    (el: {}) => el['params']['price'] * el['params']['count']
+  ); //any
   const navigate = useNavigate();
   const orderSum: number = 3;
   return (
@@ -43,7 +46,7 @@ export default function Button(props: Args) {
       {props.type === 'summary' && (
         <NavLink to={'/summary'}>
           <button className={props.type}>
-            {props.price}
+            {price}
             {CURRENCY}
             <div className="vertical-divider"></div>
             <img alt="shopping cart" src={shoppingCart} className="cart" />

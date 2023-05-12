@@ -12,6 +12,9 @@ import './SummaryCart.scss';
 export const SummaryCart = () => {
   const order = useOrderStore((state: any) => state.order); //any
   const isLoading = usePizzasStore((state: any) => state.isLoading); //any
+  const price = useOrderStore((state: any) => state.order).map(
+    (el: {}) => el['params']['price'] * el['params']['count']
+  ); //any
   const userOrder = () => {
     return order?.map((el: OrderType) => {
       return (
@@ -41,7 +44,7 @@ export const SummaryCart = () => {
               </div>
 
               <p>
-                {el.price} {CURRENCY}
+                {price} {CURRENCY}
               </p>
 
               <span className="circle-cross cross"></span>

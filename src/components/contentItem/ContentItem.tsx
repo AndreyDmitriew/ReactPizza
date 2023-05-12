@@ -28,9 +28,12 @@ export function ContentItem({ pizza }) {
   //   (state: any) => state.incrementPizzaCount
   // ); //any
 
-  // useEffect(() => {
-  //   // setPrice(pizza.price[type][orderPizzaSize * count]);
-  // }, [type, orderPizzaSize, count]);
+  useEffect(() => {
+    const pizzaPrice = Object.values(
+      pizza.price[Object.keys(pizza.price)[0]]
+    )[0];
+    setPrice(count ? pizzaPrice * count : pizzaPrice);
+  }, [type, size, count]);
 
   useEffect(() => {
     setType(Object.keys(pizza.price)[0]);
@@ -38,11 +41,13 @@ export function ContentItem({ pizza }) {
   }, []);
 
   const addPizza = () => {
+    setCount((prevState) => prevState + 1);
     // const isAlreadyOrdered = !!getOrder.find(({id}) => id === pizza.id);
 
     // if (isAlreadyOrdered) {
     //   incrementPizzaCount(pizza.id);
     // } else {
+
     addPizzaToStore({
       pizza: pizza,
       params: {
@@ -50,6 +55,7 @@ export function ContentItem({ pizza }) {
         count: count,
       },
     });
+
     // }
   };
 
@@ -67,7 +73,7 @@ export function ContentItem({ pizza }) {
       </div>
       <div className="price-container">
         <p className="price">
-          {/* от {Object.values(Object.values(pizza.preorder)[0])} */}
+          от {price}
           {CURRENCY}
         </p>
         <button type="button" className="add" onClick={addPizza}>

@@ -68,16 +68,45 @@ export const usePizzasStore = create<StateType>((set) => ({
     })),
 }));
 
-export const useOrderStore = create<OrderType>((set) => ({
-  order: [],
-  addPizza: (pizza: PizzaOrder): void => {
-    set((state) => ({
-     isAlreadyOrdered = !!state[order].pizza.find(({ id }) => id === pizza.id)
-      if(isAlreadyOrdered) {
+export const useOrderStore = create<OrderType>()((set) => ({
+  order: [
+    {
+      pizza: {
+        id: '0adf3b14-a7c1-4dfe-8375-fcc24tr06f91',
+        image: 'https://imageup.ru/img220/4271686/image-2.jpg',
+        name: 'Чизбургер-пицца',
+        rating: 3.5,
+        price: {
+          thin: {
+            26: 340,
+            30: 359,
+            40: 369,
+          },
+          traditional: {
+            26: 360,
+            30: 380,
+            40: 396,
+          },
+        },
+      },
+      params: {
+        price: 340,
+        count: 2,
+      },
+    },
+  ],
+  addPizza: (newPizza) =>
+    set((state) => {
+      const orderedPizza = state.order.find(
+        (o) => o.pizza.id === newPizza.pizza.id
+      );
 
+      if (orderedPizza) {
+        orderedPizza.params.count += 1;
+        return orderedPizza;
       }
-    }));
-  },
+      return { newPizza };
+    }),
 }));
 
 // return (
@@ -93,8 +122,6 @@ export const useOrderStore = create<OrderType>((set) => ({
 // else {
 //   order: [...state.order, pizza],
 // }
-
-
 
 // incrementPizzaCount: (id) =>
 //   set((state) => ({

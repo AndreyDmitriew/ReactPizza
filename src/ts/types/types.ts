@@ -8,16 +8,26 @@ const pizzaSizes = [SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA] as const;
 type PizzaSizes = (typeof pizzaSizes)[number];
 
 export type PizzaType = {
-  key: string;
+  id: string;
   image: string;
   name: string;
-  dough: string;
-  size: PizzaSizes;
-  available: string[];
-  price: number;
+  rating: number;
+  price: {
+    thin?: {
+      26?: number;
+      30?: number;
+      40?: number;
+    };
+    traditional?: {
+      26?: number;
+      30?: number;
+      40?: number;
+    };
+  };
 };
 
-export interface PizzaOrder extends PizzaType {
+export interface PizzaOrder {
+  pizza: PizzaType;
   params: {
     price: number;
     count: number;
@@ -31,9 +41,8 @@ export type ChangeParameterType = {
 };
 
 export interface OrderType {
-  order: object[];
-  // addPizza: object[];
-  addPizza: any;
+  order: PizzaOrder[];
+  addPizza: (pizza: PizzaOrder) => void;
 }
 
 export type StateType = {

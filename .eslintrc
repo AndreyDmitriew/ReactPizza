@@ -2,9 +2,10 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["react"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
 //    "no-console": "warn",
 //    "no-var": "error",
@@ -22,5 +23,6 @@
 //    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
 //    "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off"
-  }
+  },
+  "parser": "@typescript-eslint/parser"
 }
