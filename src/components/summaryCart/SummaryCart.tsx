@@ -1,6 +1,7 @@
 import { OrderType } from '../../ts/types/types';
 import { useOrderStore, usePizzasStore } from '../../store/usePizzasStore';
 import { CURRENCY } from '../../constants/constants';
+import {useAppSelector} from "../../hook";
 
 import shoppingCart from '../../assets/shoppingСartGrey.svg';
 import trash from '../../assets/trash.svg';
@@ -10,9 +11,10 @@ import Button from '../button/Button';
 import './SummaryCart.scss';
 
 export const SummaryCart = () => {
-  const order = useOrderStore((state: any) => state.order); //any
+  const order = useAppSelector(state => state.pizzas.order)
+  // const order = useOrderStore((state: any) => state.order); //any
   const isLoading = usePizzasStore((state: any) => state.isLoading); //any
-  const price = useOrderStore((state: any) => state.order).map(
+  const price = order.map(
     (el: {}) => el['params']['price'] * el['params']['count']
   ); //any
   const userOrder = () => {

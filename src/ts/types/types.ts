@@ -26,6 +26,10 @@ export type PizzaType = {
   };
 };
 
+export type PizzasState = {
+  order: PizzaOrder[];
+}
+
 export interface PizzaOrder {
   pizza: PizzaType;
   params: {
