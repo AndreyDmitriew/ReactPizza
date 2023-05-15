@@ -12,6 +12,7 @@ import { filerPizzas, filterButtons, sortListItems } from '../../config/config';
 import { useRenderButtons } from './useRenderButtons';
 import { sort } from '@assets/locale/ru.json';
 import { getAllPizzas } from '../../core/api';
+import {useAppSelector} from "../../hook";
 
 export const Main = () => {
   const [pizzass, setPizzass] = useState([]);
@@ -23,6 +24,13 @@ export const Main = () => {
   ); //any
   const handleUpdatePizzas = usePizzasStore((state: any) => state.updatePizzas); //any
   const sortValue = useRef(null);
+
+
+  const order = useAppSelector(state => state.pizzas.order)
+
+  useEffect(() => {
+    console.log(order, 'order')
+  },[order])
 
   const {
     isLoading,

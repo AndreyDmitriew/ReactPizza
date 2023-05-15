@@ -9,11 +9,13 @@ import trash from '../../assets/trash.svg';
 import Button from '../button/Button';
 
 import './SummaryCart.scss';
+import {useEffect} from "react";
 
 export const SummaryCart = () => {
   const order = useAppSelector(state => state.pizzas.order)
   // const order = useOrderStore((state: any) => state.order); //any
   const isLoading = usePizzasStore((state: any) => state.isLoading); //any
+
   const price = order.map(
     (el: {}) => el['params']['price'] * el['params']['count']
   ); //any

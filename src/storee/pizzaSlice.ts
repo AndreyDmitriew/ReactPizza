@@ -26,27 +26,47 @@ const initialState: PizzasState = {
             price: 140,
             count: 2,
         },
-    },],
+    }, {
+        pizza: {
+            "id": "0adf3b14-a7c1-4dfe-8375-fcc654t675786",
+            "image": "https://imageup.ru/img220/4271686/image-2.jpg",
+            "name": "Сырная",
+            "rating": 4,
+            "price": {
+                "thin": {
+                    "26": 310
+                },
+                "traditional": {
+                    "26": 360,
+                    "40": 396
+                }
+            },
+        },
+        params: {
+            price: 140,
+            count: 1,
+        },
+    }],
 }
 
 const pizzaSlice = createSlice({
     name: 'pizzas',
     initialState,
     reducers: {
-        addTodo(state, action: PayloadAction<PizzaOrder>) {
+        addPizza(state, action: PayloadAction<PizzaOrder>) {
             const pizza = action.payload
             const orderedPizza = state.order.find(
-                (o) => o.pizza.id === pizza.id
+                (o) => o.pizza.id === pizza.pizza.id
             );
             if (orderedPizza) {
-                orderedPizza.params.count += 1;
-                return orderedPizza;
+                state.order.map(e => e.pizza.id === pizza.pizza.id ? { ...e, params: {...e.params, count: e.params.count += 1} } : e);
+            } else {
+             state.order.push({ ...pizza, params: {...pizza.params, count: 1} })
             }
-            return { pizza };
         },
     },
 });
 
-export const { addTodo } = pizzaSlice.actions;
+export const { addPizza } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

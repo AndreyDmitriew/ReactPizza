@@ -11,6 +11,8 @@ import {
   THIN,
   TRADITIONAL,
 } from '../../constants/constants';
+import {useAppDispatch} from "../../hook";
+import { addPizza } from '../../storee/pizzaSlice'
 
 import './ContentItem.scss';
 import plus from '@assets/plus.svg';
@@ -22,7 +24,8 @@ export function ContentItem({ pizza }) {
   const [size, setSize] = useState(0);
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(0);
-  const addPizzaToStore = useOrderStore((state: any) => state.addPizza); //any
+  // const addPizzaToStore = useOrderStore((state: any) => state.addPizza); //any
+  const dispatch = useAppDispatch();
   // const getOrder = useOrderStore((state: any) => state.order); //any
   // const incrementPizzaCount = useOrderStore(
   //   (state: any) => state.incrementPizzaCount
@@ -40,23 +43,23 @@ export function ContentItem({ pizza }) {
     setSize(Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0]);
   }, []);
 
-  const addPizza = () => {
-    setCount((prevState) => prevState + 1);
+  const addPizzaToStore = () => {
+    // setCount((prevState) => prevState + 1);
     // const isAlreadyOrdered = !!getOrder.find(({id}) => id === pizza.id);
-
+    //
     // if (isAlreadyOrdered) {
     //   incrementPizzaCount(pizza.id);
     // } else {
-
-    addPizzaToStore({
+    dispatch(addPizza({
       pizza: pizza,
       params: {
         price: price,
         count: count,
       },
-    });
-
+    }))
     // }
+
+
   };
 
   return (
@@ -76,7 +79,8 @@ export function ContentItem({ pizza }) {
           от {price}
           {CURRENCY}
         </p>
-        <button type="button" className="add" onClick={addPizza}>
+        {/*<button type="button" className="add" onClick={addPizza}>*/}
+        <button type="button" className="add" onClick={addPizzaToStore}>
           <img alt="shopping cart" src={plus} />
           <p className="add-button-name">Добавить</p>
         </button>
