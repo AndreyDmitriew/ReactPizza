@@ -11,8 +11,8 @@ import {
   THIN,
   TRADITIONAL,
 } from '../../constants/constants';
-import {useAppDispatch} from "../../hook";
-import { addPizza } from '../../storee/pizzaSlice'
+import { useAppDispatch } from '../../hook';
+import { addPizza } from '../../storee/pizzaSlice';
 
 import './ContentItem.scss';
 import plus from '@assets/plus.svg';
@@ -50,16 +50,16 @@ export function ContentItem({ pizza }) {
     // if (isAlreadyOrdered) {
     //   incrementPizzaCount(pizza.id);
     // } else {
-    dispatch(addPizza({
-      pizza: pizza,
-      params: {
-        price: price,
-        count: count,
-      },
-    }))
+    dispatch(
+      addPizza({
+        pizza,
+        params: {
+          price,
+          count: count + 1,
+        },
+      })
+    );
     // }
-
-
   };
 
   return (
@@ -79,7 +79,7 @@ export function ContentItem({ pizza }) {
           от {price}
           {CURRENCY}
         </p>
-        {/*<button type="button" className="add" onClick={addPizza}>*/}
+        {/* <button type="button" className="add" onClick={addPizza}> */}
         <button type="button" className="add" onClick={addPizzaToStore}>
           <img alt="shopping cart" src={plus} />
           <p className="add-button-name">Добавить</p>
