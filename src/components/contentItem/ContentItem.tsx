@@ -44,12 +44,6 @@ export function ContentItem({ pizza }) {
   }, []);
 
   const addPizzaToStore = () => {
-    // setCount((prevState) => prevState + 1);
-    // const isAlreadyOrdered = !!getOrder.find(({id}) => id === pizza.id);
-    //
-    // if (isAlreadyOrdered) {
-    //   incrementPizzaCount(pizza.id);
-    // } else {
     dispatch(
       addPizza({
         pizza,
@@ -59,7 +53,6 @@ export function ContentItem({ pizza }) {
         },
       })
     );
-    // }
   };
 
   return (
