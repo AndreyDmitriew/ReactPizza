@@ -26,10 +26,6 @@ export type PizzaType = {
   };
 };
 
-export type PizzasState = {
-  order: PizzaOrder[];
-}
-
 export interface PizzaOrder {
   pizza: PizzaType;
   params: {
@@ -37,6 +33,10 @@ export interface PizzaOrder {
     count: number;
   };
 }
+
+export type PizzasState = {
+  order: PizzaOrder[];
+};
 
 export type ChangeParameterType = {
   type: string;

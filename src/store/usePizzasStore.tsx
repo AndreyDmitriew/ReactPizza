@@ -47,7 +47,6 @@ import { getAllPizza } from '../queries/queries';
 // ];
 
 export const usePizzasStore = create<StateType>((set) => ({
-  data: [],
   pizzas: [],
   filter: 'Все',
   sort: 'по популярности',

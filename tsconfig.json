@@ -22,7 +22,8 @@
       "@router/*": ["router/*"],
       "@constants/*": ["constants/*"],
       "@assets/*": ["assets/*"],
-      "@locale/*": ["./src/assets/locale"]
+      "@locale/*": ["./src/assets/locale"],
+      "@ts/*": ["./src/ts/*"]
     }
   },
   "include": ["src"],

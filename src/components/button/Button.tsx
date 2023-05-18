@@ -8,7 +8,8 @@ import arrowBack from '@assets/arrowBack.svg';
 import { CURRENCY } from '@constants/constants';
 
 import './Button.scss';
-import { useOrderStore } from '../../store/usePizzasStore';
+import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
+import { useAppSelector } from '../../hook';
 
 type args = {
   price?: number;
@@ -29,28 +30,18 @@ interface Args {
 }
 
 export default function Button(props: Args) {
-  // const config = {};
-  //
-  // if (props.type === 'filter') {
-  //   config.className = {props.isActive ? 'filter-active' : props.type};
-  //   config.onClick = () => props.handleChangeActiveButton(props.id);
-  //   config.name = props.name
-  // }
-  const price = useOrderStore((state: any) => state.order).map(
-    (el: {}) => el['params']['price'] * el['params']['count']
-  ); //any
+  const order = useAppSelector((state) => state.pizzas.order);
   const navigate = useNavigate();
-  const orderSum: number = 3;
   return (
     <>
       {props.type === 'summary' && (
-        <NavLink to={'/summary'}>
+        <NavLink to="/summary">
           <button className={props.type}>
-            {price}
+            {getTotalPrice(order)}
             {CURRENCY}
-            <div className="vertical-divider"></div>
+            <div className="vertical-divider" />
             <img alt="shopping cart" src={shoppingCart} className="cart" />
-            {orderSum}
+            {getSummaryPizzasCount(order)}
           </button>
         </NavLink>
       )}

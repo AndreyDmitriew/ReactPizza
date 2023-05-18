@@ -1,29 +1,25 @@
 import { OrderType } from '../../ts/types/types';
-import { useOrderStore, usePizzasStore } from '../../store/usePizzasStore';
 import { CURRENCY } from '../../constants/constants';
-import {useAppSelector} from "../../hook";
+import { useAppSelector, useAppDispatch } from '../../hook';
 
 import shoppingCart from '../../assets/shoppingСartGrey.svg';
 import trash from '../../assets/trash.svg';
 
-import { useAppDispatch } from '../../hook';
-
 import Button from '../button/Button';
 
 import './SummaryCart.scss';
-import {useEffect} from "react";
-import {addPizza ,deletePizza, decrementPizza} from "../../storee/pizzaSlice";
+import { useEffect } from 'react';
+import { addPizza, deletePizza, decrementPizza } from '../../storee/pizzaSlice';
 
-export const SummaryCart = () => {
+import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
+
+export function SummaryCart() {
   const dispatch = useAppDispatch();
-  const order = useAppSelector(state => state.pizzas.order)
-  const summaryPizzasCount = order?.reduce((acc, curr) => {return acc + curr.params.count}, 0);
-  const totalPrice = order?.reduce((acc, curr) => {return acc + curr.params.price * curr.params.count}, 0);
-
+  const order = useAppSelector((state) => state.pizzas.order);
   const userOrder = () => {
     return order?.map((el: OrderType) => {
-    const price = el['params']['price'] * el['params']['count']
-      const count = el['params']['count']
+      const price = el.params.price * el.params.count;
+      const { count } = el.params;
       return (
         <div key={el.id}>
           <div className="item-container">
@@ -45,16 +41,25 @@ export const SummaryCart = () => {
 
             <div className="item-set-container">
               <div className="count">
-                <span onClick={() => dispatch(decrementPizza(el))} className="circle minus"/>
+                <span
+                  onClick={() => dispatch(decrementPizza(el))}
+                  className="circle minus"
+                />
                 <p>{count}</p>
-                <span onClick={() => dispatch(addPizza(el))} className="circle plus"/>
+                <span
+                  onClick={() => dispatch(addPizza(el))}
+                  className="circle plus"
+                />
               </div>
 
               <p>
                 {price} {CURRENCY}
               </p>
 
-              <span onClick={() => dispatch(deletePizza(el))} className="circle-cross cross"/>
+              <span
+                onClick={() => dispatch(deletePizza(el))}
+                className="circle-cross cross"
+              />
             </div>
           </div>
         </div>
@@ -83,20 +88,20 @@ export const SummaryCart = () => {
 
       <div className="summary-text-container">
         <p style={{ fontWeight: '400', fontSize: '15px' }}>
-          Всего пицц: <strong>{summaryPizzasCount}шт.</strong>
+          Всего пицц: <strong>{getSummaryPizzasCount(order)}шт.</strong>
         </p>
         <p style={{ fontWeight: '400', fontSize: '15px' }}>
           Сумма заказа:{' '}
           <span style={{ fontWeight: '700', color: 'orange' }}>
-            {totalPrice} {CURRENCY}
+            {getTotalPrice(order)} {CURRENCY}
           </span>
         </p>
       </div>
 
       <div className="button-container">
-        <Button type={'back'} />
-        <Button type={'pay'} />
+        <Button type="back" />
+        <Button type="pay" />
       </div>
     </main>
   );
-};
+}

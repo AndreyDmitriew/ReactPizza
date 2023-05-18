@@ -12,25 +12,26 @@ import { filerPizzas, filterButtons, sortListItems } from '../../config/config';
 import { useRenderButtons } from './useRenderButtons';
 import { sort } from '@assets/locale/ru.json';
 import { getAllPizzas } from '../../core/api';
-import {useAppSelector} from "../../hook";
+import { useAppSelector } from '../../hook';
 
-export const Main = () => {
+export function Main() {
   const [pizzass, setPizzass] = useState([]);
   const [isSortListOpen, setIsSortListOpen] = useState(false);
   const [sortItem, setSortItem] = useState(sortListItems[0]);
-  const filter = usePizzasStore((state: any) => state.filter); //any
+  // const filter = usePizzasStore((state: any) => state.filter); //any
+  const filter = useAppSelector((state) => state.pizzas.filter);
+
   const handleChangeActiveButton = usePizzasStore(
     (state: any) => state.handleChangeActiveButton
-  ); //any
-  const handleUpdatePizzas = usePizzasStore((state: any) => state.updatePizzas); //any
+  ); // any
+  const handleUpdatePizzas = usePizzasStore((state: any) => state.updatePizzas); // any
   const sortValue = useRef(null);
 
-
-  const order = useAppSelector(state => state.pizzas.order)
+  const order = useAppSelector((state) => state.pizzas.order);
 
   useEffect(() => {
-    console.log(order, 'order')
-  },[order])
+    console.log(order, 'order');
+  }, [order]);
 
   const {
     isLoading,
@@ -84,32 +85,30 @@ export const Main = () => {
 
   return (
     <main>
-      {
-        <article className="nav-panel">
-          <div className="filter-buttons-container">{renderButtons}</div>
-          <label style={{ position: 'relative' }} className="sort">
-            <img alt="Vector" className="vector" src={vector} />
-            <p className="sort-title">{t.sortTitle}</p>
-            <p
-              className="sort-value"
-              onClick={() => setIsSortListOpen(!isSortListOpen)}
-            >
-              {sortItem}
-            </p>
-            {isSortListOpen && (
-              <div className="list-container">
-                <ul className="sort-list" ref={sortValue}>
-                  {sortListItems.map((el) => (
-                    <li onClick={() => onSort(el)} key={el} value={el}>
-                      {el}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </label>
-        </article>
-      }
+      <article className="nav-panel">
+        <div className="filter-buttons-container">{renderButtons}</div>
+        <label style={{ position: 'relative' }} className="sort">
+          <img alt="Vector" className="vector" src={vector} />
+          <p className="sort-title">{t.sortTitle}</p>
+          <p
+            className="sort-value"
+            onClick={() => setIsSortListOpen(!isSortListOpen)}
+          >
+            {sortItem}
+          </p>
+          {isSortListOpen && (
+            <div className="list-container">
+              <ul className="sort-list" ref={sortValue}>
+                {sortListItems.map((el) => (
+                  <li onClick={() => onSort(el)} key={el} value={el}>
+                    {el}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </label>
+      </article>
 
       <h3 className="main-title">Все пиццы</h3>
       <section className="main-content">
@@ -119,4 +118,4 @@ export const Main = () => {
       </section>
     </main>
   );
-};
+}

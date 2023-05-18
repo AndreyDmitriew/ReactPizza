@@ -16,7 +16,6 @@ import { addPizza } from '../../storee/pizzaSlice';
 
 import './ContentItem.scss';
 import plus from '@assets/plus.svg';
-import { useOrderStore, usePizzasStore } from '../../store/usePizzasStore';
 
 // export const ContentItem: FC<PizzaType> = ({
 export function ContentItem({ pizza }) {
@@ -69,7 +68,7 @@ export function ContentItem({ pizza }) {
       </div>
       <div className="price-container">
         <p className="price">
-          от {price}
+          цена {price}
           {CURRENCY}
         </p>
         {/* <button type="button" className="add" onClick={addPizza}> */}
