@@ -1,23 +1,14 @@
-import React, { useState, FC, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Button from '@components/button/Button';
-import { ChangeParameterType } from '../../ts/types/types';
-// import Button from '../../../src/components/button/Button';
 import PizzaSize from './pizzaSize/PizzaSize';
 import PizzaType from './pizzaType/PizzaType';
-import {
-  CURRENCY,
-  MIDDLE_PIZZA,
-  THIN,
-  TRADITIONAL,
-} from '../../constants/constants';
+import { CURRENCY } from '@constants/constants';
 import { useAppDispatch } from '../../hook';
 import { addPizza } from '../../storee/pizzaSlice';
-
-import './ContentItem.scss';
 import plus from '@assets/plus.svg';
 
-// export const ContentItem: FC<PizzaType> = ({
+import './ContentItem.scss';
+
 export function ContentItem({ pizza }) {
   const [type, setType] = useState();
   const [size, setSize] = useState(0);

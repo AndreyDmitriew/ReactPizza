@@ -1,25 +1,25 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 
 import { ContentItem } from '../contentItem/ContentItem';
 import { usePizzasStore } from '../../store/usePizzasStore';
-
-import { PizzaType } from '../../ts/types/types';
-
-import './Main.scss';
-import vector from '../../assets/vector.svg';
-import { filerPizzas, filterButtons, sortListItems } from '../../config/config';
-import { useRenderButtons } from './useRenderButtons';
 import { sort } from '@assets/locale/ru.json';
+import { useRenderButtons } from './useRenderButtons';
 import { getAllPizzas } from '../../core/api';
 import { useAppSelector } from '../../hook';
+import vector from '../../assets/vector.svg';
+
+import { filerPizzas, sortListItems } from '../../config/config';
+
+import { PizzaType, PizzaName } from '../../ts/types/types';
+
+import './Main.scss';
 
 export function Main() {
   const [pizzass, setPizzass] = useState([]);
   const [isSortListOpen, setIsSortListOpen] = useState(false);
   const [sortItem, setSortItem] = useState(sortListItems[0]);
   // const filter = usePizzasStore((state: any) => state.filter); //any
-  const filter = useAppSelector((state) => state.pizzas.filter);
 
   const handleChangeActiveButton = usePizzasStore(
     (state: any) => state.handleChangeActiveButton
@@ -28,6 +28,7 @@ export function Main() {
   const sortValue = useRef(null);
 
   const order = useAppSelector((state) => state.pizzas.order);
+  const filter = useAppSelector((state) => state);
 
   useEffect(() => {
     console.log(order, 'order');
@@ -44,11 +45,14 @@ export function Main() {
       throw new Error(`Error! status: ${error}`);
     }
   });
+  console.log(filter,order, 'filter')
 
   useEffect(() => {
     handleUpdatePizzas(pizzas);
     setPizzass(pizzas);
   }, [pizzas]);
+
+
 
   useEffect(() => {
     const available = filerPizzas[filter];
@@ -56,14 +60,14 @@ export function Main() {
       setPizzass(pizzas);
     } else {
       setPizzass(
-        pizzas?.filter(({ name }) => {
-          return available.includes(name);
+        pizzas?.filter(({ name }: PizzaName) => {
+          return available?.includes(name);
         })
       );
     }
   }, [filter]);
 
-  const onSort = (e) => {
+  const onSort = (e: string) => {
     setIsSortListOpen(false);
     setSortItem(e);
     switch (e) {

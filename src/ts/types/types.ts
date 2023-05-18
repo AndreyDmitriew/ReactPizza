@@ -34,7 +34,7 @@ export interface PizzaOrder {
   };
 }
 
-export type PizzasState = {
+export interface PizzasState {
   order: PizzaOrder[];
 };
 
@@ -64,4 +64,8 @@ export type StateType = {
 
 export type HeaderType = {
   navPanel?: boolean;
+};
+
+export type PizzaName = {
+  name: string;
 };

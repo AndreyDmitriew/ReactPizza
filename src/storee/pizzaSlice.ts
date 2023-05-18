@@ -1,27 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PizzasState, PizzaOrder } from '@ts/types/types';
+import { PizzasState, PizzaOrder, PizzaType } from '@ts/types/types';
 
 const initialState: PizzasState = {
   order: [],
 };
 
+
 const pizzaSlice = createSlice({
-  initialState,
   name: 'pizzas',
   filter: 'Все',
   sort: 'по популярности',
   isLoading: false,
   error: null,
+  initialState,
   reducers: {
     handleChangeActiveButton(state, action: PayloadAction<PizzaOrder>) {},
 
     addPizza(state, action: PayloadAction<PizzaOrder>) {
       const pizza = action.payload;
       const orderedPizza = state.order.find(
-        (o) => o.pizza.id === pizza.pizza.id
+        (o: PizzaType) => o.pizza.id === pizza.pizza.id
       );
       if (orderedPizza) {
-        state.order.forEach((e) => {
+        state.order.forEach((e: PizzaType) => {
           if (e.pizza.id === pizza.pizza.id) {
             e.params.count += 1;
           }
@@ -34,12 +35,11 @@ const pizzaSlice = createSlice({
     deletePizza(state, action: PayloadAction<PizzaOrder>) {
       const pizza = action.payload;
       const orderedPizza = state.order.find(
-        (o) => o.pizza.id === pizza.pizza.id
+        (o: PizzaType) => o.pizza.id === pizza.pizza.id
       );
       if (orderedPizza) {
-        // state.order.filter((e) => e.pizza.id !== pizza.pizza.id);
         state.order.splice(
-          state.order.findIndex((arrow) => arrow.pizza.id === pizza.pizza.id),
+          state.order.findIndex((e: PizzaType) => e.pizza.id === pizza.pizza.id),
           1
         );
       }
@@ -48,10 +48,10 @@ const pizzaSlice = createSlice({
     decrementPizza(state, action: PayloadAction<PizzaOrder>) {
       const pizza = action.payload;
       const orderedPizza = state.order.find(
-        (o) => o.pizza.id === pizza.pizza.id
+        (o: PizzaType) => o.pizza.id === pizza.pizza.id
       );
       if (orderedPizza) {
-        state.order.forEach((e) => {
+        state.order.forEach((e: PizzaType) => {
           if (e.pizza.id === pizza.pizza.id && e.params.count > 1) {
             e.params.count -= 1;
           }
