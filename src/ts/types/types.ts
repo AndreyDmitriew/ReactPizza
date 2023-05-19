@@ -36,7 +36,7 @@ export interface PizzaOrder {
 
 export interface PizzasState {
   order: PizzaOrder[];
-};
+}
 
 export type ChangeParameterType = {
   type: string;
@@ -50,12 +50,16 @@ export interface OrderType {
 }
 
 export type StateType = {
-  data: object;
+  // name?: string;
+  // filter?: string;
+  // sort: string;
+  // isLoading: boolean;
+  // error: null;
   order: OrderType[];
-  isLoading: boolean;
-  error: null;
-  // getPizzas: () => void;
-  // getPizzas: any;
+};
+
+export type StateTypeee = {
+  order?: OrderType[];
 };
 
 // export type OrderType = {

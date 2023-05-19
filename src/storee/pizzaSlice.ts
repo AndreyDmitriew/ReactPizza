@@ -1,12 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PizzasState, PizzaOrder, PizzaType } from '@ts/types/types';
+import { StateType, StateTypeee } from '../ts/types/types';
 
-const initialState: PizzasState = {
+const initialState: StateType = {
+  name: 'pizzas',
+  filter: 'Все',
+  sort: 'по популярности',
+  isLoading: false,
+  error: null,
   order: [],
 };
 
-
-const pizzaSlice = createSlice({
+const pizzaSlice = createSlice<StateTypeee>({
   name: 'pizzas',
   filter: 'Все',
   sort: 'по популярности',
@@ -14,7 +19,10 @@ const pizzaSlice = createSlice({
   error: null,
   initialState,
   reducers: {
-    handleChangeActiveButton(state, action: PayloadAction<PizzaOrder>) {},
+    handleChangeActiveButton(state, action: PayloadAction<PizzaOrder>) {
+      console.log(action.payload, 'action.payload');
+      state.filter = action.payload;
+    },
 
     addPizza(state, action: PayloadAction<PizzaOrder>) {
       const pizza = action.payload;
@@ -39,7 +47,9 @@ const pizzaSlice = createSlice({
       );
       if (orderedPizza) {
         state.order.splice(
-          state.order.findIndex((e: PizzaType) => e.pizza.id === pizza.pizza.id),
+          state.order.findIndex(
+            (e: PizzaType) => e.pizza.id === pizza.pizza.id
+          ),
           1
         );
       }
@@ -61,6 +71,11 @@ const pizzaSlice = createSlice({
   },
 });
 
-export const { addPizza, deletePizza, decrementPizza } = pizzaSlice.actions;
+export const {
+  handleChangeActiveButton,
+  addPizza,
+  deletePizza,
+  decrementPizza,
+} = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

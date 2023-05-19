@@ -1,12 +1,12 @@
 import { Header } from '../components/header/Header';
-import { Main } from '../components/main/Main';
+import Main from '../components/main/Main';
 
-export const Homepage = () => {
+export function Homepage() {
   return (
     <div>
-      {/*<Header navPanel />*/}
+      {/* <Header navPanel /> */}
       <Header navPanel />
       <Main />
     </div>
   );
-};
+}

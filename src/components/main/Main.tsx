@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 
+import { sort } from '@assets/locale/ru.json';
 import { ContentItem } from '../contentItem/ContentItem';
 import { usePizzasStore } from '../../store/usePizzasStore';
-import { sort } from '@assets/locale/ru.json';
 import { useRenderButtons } from './useRenderButtons';
 import { getAllPizzas } from '../../core/api';
 import { useAppSelector } from '../../hook';
@@ -15,7 +15,7 @@ import { PizzaType, PizzaName } from '../../ts/types/types';
 
 import './Main.scss';
 
-export function Main() {
+export default function Main() {
   const [pizzass, setPizzass] = useState([]);
   const [isSortListOpen, setIsSortListOpen] = useState(false);
   const [sortItem, setSortItem] = useState(sortListItems[0]);
@@ -24,15 +24,17 @@ export function Main() {
   const handleChangeActiveButton = usePizzasStore(
     (state: any) => state.handleChangeActiveButton
   ); // any
+
   const handleUpdatePizzas = usePizzasStore((state: any) => state.updatePizzas); // any
   const sortValue = useRef(null);
 
   const order = useAppSelector((state) => state.pizzas.order);
-  const filter = useAppSelector((state) => state);
+  const filter = useAppSelector((state) => state.pizzas.filter);
 
   useEffect(() => {
     console.log(order, 'order');
-  }, [order]);
+    console.log(filter, 'filter');
+  }, [order, filter]);
 
   const {
     isLoading,
@@ -41,18 +43,16 @@ export function Main() {
   } = useQuery('repoData', async () => {
     try {
       return await getAllPizzas();
-    } catch (error) {
-      throw new Error(`Error! status: ${error}`);
+    } catch (e) {
+      throw new Error(`Error! status: ${e}`);
     }
   });
-  console.log(filter,order, 'filter')
+  console.log(filter, order, 'filter');
 
   useEffect(() => {
     handleUpdatePizzas(pizzas);
     setPizzass(pizzas);
   }, [pizzas]);
-
-
 
   useEffect(() => {
     const available = filerPizzas[filter];
@@ -80,6 +80,8 @@ export function Main() {
       case 'по алфавиту':
         setPizzass(pizzass.sort((a, b) => (a.name > b.name ? 1 : -1)));
         break;
+      default:
+        setPizzass(order);
     }
   };
 

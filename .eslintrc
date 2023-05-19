@@ -26,14 +26,28 @@
 //    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
 //    "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off"
   },
+
   "settings": {
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
+      },
+      "alias": [
+        // I have my actions folder in ./shared/actions
+        ["@", "./src"],
+        ["@components", "./src/components"],
+        ["@router", "./src/router"],
+        ["@constants", "./src/constants"],
+        ["@constants", "./src/constants"],
+        ["@assets", "./src/assets"],
+        ["@locale", "./src/assets/locale"],
+        ["@ts", "./src/ts"]
+      ]
     }
   },
+
   "parser": "@typescript-eslint/parser"
 }
