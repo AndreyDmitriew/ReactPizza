@@ -49,17 +49,24 @@ export interface OrderType {
   addPizza: (pizza: PizzaOrder) => void;
 }
 
-export type StateType = {
+export type InitialStateType = {
   // name?: string;
-  // filter?: string;
-  // sort: string;
-  // isLoading: boolean;
-  // error: null;
+  filter?: string;
+  sort: string;
+  isLoading: boolean;
+  error: null;
   order: OrderType[];
 };
 
-export type StateTypeee = {
-  order?: OrderType[];
+export type StateType = {
+  filter: string;
+  sort: string;
+  isLoading: boolean;
+  error: null;
+  order: OrderType[];
+  name?: string;
+  initialState?: InitialStateType;
+  reducers: object;
 };
 
 // export type OrderType = {

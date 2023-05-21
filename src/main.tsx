@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import {Provider} from "react-redux";
 
 import App from './components/app/App';
-import storee from './storee'
+import storee from './store'
 
 import './styles/global.css';
 

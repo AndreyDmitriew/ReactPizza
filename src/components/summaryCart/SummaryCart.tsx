@@ -1,6 +1,7 @@
 import { OrderType } from '../../ts/types/types';
 import { CURRENCY } from '../../constants/constants';
 import { useAppSelector, useAppDispatch } from '../../hook';
+import { v4 as uuidv4 } from 'uuid';
 
 import shoppingCart from '../../assets/shoppingСartGrey.svg';
 import trash from '../../assets/trash.svg';
@@ -9,7 +10,7 @@ import Button from '../button/Button';
 
 import './SummaryCart.scss';
 import { useEffect } from 'react';
-import { addPizza, deletePizza, decrementPizza } from '../../storee/pizzaSlice';
+import {addPizza, deletePizza, decrementPizza, trashAllPizza} from '../../store/pizzaSlice';
 
 import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
 
@@ -21,7 +22,7 @@ export function SummaryCart() {
       const price = el.params.price * el.params.count;
       const { count } = el.params;
       return (
-        <div key={el.id}>
+        <div key={ uuidv4()}>
           <div className="item-container">
             <div
               style={{
@@ -34,7 +35,7 @@ export function SummaryCart() {
               <div className="item-name-set">
                 <h6 className="item-name">{el.pizza.name}</h6>
                 <p className="item-parameters">
-                  {el.orderPizzaType} тесто, {el.orderPizzaSize} см.{' '}
+                  {el.params.type} тесто, {el.params.size} см.{' '}
                 </p>
               </div>
             </div>
@@ -78,10 +79,10 @@ export function SummaryCart() {
           <h3>Корзина</h3>
         </div>
 
-        <div className="trash-name-container">
+        <button className="trash-name-container" onClick={() => dispatch(trashAllPizza())}>
           <img alt="trash" src={trash} />
           <p className="trash-name">Очистить корзину</p>
-        </div>
+        </button>
       </article>
 
       {userOrder()}
