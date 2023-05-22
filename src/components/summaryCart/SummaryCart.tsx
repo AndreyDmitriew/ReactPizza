@@ -1,28 +1,41 @@
-import { OrderType } from '../../ts/types/types';
-import { CURRENCY } from '../../constants/constants';
-import { useAppSelector, useAppDispatch } from '../../hook';
 import { v4 as uuidv4 } from 'uuid';
 
+import { CURRENCY } from '@constants/constants';
+import { useNavigate } from 'react-router-dom';
+import { PizzaOrder } from '../../ts/types/types';
+
+import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
+
+import { useAppSelector, useAppDispatch } from '../../hook';
 import shoppingCart from '../../assets/shoppingСartGrey.svg';
 import trash from '../../assets/trash.svg';
 
 import Button from '../button/Button';
 
+import {
+  addPizza,
+  deletePizza,
+  decrementPizza,
+  trashAllPizza,
+} from '../../store/pizzaSlice';
+
 import './SummaryCart.scss';
-import { useEffect } from 'react';
-import {addPizza, deletePizza, decrementPizza, trashAllPizza} from '../../store/pizzaSlice';
 
-import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
-
-export function SummaryCart() {
+export default function SummaryCart() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const order = useAppSelector((state) => state.pizzas.order);
+  const submit = () => {
+    dispatch(trashAllPizza());
+    navigate('/');
+  };
   const userOrder = () => {
-    return order?.map((el: OrderType) => {
+    return order?.map((el: PizzaOrder) => {
       const price = el.params.price * el.params.count;
-      const { count } = el.params;
+      const { count }: number = el.params;
+
       return (
-        <div key={ uuidv4()}>
+        <div key={uuidv4()}>
           <div className="item-container">
             <div
               style={{
@@ -42,12 +55,16 @@ export function SummaryCart() {
 
             <div className="item-set-container">
               <div className="count">
-                <span
+                <button
+                  type="button"
+                  aria-label="Minus"
                   onClick={() => dispatch(decrementPizza(el))}
                   className="circle minus"
                 />
                 <p>{count}</p>
-                <span
+                <button
+                  type="button"
+                  aria-label="Plus"
                   onClick={() => dispatch(addPizza(el))}
                   className="circle plus"
                 />
@@ -57,7 +74,9 @@ export function SummaryCart() {
                 {price} {CURRENCY}
               </p>
 
-              <span
+              <button
+                type="button"
+                aria-label="Cross"
                 onClick={() => dispatch(deletePizza(el))}
                 className="circle-cross cross"
               />
@@ -79,7 +98,11 @@ export function SummaryCart() {
           <h3>Корзина</h3>
         </div>
 
-        <button className="trash-name-container" onClick={() => dispatch(trashAllPizza())}>
+        <button
+          type="button"
+          className="trash-name-container"
+          onClick={() => dispatch(trashAllPizza())}
+        >
           <img alt="trash" src={trash} />
           <p className="trash-name">Очистить корзину</p>
         </button>
@@ -101,7 +124,9 @@ export function SummaryCart() {
 
       <div className="button-container">
         <Button type="back" />
-        <Button type="pay" />
+        <button onClick={submit} className="pay" type="button">
+          <p className="button-pay-title">Оплатить сейчас</p>
+        </button>
       </div>
     </main>
   );

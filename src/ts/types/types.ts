@@ -1,12 +1,3 @@
-import {
-  SMALL_PIZZA,
-  MIDDLE_PIZZA,
-  BIG_PIZZA,
-} from '../../constants/constants';
-
-const pizzaSizes = [SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA] as const;
-type PizzaSizes = (typeof pizzaSizes)[number];
-
 export type PizzaType = {
   id: string;
   image: string;
@@ -31,17 +22,13 @@ export interface PizzaOrder {
   params: {
     price: number;
     count: number;
+    size: string;
+    type: string;
   };
 }
 
-export interface PizzasState {
-  order: PizzaOrder[];
-}
-
-export type ChangeParameterType = {
-  type: string;
-  isTypeAvailable: boolean;
-  pizzaType: string;
+export type AllPizzas = {
+  pizzas: [];
 };
 
 export interface OrderType {
@@ -50,7 +37,6 @@ export interface OrderType {
 }
 
 export type InitialStateType = {
-  // name?: string;
   filter?: string;
   sort: string;
   isLoading: boolean;
@@ -69,14 +55,24 @@ export type StateType = {
   reducers: object;
 };
 
-// export type OrderType = {
-//   order: [];
-// };
-
-export type HeaderType = {
-  navPanel?: boolean;
-};
-
 export type PizzaName = {
   name: string;
+};
+
+export type ContentItemType = {
+  pizza: PizzaType;
+  order: PizzaOrder[];
+};
+
+export type TypeOfPizza = {
+  pizza: PizzaType;
+  type: string;
+  onChange: () => void;
+};
+
+export type PizzaSizeType = {
+  pizza: PizzaType;
+  type: string;
+  size: number;
+  onChange: () => void;
 };

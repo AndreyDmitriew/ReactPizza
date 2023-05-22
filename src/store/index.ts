@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import pizzaReducer from './pizzaSlice';
 
-const storee = configureStore({
+const store = configureStore({
   reducer: {
     pizzas: pizzaReducer,
   },
 });
 
-export default storee;
+export default store;
 
-export type RootState = ReturnType<typeof storee.getState>;
-export type AppDispatch = typeof storee.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

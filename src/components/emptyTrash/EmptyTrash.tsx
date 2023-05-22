@@ -1,11 +1,12 @@
-import shopper from '../../assets/shopper.svg';
-
-import './EmptyTrash.scss';
-import Button from '../button/Button';
-
 import emptyPage from '../../assets/locale/ru.json';
 
-export function EmptyTrash() {
+import shopper from '../../assets/shopper.svg';
+
+import Button from '../button/Button';
+
+import './EmptyTrash.scss';
+
+export default function EmptyTrash() {
   const t = emptyPage.emptyPage;
   return (
     <main className="main-cart-wrapper">

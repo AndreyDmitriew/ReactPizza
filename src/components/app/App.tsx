@@ -1,20 +1,18 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { PrivateRoutes, PublicRoutes } from '@router/Router';
+import PrivateRoutes from '@router/Router';
 
 import './App.scss';
 
 function App() {
   const queryClient = new QueryClient();
-  {
-    /* uncomment when logIn logic be exist */
-  }
+
+  // * Uncomment when logIn logic will exist *;
   // const login: boolean = true;
   return (
     <QueryClientProvider client={queryClient}>
       <section className="wrapper">
-        {/* uncomment when logIn logic be exist */}
+        {/* uncomment when logIn logic will exist */}
         {/* {login ? <PrivateRoutes /> : <PublicRoutes />} */}
-
         <PrivateRoutes />
       </section>
     </QueryClientProvider>

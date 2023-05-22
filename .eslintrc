@@ -2,13 +2,14 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
-    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "import"],
   "rules": {
 //    "no-console": "warn",
 //    "no-var": "error",
@@ -25,22 +26,23 @@
 //    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
 //    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
 //    "react/jsx-uses-react": "off",
+    "@typescript-eslint/no-unsafe-return": "error",
     "react/react-in-jsx-scope": "off",
     "import/no-extraneous-dependencies": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }]
   },
 
   "settings": {
     "import/resolver": {
+      "typescript": {},
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },
       "alias": [
-        // I have my actions folder in ./shared/actions
         ["@", "./src"],
         ["@components", "./src/components"],
         ["@router", "./src/router"],
-        ["@constants", "./src/constants"],
         ["@constants", "./src/constants"],
         ["@assets", "./src/assets"],
         ["@locale", "./src/assets/locale"],
@@ -49,5 +51,9 @@
     }
   },
 
-  "parser": "@typescript-eslint/parser"
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./"
+  }
 }
