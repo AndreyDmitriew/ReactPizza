@@ -114,7 +114,7 @@
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
 
     .add-button-name {
-      color: white;
+      color: $mainBackgroundColor;
       font-size: 15px;
       font-family: sans-serif;
     }
@@ -126,6 +126,22 @@
   .add:active {
     box-shadow: 0 0 0 1px #b18597, 0 0 #ffe3e2;
     transform: translate(0em, 0.15em);
+  }
 
+  .added {
+    width: 153px;
+    border: 1px solid $contractFontColor;
+    background-color: $mainBackgroundColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 40px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
+  }
+  .added:hover {
+    color: $mainBackgroundColor;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    opacity: 0.98;
   }
 }

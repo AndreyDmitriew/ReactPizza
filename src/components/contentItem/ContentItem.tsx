@@ -12,21 +12,20 @@ import { ContentItemType } from '../../ts/types/types';
 import './ContentItem.scss';
 
 export default function ContentItem({ pizza, order }: ContentItemType) {
-  const [type, setType] = useState('');
-  const [size, setSize] = useState(0);
+  const [type, setType] = useState<'thin' | 'traditional'>(
+    Object.keys(pizza.price)[0]
+  );
+  const [size, setSize] = useState<26 | 30 | 40>(
+    Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0]
+  );
   const [price, setPrice] = useState(0);
   const count = order.find((e) => e.pizza.id === pizza.id)?.params?.count || 0;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const pizzaPrice = type && pizza?.price[type][size];
+    const pizzaPrice: number = pizza.price[type][size] || 0;
     setPrice(pizzaPrice);
   }, [type, size, count]);
-
-  useEffect(() => {
-    setType(Object.keys(pizza.price)[0]);
-    setSize(Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0]);
-  }, []);
 
   const addPizzaToStore = () => {
     dispatch(
