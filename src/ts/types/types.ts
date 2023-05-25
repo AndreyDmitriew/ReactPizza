@@ -67,12 +67,12 @@ export type ContentItemType = {
 export type TypeOfPizza = {
   pizza: PizzaType;
   type: string;
-  onChange: () => void;
+  onChange: (pizzaType: string) => void;
 };
 
 export type PizzaSizeType = {
   pizza: PizzaType;
   type: string;
   size: number;
-  onChange: () => void;
+  onChange: (pizzaSize: number) => void;
 };

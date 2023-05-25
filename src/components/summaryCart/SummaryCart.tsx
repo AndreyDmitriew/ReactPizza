@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { CURRENCY } from '@constants/constants';
 import { useNavigate } from 'react-router-dom';
-import { PizzaOrder } from '../../ts/types/types';
+import { OrderType, PizzaOrder } from '../../ts/types/types';
 
 import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
 
@@ -24,7 +24,7 @@ import './SummaryCart.scss';
 export default function SummaryCart() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const order = useAppSelector((state) => state.pizzas.order);
+  const order: Array<OrderType> = useAppSelector((state) => state.pizzas.order);
   const submit = () => {
     dispatch(trashAllPizza());
     navigate('/');
@@ -112,7 +112,7 @@ export default function SummaryCart() {
 
       <div className="summary-text-container">
         <p style={{ fontWeight: '400', fontSize: '15px' }}>
-          Всего пицц: <strong>{getSummaryPizzasCount(order)}шт.</strong>
+          Всего пицц: <strong> {getSummaryPizzasCount(order)}шт. </strong>
         </p>
         <p style={{ fontWeight: '400', fontSize: '15px' }}>
           Сумма заказа:{' '}

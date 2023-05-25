@@ -35,6 +35,9 @@ export default function PizzaSize({
           <button
             type="button"
             className={getClassName(index)}
+            disabled={
+              getClassName(index) === 'form-radio-group-item-unavailable'
+            }
             key={uuidv4()}
             onClick={() => onChange(pizzaSize)}
           >
