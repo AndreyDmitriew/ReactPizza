@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 
 import { sort } from '@assets/locale/ru.json';
+import { PizzaType, PizzaName, PizzaOrder } from '@ts/types/types';
 import ContentItem from '../contentItem/ContentItem';
 import useRenderButtons from './useRenderButtons';
 import getAllPizzas from '../../core/api';
@@ -10,42 +11,36 @@ import vector from '../../assets/vector.svg';
 
 import { filerPizzas, sortListItems } from '../../config/config';
 
-import { PizzaType, PizzaName, AllPizzas } from '../../ts/types/types';
-
 import './Main.scss';
 
 export default function Main() {
-  const [pizzass, setPizzass] = useState([]);
+  const [pizzass, setPizzass] = useState<PizzaType[]>([]);
   const [isSortListOpen, setIsSortListOpen] = useState(false);
   const [sortItem, setSortItem] = useState(sortListItems[0]);
   const sortValue = useRef(null);
-  const order = useAppSelector((state) => state.pizzas.order);
+  const order: PizzaOrder[] = useAppSelector((state) => state.pizzas.order);
   const filter = useAppSelector((state) => state.pizzas.filter);
   const renderButtons = useRenderButtons(filter);
-
-  const {
-    isLoading,
-    error,
-    data: pizzas,
-  } = useQuery<AllPizzas[], Error>('repoData', async () => {
-    try {
-      return await getAllPizzas();
-    } catch (e) {
-      throw new Error(`Error! status: ${e}`);
+  const { data: pizzas } = useQuery<PizzaType[], Error>(
+    'repoData',
+    async () => {
+      try {
+        const pizzasData = await getAllPizzas();
+        setPizzass(pizzasData);
+        return pizzasData;
+      } catch (e) {
+        throw new Error(`Error! status: ${String(e)}`);
+      }
     }
-  });
-
-  useEffect(() => {
-    setPizzass(pizzas);
-  }, [pizzas]);
+  );
 
   useEffect(() => {
     const available = filerPizzas[filter];
     if (filter === 'Все') {
-      setPizzass(pizzas);
+      setPizzass(pizzas || []);
     } else {
       setPizzass(
-        pizzas?.filter(({ name }: PizzaName) => {
+        (pizzas || []).filter(({ name }: PizzaName) => {
           return available?.includes(name);
         })
       );
@@ -66,7 +61,7 @@ export default function Main() {
         setPizzass(pizzass.sort((a, b) => (a.name > b.name ? 1 : -1)));
         break;
       default:
-        setPizzass(order);
+        setPizzass(order.map((pizzaOrder) => pizzaOrder.pizza));
     }
   };
 

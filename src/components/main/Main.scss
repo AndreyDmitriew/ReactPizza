@@ -28,8 +28,6 @@
 
     @media (max-width: 1210px) {
       display: block;
-      //margin: 10px 30px;
-      //padding: 30px;
     }
   }
 
@@ -47,7 +45,6 @@
     -webkit-appearance: none;
     outline: none;
     font-weight: 400;
-
     -moz-appearance: none;
     position: relative;
     padding: 5px;
@@ -94,8 +91,6 @@
     }
 
     .list-container {
-      //width: max-content;
-      //box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
       border-radius: 10px;
       background-color: $mainBackgroundColor;
 

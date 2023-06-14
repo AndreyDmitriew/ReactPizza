@@ -13,7 +13,7 @@ export const sortListItems: string[] = [
   'по алфавиту',
 ];
 
-export const filerPizzas = {
+export const filerPizzas: Record<string, string[]> = {
   Все: [],
   Мясные: ['Сырный цыпленок'],
   Вегетарианская: ['Чизбургер-пицца', 'Сырная', 'Креветки по-азиатски'],

@@ -1,6 +1,5 @@
-import emptyPage from '../../assets/locale/ru.json';
-
-import shopper from '../../assets/shopper.svg';
+import shopper from '@assets/shopper.svg';
+import emptyPage from '@assets/locale/ru.json';
 
 import Button from '../button/Button';
 

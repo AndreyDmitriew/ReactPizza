@@ -2,8 +2,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { CURRENCY } from '@constants/constants';
 import { useNavigate } from 'react-router-dom';
-import { OrderType, PizzaOrder } from '../../ts/types/types';
+import { Params, PizzaOrder } from '@ts/types/types';
 
+import {
+  addPizza,
+  deletePizza,
+  decrementPizza,
+  trashAllPizza,
+} from '@store/pizzaSlice';
+import React from 'react';
 import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
 
 import { useAppSelector, useAppDispatch } from '../../hook';
@@ -12,19 +19,15 @@ import trash from '../../assets/trash.svg';
 
 import Button from '../button/Button';
 
-import {
-  addPizza,
-  deletePizza,
-  decrementPizza,
-  trashAllPizza,
-} from '../../store/pizzaSlice';
-
 import './SummaryCart.scss';
 
 export default function SummaryCart() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const order: Array<OrderType> = useAppSelector((state) => state.pizzas.order);
+  const order: PizzaOrder[] = useAppSelector((state) => state.pizzas.order);
+  const totalPrice = ` ${getTotalPrice(order)} ${CURRENCY}`;
+  const summaryPizzasCount = `${getSummaryPizzasCount(order)}шт.`;
+
   const submit = () => {
     dispatch(trashAllPizza());
     navigate('/');
@@ -32,7 +35,7 @@ export default function SummaryCart() {
   const userOrder = () => {
     return order?.map((el: PizzaOrder) => {
       const price = el.params.price * el.params.count;
-      const { count }: number = el.params;
+      const { count }: Params = el.params;
 
       return (
         <div key={uuidv4()}>
@@ -112,12 +115,12 @@ export default function SummaryCart() {
 
       <div className="summary-text-container">
         <p style={{ fontWeight: '400', fontSize: '15px' }}>
-          Всего пицц: <strong> {getSummaryPizzasCount(order)}шт. </strong>
+          Всего пицц: <strong> {summaryPizzasCount} </strong>
         </p>
         <p style={{ fontWeight: '400', fontSize: '15px' }}>
           Сумма заказа:{' '}
           <span style={{ fontWeight: '700', color: 'orange' }}>
-            {getTotalPrice(order)} {CURRENCY}
+            {totalPrice}
           </span>
         </p>
       </div>

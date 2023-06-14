@@ -1,29 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import plusOrange from '@assets/plusOrange.svg';
 import { CURRENCY } from '@constants/constants';
-import { addPizza } from '../../store/pizzaSlice';
+import plusOrange from '@assets/plusOrange.svg';
+import { addPizza } from '@store/pizzaSlice';
+import { ContentItemType, SizesPizzaType } from '@ts/types/types';
 import PizzaSize from './pizzaSize/PizzaSize';
 import PizzaType from './pizzaType/PizzaType';
 import { useAppDispatch } from '../../hook';
 
-import { ContentItemType } from '../../ts/types/types';
-
 import './ContentItem.scss';
 
 export default function ContentItem({ pizza, order }: ContentItemType) {
-  const [type, setType] = useState<'thin' | 'traditional'>(
-    Object.keys(pizza.price)[0]
-  );
-  const [size, setSize] = useState<26 | 30 | 40>(
-    Object.keys(pizza.price[Object.keys(pizza.price)[0]])[0]
-  );
+  const typeOfPizza: string = Object.keys(pizza.price)[0];
+  const [type, setType] = useState<string>(typeOfPizza);
+  const [size, setSize] = useState<26 | 30 | 40>(() => {
+    const firstPizzaType = Object.keys(
+      pizza.price
+    )[0] as keyof typeof pizza.price;
+    return Object.keys(
+      pizza.price[firstPizzaType] || ({} as Record<SizesPizzaType, number>)
+    )[0] as unknown as SizesPizzaType;
+  });
+
   const [price, setPrice] = useState(0);
   const count = order.find((e) => e.pizza.id === pizza.id)?.params?.count || 0;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const pizzaPrice: number = pizza.price[type][size] || 0;
+    const currentPizzaType = pizza?.price[type as keyof typeof pizza.price];
+    const pizzaPrice = (currentPizzaType && currentPizzaType[size]) || 0;
     setPrice(pizzaPrice);
   }, [type, size, count]);
 
@@ -33,7 +38,7 @@ export default function ContentItem({ pizza, order }: ContentItemType) {
         pizza,
         params: {
           price,
-          count: count + 1,
+          count: Number(count) + 1,
           type,
           size,
         },

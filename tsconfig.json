@@ -17,15 +17,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "types": ["node", "vite-svg-loader", "vite/client"],
-    "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
       "@router/*": ["router/*"],
       "@constants/*": ["constants/*"],
+      "@ts/*": ["ts/*"],
+      "@store/*": ["store/*"],
       "@assets/*": ["assets/*"],
-      "@locale/*": ["./src/assets/locale"],
-      "@ts/*": ["./src/ts/*"]
-    }
+      "@locale/*": ["assets/locale/*"]
+    },
+    "baseUrl": "src"
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],

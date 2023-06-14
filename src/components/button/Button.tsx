@@ -4,9 +4,10 @@ import plus from '@assets/plus.svg';
 import plusOrange from '@assets/plusOrange.svg';
 import arrowBack from '@assets/arrowBack.svg';
 
+import { onFilterChange } from '@store/pizzaSlice';
+import { Args } from '@ts/interfaces/interfaces';
+import FiltersEnum from '@ts/enums/enums';
 import { useAppDispatch } from '../../hook';
-import { onFilterChange } from '../../store/pizzaSlice';
-import { Args } from '../../ts/interfaces/interfaces';
 
 import './Button.scss';
 
@@ -19,7 +20,7 @@ export default function Button(props: Args) {
       {type === 'filter' && (
         <button
           type="button"
-          onClick={() => dispatch(onFilterChange(name))}
+          onClick={() => dispatch(onFilterChange(name as FiltersEnum))}
           className={isActive ? 'filter-active' : type}
         >
           {name}

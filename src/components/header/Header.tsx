@@ -1,19 +1,33 @@
 import shoppingCart from '@assets/shoppingСart.svg';
 import { CURRENCY } from '@constants/constants';
 import { NavLink } from 'react-router-dom';
-import icon from '../../assets/pizzaLogo.svg';
+import icon from '@assets/pizzaLogo.svg';
 
-import { mainHeader } from '../../assets/locale/ru.json';
+import { mainHeader } from '@assets/locale/ru.json';
 import { useAppSelector } from '../../hook';
 
 import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
 
 import './Header.scss';
 
-export default function Header({ navPanel }: boolean) {
+interface Props {
+  navPanel?: boolean;
+}
+export default function Header({ navPanel }: Props) {
   const t = mainHeader;
   const order = useAppSelector((state) => state.pizzas.order);
   const summaryPizzasCount: number = getSummaryPizzasCount(order);
+  const buttonContent = () => {
+    return (
+      <>
+        {getTotalPrice(order)}
+        {CURRENCY}
+        <div className="vertical-divider" />
+        <img alt="shopping cart" src={shoppingCart} className="cart" />
+        {summaryPizzasCount}
+      </>
+    );
+  };
   return (
     <header>
       <article className="header">
@@ -28,11 +42,7 @@ export default function Header({ navPanel }: boolean) {
           <div className="summary-button">
             <NavLink to={summaryPizzasCount ? '/summary' : '/empty'}>
               <button type="button" className="summary">
-                {getTotalPrice(order)}
-                {CURRENCY}
-                <div className="vertical-divider" />
-                <img alt="shopping cart" src={shoppingCart} className="cart" />
-                {summaryPizzasCount}
+                {buttonContent()}
               </button>
             </NavLink>
           </div>
@@ -42,3 +52,4 @@ export default function Header({ navPanel }: boolean) {
     </header>
   );
 }
+Header.defaultProps = { navPanel: false };

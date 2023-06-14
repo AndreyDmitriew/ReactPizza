@@ -22,13 +22,16 @@ export interface PizzaOrder {
   params: {
     price: number;
     count: number;
-    size: string;
+    size: number;
     type: string;
   };
 }
 
-export type AllPizzas = {
-  pizzas: [];
+export type Params = {
+  price: number;
+  count: number;
+  size: number;
+  type: string;
 };
 
 export interface OrderType {
@@ -37,22 +40,11 @@ export interface OrderType {
 }
 
 export type InitialStateType = {
-  filter?: string;
-  sort: string;
-  isLoading: boolean;
-  error: null;
-  order: OrderType[];
-};
-
-export type StateType = {
   filter: string;
   sort: string;
   isLoading: boolean;
   error: null;
   order: OrderType[];
-  name?: string;
-  initialState?: InitialStateType;
-  reducers: object;
 };
 
 export type PizzaName = {
@@ -64,15 +56,17 @@ export type ContentItemType = {
   order: PizzaOrder[];
 };
 
+export type SizesPizzaType = 26 | 30 | 40;
+
 export type TypeOfPizza = {
   pizza: PizzaType;
   type: string;
-  onChange: (pizzaType: string) => void;
+  onChange(pizzaType: string): void;
 };
 
 export type PizzaSizeType = {
   pizza: PizzaType;
   type: string;
   size: number;
-  onChange: (pizzaSize: number) => void;
+  onChange(pizzaSize: SizesPizzaType): void;
 };

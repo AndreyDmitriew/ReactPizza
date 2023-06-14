@@ -1,31 +1,30 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PizzaOrder, PizzaType } from '@ts/types/types';
-import { InitialStateType, StateType } from '../ts/types/types';
+import { PizzaOrder, InitialStateType, OrderType } from '@ts/types/types';
+import FiltersEnum from '@ts/enums/enums';
+import { WritableDraft } from 'immer/dist/internal';
 
-const initialState: InitialStateType = {
-  filter: 'Все',
-  sort: 'по популярности',
-  isLoading: false,
-  error: null,
-  order: [],
-};
+interface PizzaState {
+  order: PizzaOrder[];
+}
 
-const pizzaSlice = createSlice<StateType>({
+const pizzaSlice = createSlice({
   name: 'pizzas',
-  initialState,
+  initialState: {
+    filter: 'Все',
+    sort: 'по популярности',
+    isLoading: false,
+    error: null,
+    order: [] as PizzaOrder[],
+  } as InitialStateType & PizzaState,
   reducers: {
-    onFilterChange(state: StateType, action: PayloadAction<PizzaOrder>) {
+    onFilterChange(state, action: PayloadAction<FiltersEnum>) {
       state.filter = action.payload;
     },
 
-    addPizza(state: StateType, action: PayloadAction<PizzaOrder>) {
-      const pizza = action.payload;
+    addPizza(state, { payload }: PayloadAction<PizzaOrder>) {
+      const pizza: PizzaOrder = payload;
 
-      // const orderedPizza = state.order.find(
-      //     (o: PizzaType) => o.pizza.id === pizza.pizza.id
-      // );
-
-      const isParamsDifferent = state.order.find((o: PizzaType) => {
+      const isParamsDifferent = state.order.find((o: PizzaOrder) => {
         return (
           o.pizza.id === pizza.pizza.id &&
           o.params.type === pizza.params.type &&
@@ -34,48 +33,48 @@ const pizzaSlice = createSlice<StateType>({
       });
 
       if (isParamsDifferent) {
-        console.log('1');
-        state.order.forEach((e: PizzaType) => {
+        state.order.forEach((e: PizzaOrder) => {
           if (e.pizza.id === pizza.pizza.id) {
             e.params.count += 1;
           }
         });
       } else {
-        console.log('2');
         pizza.params.count = 1;
-        state.order = [...state.order, pizza];
+        state.order = [...state.order, pizza] as WritableDraft<OrderType[]> &
+          WritableDraft<PizzaOrder[]>;
       }
     },
 
-    deletePizza(state: StateType, action: PayloadAction<PizzaOrder>) {
+    deletePizza(state, action: PayloadAction<PizzaOrder>) {
       const pizza = action.payload;
       const orderedPizza = state.order.find(
-        (o: PizzaType) => o.pizza.id === pizza.pizza.id
+        (o: PizzaOrder) => o.pizza.id === pizza.pizza.id
       );
       if (orderedPizza) {
         state.order.splice(
           state.order.findIndex(
-            (e: PizzaType) => e.pizza.id === pizza.pizza.id
+            (e: PizzaOrder) => e.pizza.id === pizza.pizza.id
           ),
           1
         );
       }
     },
 
-    decrementPizza(state: StateType, action: PayloadAction<PizzaOrder>) {
+    decrementPizza(state, action: PayloadAction<PizzaOrder>) {
       const pizza = action.payload;
       const orderedPizza = state.order.find(
-        (o: PizzaType) => o.pizza.id === pizza.pizza.id
+        (o: PizzaOrder) => o.pizza.id === pizza.pizza.id
       );
       if (orderedPizza) {
-        state.order.forEach((e: PizzaType) => {
+        state.order.forEach((e: PizzaOrder) => {
           if (e.pizza.id === pizza.pizza.id && e.params.count > 1) {
             e.params.count -= 1;
           }
         });
       }
     },
-    trashAllPizza(state: StateType) {
+
+    trashAllPizza(state) {
       state.order = [];
     },
   },

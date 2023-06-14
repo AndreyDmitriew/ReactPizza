@@ -5,7 +5,7 @@ import {
   UNIT_OF_MEASUREMENT,
 } from '@constants/constants';
 import { v4 as uuidv4 } from 'uuid';
-import { PizzaSizeType } from '../../../ts/types/types';
+import { PizzaSizeType, SizesPizzaType } from '@ts/types/types';
 
 export default function PizzaSize({
   pizza,
@@ -13,10 +13,13 @@ export default function PizzaSize({
   size,
   onChange,
 }: PizzaSizeType) {
-  const pizzaSizes = [SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA];
+  const pizzaSizes: SizesPizzaType[] = [SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA];
 
   const getClassName = (index: number) => {
-    const isEnabled = pizza.price[type]?.hasOwnProperty(pizzaSizes[index]);
+    const isEnabled = Object.prototype.hasOwnProperty.call(
+      pizza.price[type as keyof typeof pizza.price],
+      pizzaSizes[index]
+    );
     const isChecked = pizzaSizes[index] === Number(size);
 
     if (!isEnabled) {

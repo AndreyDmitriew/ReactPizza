@@ -1,15 +1,13 @@
-import { THIN, TRADITIONAL } from '@constants/constants';
 import { v4 as uuidv4 } from 'uuid';
-import { TypeOfPizza } from '../../../ts/types/types';
+import { TypeOfPizza } from '@ts/types/types';
+import { THIN, TRADITIONAL } from '@constants/constants';
 
 export default function PizzaType({ pizza, type, onChange }: TypeOfPizza) {
   const pizzaTypes = [THIN, TRADITIONAL];
-
   const getClassName = (index: number) => {
     const pizzaType = pizzaTypes[index];
-    const isEnabled = pizza.price[pizzaType];
+    const isEnabled = pizza.price[pizzaType as keyof typeof pizza.price];
     const isChecked = pizzaType === type;
-
     if (!isEnabled) {
       return 'form-radio-group-item-unavailable';
     }
@@ -18,7 +16,6 @@ export default function PizzaType({ pizza, type, onChange }: TypeOfPizza) {
     }
     return 'form-radio-group-item';
   };
-
   return (
     <>
       {pizzaTypes.map((pizzaType, index) => (
