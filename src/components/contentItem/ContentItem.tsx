@@ -1,38 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CURRENCY } from '@constants/constants';
 import plusOrange from '@assets/plusOrange.svg';
 import { addPizza } from '@store/pizzaSlice';
 import { ContentItemType, SizesPizzaType } from '@ts/types/types';
+import { useAppDispatch } from '@hook/hook';
 import PizzaSize from './pizzaSize/PizzaSize';
 import PizzaType from './pizzaType/PizzaType';
-import { useAppDispatch } from '../../hook';
 
 import './ContentItem.scss';
 
 export default function ContentItem({ pizza, order }: ContentItemType) {
-  const typeOfPizza: string = Object.keys(pizza.price)[0];
-  const [type, setType] = useState<string>(typeOfPizza);
-  const [size, setSize] = useState<26 | 30 | 40>(() => {
+  const [type, setType] = useState<string>('thin');
+  const [size, setSize] = useState<26 | 30 | 40>(26);
+  const [price, setPrice] = useState(0);
+
+  const count = order.find((e) => e.pizza.id === pizza.id)?.params?.count || 0;
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const typeOfPizza: string = Object.keys(pizza.price)[0];
+    setType(typeOfPizza);
+
     const firstPizzaType = Object.keys(
       pizza.price
     )[0] as keyof typeof pizza.price;
-    return Object.keys(
-      pizza.price[firstPizzaType] || ({} as Record<SizesPizzaType, number>)
-    )[0] as unknown as SizesPizzaType;
-  });
 
-  const [price, setPrice] = useState(0);
-  const count = order.find((e) => e.pizza.id === pizza.id)?.params?.count || 0;
-  const dispatch = useAppDispatch();
+    const sizeAndType = pizza.price[firstPizzaType];
+    const defaultEmptyObj = {} as Record<SizesPizzaType, number>;
+    const pizzaSize = Object.keys(
+      sizeAndType || defaultEmptyObj
+    )[0] as unknown as SizesPizzaType;
+
+    setSize(pizzaSize);
+  }, []);
 
   useEffect(() => {
     const currentPizzaType = pizza?.price[type as keyof typeof pizza.price];
     const pizzaPrice = (currentPizzaType && currentPizzaType[size]) || 0;
     setPrice(pizzaPrice);
   }, [type, size, count]);
-
-  const addPizzaToStore = () => {
+  function addPizzaToStore() {
     dispatch(
       addPizza({
         pizza,
@@ -44,7 +53,7 @@ export default function ContentItem({ pizza, order }: ContentItemType) {
         },
       })
     );
-  };
+  }
 
   return (
     <article className="content-item-container">

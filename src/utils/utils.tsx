@@ -7,7 +7,7 @@ export const getSummaryPizzasCount = (order: PizzaOrder[]) => {
 };
 
 export const getTotalPrice = (order: PizzaOrder[]) => {
-  return order?.reduce((acc: number, curr: PizzaOrder) => {
+  return order.reduce((acc: number, curr: PizzaOrder) => {
     return acc + curr.params.price * curr.params.count;
   }, 0);
 };

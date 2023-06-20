@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import '@styles/colors';
 
 .main-title {
   font-size: 25px;
@@ -66,6 +66,7 @@
 
   .sort {
     display: flex;
+    position: relative;
     align-items: baseline;
     white-space: nowrap;
     gap: 6px;

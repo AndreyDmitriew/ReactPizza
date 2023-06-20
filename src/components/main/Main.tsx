@@ -3,10 +3,10 @@ import { useQuery } from 'react-query';
 
 import { sort } from '@assets/locale/ru.json';
 import { PizzaType, PizzaName, PizzaOrder } from '@ts/types/types';
+import { useAppSelector } from '@hook/hook';
 import ContentItem from '../contentItem/ContentItem';
-import useRenderButtons from './useRenderButtons';
+import RenderButtons from './RenderButtons';
 import getAllPizzas from '../../core/api';
-import { useAppSelector } from '../../hook';
 import vector from '../../assets/vector.svg';
 
 import { filerPizzas, sortListItems } from '../../config/config';
@@ -14,19 +14,19 @@ import { filerPizzas, sortListItems } from '../../config/config';
 import './Main.scss';
 
 export default function Main() {
-  const [pizzass, setPizzass] = useState<PizzaType[]>([]);
+  const [pizzas, setPizzas] = useState<PizzaType[]>([]);
   const [isSortListOpen, setIsSortListOpen] = useState(false);
   const [sortItem, setSortItem] = useState(sortListItems[0]);
   const sortValue = useRef(null);
   const order: PizzaOrder[] = useAppSelector((state) => state.pizzas.order);
   const filter = useAppSelector((state) => state.pizzas.filter);
-  const renderButtons = useRenderButtons(filter);
-  const { data: pizzas } = useQuery<PizzaType[], Error>(
+  const renderButtons = RenderButtons(filter);
+  const { data: initialPizzasData } = useQuery<PizzaType[], Error>(
     'repoData',
     async () => {
       try {
         const pizzasData = await getAllPizzas();
-        setPizzass(pizzasData);
+        setPizzas(pizzasData);
         return pizzasData;
       } catch (e) {
         throw new Error(`Error! status: ${String(e)}`);
@@ -37,10 +37,10 @@ export default function Main() {
   useEffect(() => {
     const available = filerPizzas[filter];
     if (filter === 'Все') {
-      setPizzass(pizzas || []);
+      setPizzas(initialPizzasData || []);
     } else {
-      setPizzass(
-        (pizzas || []).filter(({ name }: PizzaName) => {
+      setPizzas(
+        (initialPizzasData || []).filter(({ name }: PizzaName) => {
           return available?.includes(name);
         })
       );
@@ -52,16 +52,18 @@ export default function Main() {
     setSortItem(e);
     switch (e) {
       case 'по популярности':
-        setPizzass(pizzass.sort((a, b) => (a.rating > b.rating ? 1 : -1)));
+        setPizzas(
+          (pizzas || []).sort((a, b) => (a.rating > b.rating ? 1 : -1))
+        );
         break;
       case 'по цене':
-        setPizzass(pizzass.sort((a, b) => (a.price < b.price ? 1 : -1)));
+        setPizzas((pizzas || []).sort((a, b) => (a.price < b.price ? 1 : -1)));
         break;
       case 'по алфавиту':
-        setPizzass(pizzass.sort((a, b) => (a.name > b.name ? 1 : -1)));
+        setPizzas((pizzas || []).sort((a, b) => (a.name > b.name ? 1 : -1)));
         break;
       default:
-        setPizzass(order.map((pizzaOrder) => pizzaOrder.pizza));
+        setPizzas(order.map((pizzaOrder) => pizzaOrder.pizza));
     }
   };
 
@@ -69,7 +71,7 @@ export default function Main() {
     <main>
       <article className="nav-panel">
         <div className="filter-buttons-container">{renderButtons}</div>
-        <label htmlFor="sort" style={{ position: 'relative' }} className="sort">
+        <label htmlFor="sort" className="sort">
           <img alt="Vector" className="vector" src={vector} />
           <p className="sort-title">{sort.sortTitle}</p>
           <p
@@ -82,14 +84,14 @@ export default function Main() {
           {isSortListOpen && (
             <div className="list-container">
               <ul className="sort-list" ref={sortValue}>
-                {sortListItems.map((el) => (
+                {sortListItems.map((item) => (
                   <li
                     role="presentation"
-                    onClick={() => onSort(el)}
-                    key={el}
-                    value={el}
+                    onClick={() => onSort(item)}
+                    key={item}
+                    value={item}
                   >
-                    {el}
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -98,11 +100,13 @@ export default function Main() {
         </label>
       </article>
       <h3 className="main-title">Все пиццы</h3>
-      <section className="main-content">
-        {pizzass?.map((el: PizzaType) => (
-          <ContentItem key={el.id} pizza={el} order={order} />
-        ))}
-      </section>
+      {pizzas && (
+        <section className="main-content">
+          {pizzas.map((el: PizzaType) => (
+            <ContentItem key={el.id} pizza={el} order={order} />
+          ))}
+        </section>
+      )}
     </main>
   );
 }

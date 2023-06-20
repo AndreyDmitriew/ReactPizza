@@ -1,20 +1,20 @@
 import shopper from '@assets/shopper.svg';
 import emptyPage from '@assets/locale/ru.json';
 
-import Button from '../button/Button';
+import { BackwardsButton } from '../button/Buttons';
 
 import './EmptyTrash.scss';
 
+const translate = emptyPage.emptyPage;
 export default function EmptyTrash() {
-  const t = emptyPage.emptyPage;
   return (
     <main className="main-cart-wrapper">
       <div className="title">
-        <h3>{t.emptyTrash}</h3>
+        <h3>{translate.emptyTrash}</h3>
       </div>
-      <p className="sub-title">{t.emptyOrder}</p>
+      <p className="sub-title">{translate.emptyOrder}</p>
       <img alt="Shopper men" className="shopper" src={shopper} />
-      <Button type="backwards" />
+      <BackwardsButton />
     </main>
   );
 }

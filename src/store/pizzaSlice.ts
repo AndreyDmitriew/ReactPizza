@@ -21,13 +21,12 @@ const pizzaSlice = createSlice({
     addPizza(state, { payload }: PayloadAction<PizzaOrder>) {
       const pizza: PizzaOrder = payload;
 
-      const isParamsDifferent = state.order.find((o: PizzaOrder) => {
-        return (
+      const isParamsDifferent = state.order.find(
+        (o: PizzaOrder) =>
           o.pizza.id === pizza.pizza.id &&
           o.params.type === pizza.params.type &&
           o.params.size === pizza.params.size
-        );
-      });
+      );
 
       if (isParamsDifferent) {
         state.order.forEach((e: PizzaOrder) => {
@@ -48,23 +47,21 @@ const pizzaSlice = createSlice({
         (o: PizzaOrder) => o.pizza.id === pizza.pizza.id
       );
       if (orderedPizza) {
-        state.order.splice(
-          state.order.findIndex(
-            (e: PizzaOrder) => e.pizza.id === pizza.pizza.id
-          ),
-          1
+        const index = state.order.findIndex(
+          (e: PizzaOrder) => e.pizza.id === pizza.pizza.id
         );
+
+        state.order.splice(index, 1);
       }
     },
 
-    decrementPizza(state, action: PayloadAction<PizzaOrder>) {
-      const pizza = action.payload;
+    decrementPizza(state, { payload }: PayloadAction<PizzaOrder>) {
       const orderedPizza = state.order.find(
-        (o: PizzaOrder) => o.pizza.id === pizza.pizza.id
+        (o: PizzaOrder) => o.pizza.id === payload.pizza.id
       );
       if (orderedPizza) {
         state.order.forEach((e: PizzaOrder) => {
-          if (e.pizza.id === pizza.pizza.id && e.params.count > 1) {
+          if (e.pizza.id === payload.pizza.id && e.params.count > 1) {
             e.params.count -= 1;
           }
         });

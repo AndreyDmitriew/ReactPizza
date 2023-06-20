@@ -18,13 +18,16 @@
     "jsx": "react-jsx",
     "types": ["node", "vite-svg-loader", "vite/client"],
     "paths": {
+      "@/*": ["src/*"],
       "@components/*": ["components/*"],
       "@router/*": ["router/*"],
       "@constants/*": ["constants/*"],
       "@ts/*": ["ts/*"],
       "@store/*": ["store/*"],
       "@assets/*": ["assets/*"],
-      "@locale/*": ["assets/locale/*"]
+      "@locale/*": ["assets/locale/*"],
+      "@styles/*": ["styles/*"],
+      "@hook/*": ["hook/*"]
     },
     "baseUrl": "src"
   },

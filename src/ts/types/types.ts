@@ -27,13 +27,6 @@ export interface PizzaOrder {
   };
 }
 
-export type Params = {
-  price: number;
-  count: number;
-  size: number;
-  type: string;
-};
-
 export interface OrderType {
   order: PizzaOrder[];
   addPizza: (pizza: PizzaOrder) => void;

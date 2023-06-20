@@ -1,25 +1,22 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import { CURRENCY } from '@constants/constants';
 import { useNavigate } from 'react-router-dom';
-import { Params, PizzaOrder } from '@ts/types/types';
+import { PizzaOrder } from '@ts/types/types';
 
 import {
-  addPizza,
-  deletePizza,
-  decrementPizza,
   trashAllPizza,
 } from '@store/pizzaSlice';
 import React from 'react';
 import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
 
-import { useAppSelector, useAppDispatch } from '../../hook';
+import { useAppSelector, useAppDispatch } from '@hook/hook';
 import shoppingCart from '../../assets/shoppingСartGrey.svg';
 import trash from '../../assets/trash.svg';
 
-import Button from '../button/Button';
+import { BackButton } from '../button/Buttons';
 
 import './SummaryCart.scss';
+import { trashAllOrderedPizza } from '../../utils/actions';
+import userOrder from '@components/summaryCart/UserOrder';
 
 export default function SummaryCart() {
   const dispatch = useAppDispatch();
@@ -31,63 +28,6 @@ export default function SummaryCart() {
   const submit = () => {
     dispatch(trashAllPizza());
     navigate('/');
-  };
-  const userOrder = () => {
-    return order?.map((el: PizzaOrder) => {
-      const price = el.params.price * el.params.count;
-      const { count }: Params = el.params;
-
-      return (
-        <div key={uuidv4()}>
-          <div className="item-container">
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '18px',
-              }}
-            >
-              <img alt="pizza" className="item-image" src={el.pizza.image} />
-              <div className="item-name-set">
-                <h6 className="item-name">{el.pizza.name}</h6>
-                <p className="item-parameters">
-                  {el.params.type} тесто, {el.params.size} см.{' '}
-                </p>
-              </div>
-            </div>
-
-            <div className="item-set-container">
-              <div className="count">
-                <button
-                  type="button"
-                  aria-label="Minus"
-                  onClick={() => dispatch(decrementPizza(el))}
-                  className="circle minus"
-                />
-                <p>{count}</p>
-                <button
-                  type="button"
-                  aria-label="Plus"
-                  onClick={() => dispatch(addPizza(el))}
-                  className="circle plus"
-                />
-              </div>
-
-              <p>
-                {price} {CURRENCY}
-              </p>
-
-              <button
-                type="button"
-                aria-label="Cross"
-                onClick={() => dispatch(deletePizza(el))}
-                className="circle-cross cross"
-              />
-            </div>
-          </div>
-        </div>
-      );
-    });
   };
 
   return (
@@ -104,29 +44,26 @@ export default function SummaryCart() {
         <button
           type="button"
           className="trash-name-container"
-          onClick={() => dispatch(trashAllPizza())}
+          onClick={() => trashAllOrderedPizza(dispatch)}
         >
           <img alt="trash" src={trash} />
           <p className="trash-name">Очистить корзину</p>
         </button>
       </article>
 
-      {userOrder()}
+      {userOrder({ order, dispatch })}
 
       <div className="summary-text-container">
-        <p style={{ fontWeight: '400', fontSize: '15px' }}>
+        <p className="total-count">
           Всего пицц: <strong> {summaryPizzasCount} </strong>
         </p>
-        <p style={{ fontWeight: '400', fontSize: '15px' }}>
-          Сумма заказа:{' '}
-          <span style={{ fontWeight: '700', color: 'orange' }}>
-            {totalPrice}
-          </span>
+        <p className="total-price-title">
+          Сумма заказа: <span className="total-price-count">{totalPrice}</span>
         </p>
       </div>
 
       <div className="button-container">
-        <Button type="back" />
+        <BackButton />
         <button onClick={submit} className="pay" type="button">
           <p className="button-pay-title">Оплатить сейчас</p>
         </button>

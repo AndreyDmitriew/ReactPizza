@@ -23,6 +23,8 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/store'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@locale': path.resolve(__dirname, './src/assets/locale'),
+      '@styles': path.resolve(__dirname, './src/styles'),
+      '@hook': path.resolve(__dirname, './src/hook'),
     },
   },
 });

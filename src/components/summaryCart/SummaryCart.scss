@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import '@styles/colors';
 
 .main-cart-wrapper {
   width: 680px;
@@ -64,6 +64,12 @@
 
     @media only screen and (max-width: 620px) {
       display: block;
+    }
+
+    .item-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
     }
 
     .item-name-set {
@@ -194,6 +200,21 @@
 
     @media only screen and (max-width: 576px) {
       display: block;
+    }
+
+    .total-count {
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    .total-price-title {
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    .total-price-count {
+      font-weight: 700;
+      color: orange;
     }
   }
 
