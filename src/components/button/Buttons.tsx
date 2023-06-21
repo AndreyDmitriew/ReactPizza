@@ -11,6 +11,7 @@ import './Buttons.scss';
 export interface Args {
   name?: string;
   isActive?: boolean;
+  // eslint-disable-next-line react/no-unused-prop-types,react/require-default-props
   id?: string;
 }
 

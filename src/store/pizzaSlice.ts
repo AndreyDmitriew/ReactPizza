@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PizzaOrder, InitialStateType, OrderType } from '@ts/types/types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import FiltersEnum from '@ts/enums/enums';
 import { PizzaState } from '@ts/interfaces/interfaces';
 import { WritableDraft } from 'immer/dist/internal';
