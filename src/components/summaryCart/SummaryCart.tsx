@@ -1,34 +1,24 @@
 import { CURRENCY } from '@constants/constants';
-import { useNavigate } from 'react-router-dom';
 import { PizzaOrder } from '@ts/types/types';
 
-import {
-  trashAllPizza,
-} from '@store/pizzaSlice';
 import React from 'react';
+import userOrder from '@components/summaryCart/UserOrder';
+import { useAppSelector, useAppDispatch } from '@hook/hook';
 import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
 
-import { useAppSelector, useAppDispatch } from '@hook/hook';
 import shoppingCart from '../../assets/shoppingСartGrey.svg';
 import trash from '../../assets/trash.svg';
 
-import { BackButton } from '../button/Buttons';
+import { Button } from '../button/Buttons';
 
 import './SummaryCart.scss';
 import { trashAllOrderedPizza } from '../../utils/actions';
-import userOrder from '@components/summaryCart/UserOrder';
 
 export default function SummaryCart() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const order: PizzaOrder[] = useAppSelector((state) => state.pizzas.order);
   const totalPrice = ` ${getTotalPrice(order)} ${CURRENCY}`;
   const summaryPizzasCount = `${getSummaryPizzasCount(order)}шт.`;
-
-  const submit = () => {
-    dispatch(trashAllPizza());
-    navigate('/');
-  };
 
   return (
     <main className="main-cart-wrapper">
@@ -63,10 +53,13 @@ export default function SummaryCart() {
       </div>
 
       <div className="button-container">
-        <BackButton />
-        <button onClick={submit} className="pay" type="button">
-          <p className="button-pay-title">Оплатить сейчас</p>
-        </button>
+        <Button name="Вернуться назад" styleButton={'back'} type="button" property="back" path="/"/>
+        <Button
+          name={'Оплатить сейчас'}
+          styleButton={'pay'}
+          type="submit"
+          property="pay"
+        />
       </div>
     </main>
   );

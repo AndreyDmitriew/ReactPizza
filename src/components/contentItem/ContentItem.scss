@@ -48,7 +48,9 @@
     float: left;
     font-weight: 700;
     font-size: 14px;
+    font-family: system-ui, sans-serif;
     border-radius: 5px;
+    border: none;
   }
 
   .form-radio-group-item-checked {
@@ -111,6 +113,9 @@
     justify-content: center;
     gap: 6px;
     height: 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: none;
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
 
     .add-button-name {
@@ -138,6 +143,8 @@
     gap: 7px;
     height: 40px;
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
+    border-radius: 30px;
+    cursor: pointer;
   }
   .added:hover {
     color: $mainBackgroundColor;

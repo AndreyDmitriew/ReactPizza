@@ -11,6 +11,8 @@
   color: $mainBackgroundColor;
   background-color: $contractFontColor;
   border-radius: 30px;
+  border: none;
+  cursor: pointer;
 
   .vertical-divider {
     border-left: 1px solid rgba(220, 211, 211, 0.64);
@@ -30,8 +32,16 @@
 
 .filter {
   padding: 10px 28px;
-  box-sizing: content-box;
+  width: max-content;
   border-radius: 30px;
+  border: none;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  letter-spacing: 0.015em;
+  font-family: system-ui, sans-serif;
+  box-sizing: content-box;
 
   @media (max-width: 1210px) {
     margin: 5px 10px 10px 0;
@@ -82,6 +92,7 @@
   background-color: $mainBackgroundColor;
   border: 1px solid $borderButtonColor;
   border-radius: 30px;
+  cursor: pointer;
   gap: 10px;
 
   .button-back-title {
@@ -94,6 +105,13 @@
   height: 45px;
   margin: 0 18px;
   padding: 0 18px;
+  border-radius: 30px;
+  border: none;
+  font-size: 0.8em;
+  font-weight: 500;
+  font-family: system-ui, sans-serif;
+  cursor: pointer;
+  color: $mainBackgroundColor;
   background-color: $contractFontColor;
 
   .button-pay-title {
@@ -108,6 +126,11 @@
   height: 45px;
   margin: 0 auto;
   padding: 0 18px;
+  font-size: 0.9em;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
   background-color: $mainFontColor;
 
   .button-backwards-title {

@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { CURRENCY } from '@constants/constants';
-import plusOrange from '@assets/plusOrange.svg';
-import { addPizza } from '@store/pizzaSlice';
 import { ContentItemType, SizesPizzaType } from '@ts/types/types';
-import { useAppDispatch } from '@hook/hook';
+import { Button } from '@components/button/Buttons';
 import PizzaSize from './pizzaSize/PizzaSize';
 import PizzaType from './pizzaType/PizzaType';
 
@@ -16,8 +13,6 @@ export default function ContentItem({ pizza, order }: ContentItemType) {
   const [price, setPrice] = useState(0);
 
   const count = order.find((e) => e.pizza.id === pizza.id)?.params?.count || 0;
-
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const typeOfPizza: string = Object.keys(pizza.price)[0];
@@ -41,19 +36,6 @@ export default function ContentItem({ pizza, order }: ContentItemType) {
     const pizzaPrice = (currentPizzaType && currentPizzaType[size]) || 0;
     setPrice(pizzaPrice);
   }, [type, size, count]);
-  function addPizzaToStore() {
-    dispatch(
-      addPizza({
-        pizza,
-        params: {
-          price,
-          count: Number(count) + 1,
-          type,
-          size,
-        },
-      })
-    );
-  }
 
   return (
     <article className="content-item-container">
@@ -74,18 +56,27 @@ export default function ContentItem({ pizza, order }: ContentItemType) {
         </p>
 
         {count ? (
-          <button type="button" className="added" onClick={addPizzaToStore}>
-            <img alt="shopping cart" src={plusOrange} />
-            <p className="add-button-name">Добавить</p>
-            <div className="notification-round-container">
-              <span className="notification-container-text">{count}</span>
-            </div>
-          </button>
+          <Button
+            name="Добавить"
+            styleButton="added"
+            type="button"
+            property="added"
+            count={count}
+            pizza={pizza}
+            price={price}
+            size={size}
+          />
         ) : (
-          <button type="button" className="added" onClick={addPizzaToStore}>
-            <img alt="shopping cart" src={plusOrange} />
-            <p className="add-button-name">Добавить</p>
-          </button>
+          <Button
+            name="Добавить"
+            styleButton="add"
+            type="button"
+            property="add"
+            count={count}
+            pizza={pizza}
+            price={price}
+            size={size}
+          />
         )}
       </div>
     </article>

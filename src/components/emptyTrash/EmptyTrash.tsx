@@ -1,7 +1,7 @@
 import shopper from '@assets/shopper.svg';
 import emptyPage from '@assets/locale/ru.json';
 
-import { BackwardsButton } from '../button/Buttons';
+import { Button } from '../button/Buttons';
 
 import './EmptyTrash.scss';
 
@@ -14,7 +14,14 @@ export default function EmptyTrash() {
       </div>
       <p className="sub-title">{translate.emptyOrder}</p>
       <img alt="Shopper men" className="shopper" src={shopper} />
-      <BackwardsButton />
+      <Button
+        key="back"
+        name="Вернуться назад"
+        styleButton="backwards"
+        type="button"
+        property="backwards"
+        path="/"
+      />
     </main>
   );
 }

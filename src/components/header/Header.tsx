@@ -1,12 +1,13 @@
+import { ReactNode } from 'react';
 import shoppingCart from '@assets/shoppingСart.svg';
 import { CURRENCY } from '@constants/constants';
-import { NavLink } from 'react-router-dom';
 import icon from '@assets/pizzaLogo.svg';
 
 import { mainHeader } from '@assets/locale/ru.json';
 import { Props } from '@ts/interfaces/interfaces';
 import { useAppSelector } from '@hook/hook';
 
+import { SummaryButton } from '@components/button/Buttons';
 import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
 
 import './Header.scss';
@@ -15,7 +16,7 @@ const translate = mainHeader;
 export default function Header({ navPanel }: Props) {
   const order = useAppSelector((state) => state.pizzas.order);
   const summaryPizzasCount: number = getSummaryPizzasCount(order);
-  const buttonContent = () => {
+  const buttonContent = (): ReactNode => {
     return (
       <>
         {getTotalPrice(order)}
@@ -39,13 +40,10 @@ export default function Header({ navPanel }: Props) {
         </div>
 
         {navPanel && (
-          <div className="summary-button">
-            <NavLink to={summaryPizzasCount ? '/summary' : '/empty'}>
-              <button type="button" className="summary">
-                {buttonContent()}
-              </button>
-            </NavLink>
-          </div>
+          <SummaryButton
+            summaryPizzasCount={summaryPizzasCount}
+            buttonContent={buttonContent}
+          />
         )}
       </article>
 
