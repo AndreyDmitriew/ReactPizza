@@ -1,17 +1,14 @@
-import { ReactNode } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import arrowBack from '@assets/arrowBack.svg';
+import { useNavigate } from 'react-router-dom';
 
 import { addPizza, onFilterChange, trashAllPizza } from '@store/pizzaSlice';
 import FiltersEnum from '@ts/enums/enums';
 import { useAppDispatch } from '@hook/hook';
 
 import './Buttons.scss';
-import plus from '@assets/plus.svg';
-import plusOrange from '@assets/plusOrange.svg';
 import { PizzaOrder, PizzaType } from '@ts/types/types';
+import getButtonsData from '@components/button/ButtonsData';
 
-export interface ButtonType {
+export interface ButtonProps {
   name: string;
   styleButton?: string;
   type?: string;
@@ -24,9 +21,14 @@ export interface ButtonType {
   size?: number;
 }
 
-export type SummaryButtonType = {
-  summaryPizzasCount: number;
-  buttonContent: () => ReactNode;
+type ButtonData = {
+  alt?: string;
+  src?: string;
+  title: JSX.Element;
+};
+
+type ButtonsData = {
+  [key: string]: ButtonData;
 };
 
 export function Button({
@@ -40,9 +42,16 @@ export function Button({
   pizza,
   price,
   size,
-}: ButtonType) {
+}: ButtonProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const BUTTONS_DATA: ButtonsData = getButtonsData(name);
+
+  function isButtonDataWithImage(
+    data: ButtonData | { title: string }
+  ): data is ButtonData {
+    return 'alt' in data && 'src' in data;
+  }
 
   const handleClick = () => {
     if (action) {
@@ -73,18 +82,7 @@ export function Button({
     }
   };
 
-  const buttonName = () => {
-    if (property === 'back') {
-      return <p className="button-back-title">{name}</p>;
-    }
-    if (property === 'backwards') {
-      return <p className="button-backwards-title">{name}</p>;
-    }
-    if (property === 'add' || property === 'added') {
-      return <p className="add-button-name">{name}</p>;
-    }
-    return name;
-  };
+  const buttonData = (property && BUTTONS_DATA[property]) || { title: name };
 
   return (
     <button
@@ -92,31 +90,16 @@ export function Button({
       onClick={handleClick}
       className={styleButton}
     >
-      {property === 'back' && <img alt="back" src={arrowBack} />}
-      {property === 'add' && <img alt="shopping cart" src={plus} />}
-      {property === 'added' && <img alt="shopping cart" src={plusOrange} />}
-      {buttonName()}
+      {isButtonDataWithImage(buttonData) && (
+        <img alt={buttonData.alt} src={buttonData.src} />
+      )}
+      {buttonData.title}
       {property === 'added' && (
         <div className="notification-round-container">
           <span className="notification-container-text">{count}</span>
         </div>
       )}
     </button>
-  );
-}
-
-export function SummaryButton({
-  summaryPizzasCount,
-  buttonContent,
-}: SummaryButtonType) {
-  return (
-    <div className="summary-button">
-      <NavLink to={summaryPizzasCount ? '/summary' : '/empty'}>
-        <button type="button" className="summary">
-          {buttonContent()}
-        </button>
-      </NavLink>
-    </div>
   );
 }
 

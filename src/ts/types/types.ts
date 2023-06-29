@@ -44,22 +44,4 @@ export type PizzaName = {
   name: string;
 };
 
-export type ContentItemType = {
-  pizza: PizzaType;
-  order: PizzaOrder[];
-};
-
 export type SizesPizzaType = 26 | 30 | 40;
-
-export type TypeOfPizza = {
-  pizza: PizzaType;
-  type: string;
-  onChange(pizzaType: string): void;
-};
-
-export type PizzaSizeType = {
-  pizza: PizzaType;
-  type: string;
-  size: number;
-  onChange(pizzaSize: SizesPizzaType): void;
-};

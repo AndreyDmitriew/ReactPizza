@@ -20,6 +20,10 @@ export default function SummaryCart() {
   const totalPrice = ` ${getTotalPrice(order)} ${CURRENCY}`;
   const summaryPizzasCount = `${getSummaryPizzasCount(order)}шт.`;
 
+  function getUserOrder(){
+    return userOrder({ order, dispatch });
+  }
+
   return (
     <main className="main-cart-wrapper">
       <article className="cart-container">
@@ -41,7 +45,7 @@ export default function SummaryCart() {
         </button>
       </article>
 
-      {userOrder({ order, dispatch })}
+      {getUserOrder()}
 
       <div className="summary-text-container">
         <p className="total-count">
@@ -53,7 +57,13 @@ export default function SummaryCart() {
       </div>
 
       <div className="button-container">
-        <Button name="Вернуться назад" styleButton={'back'} type="button" property="back" path="/"/>
+        <Button
+          name="Вернуться назад"
+          styleButton={'back'}
+          type="button"
+          property="back"
+          path="/"
+        />
         <Button
           name={'Оплатить сейчас'}
           styleButton={'pay'}

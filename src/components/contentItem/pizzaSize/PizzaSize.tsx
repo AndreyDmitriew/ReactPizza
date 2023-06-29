@@ -5,8 +5,14 @@ import {
   UNIT_OF_MEASUREMENT,
 } from '@constants/constants';
 import { v4 as uuidv4 } from 'uuid';
-import { PizzaSizeType, SizesPizzaType } from '@ts/types/types';
+import { PizzaType, SizesPizzaType } from '@ts/types/types';
 
+type PizzaSizeType = {
+  pizza: PizzaType;
+  type: string;
+  size: number;
+  onChange(pizzaSize: SizesPizzaType): void;
+};
 export default function PizzaSize({
   pizza,
   type,
@@ -14,6 +20,7 @@ export default function PizzaSize({
   onChange,
 }: PizzaSizeType) {
   const pizzaSizes: SizesPizzaType[] = [SMALL_PIZZA, MIDDLE_PIZZA, BIG_PIZZA];
+
   function getClassName(index: number) {
     const isEnabled = Object.prototype.hasOwnProperty.call(
       pizza.price[type as keyof typeof pizza.price],
@@ -41,7 +48,7 @@ export default function PizzaSize({
           key={uuidv4()}
           onClick={() => onChange(pizzaSize)}
         >
-          <input id={`radio-${index + 1}`} type="radio" name="radio" />
+          <input key={`radio-${index + 1}`} type="radio" name="radio" />
           <label htmlFor={`radio-${index + 1}`} className="unit-of-measurement">
             {pizzaSize} {UNIT_OF_MEASUREMENT}
           </label>

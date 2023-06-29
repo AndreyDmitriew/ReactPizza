@@ -2,6 +2,7 @@ import { PizzaOrder, InitialStateType, OrderType } from '@ts/types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import FiltersEnum from '@ts/enums/enums';
 import { PizzaState } from '@ts/interfaces/interfaces';
+// @ts-ignore
 import { WritableDraft } from 'immer/dist/internal';
 
 const pizzaSlice = createSlice({

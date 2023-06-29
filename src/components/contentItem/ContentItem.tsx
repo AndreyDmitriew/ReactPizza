@@ -1,18 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CURRENCY } from '@constants/constants';
-import { ContentItemType, SizesPizzaType } from '@ts/types/types';
+import {
+  PizzaOrder,
+  PizzaType as PizzaTSType,
+  SizesPizzaType,
+} from '@ts/types/types';
 import { Button } from '@components/button/Buttons';
 import PizzaSize from './pizzaSize/PizzaSize';
 import PizzaType from './pizzaType/PizzaType';
 
 import './ContentItem.scss';
 
+export type ContentItemType = {
+  pizza: PizzaTSType;
+  order: PizzaOrder[];
+};
+
 export default function ContentItem({ pizza, order }: ContentItemType) {
   const [type, setType] = useState<string>('thin');
-  const [size, setSize] = useState<26 | 30 | 40>(26);
+  const [size, setSize] = useState<SizesPizzaType>(26);
   const [price, setPrice] = useState(0);
 
-  const count = order.find((e) => e.pizza.id === pizza.id)?.params?.count || 0;
+  const count = order.find((e) => e.pizza.id === pizza.id)?.params.count;
 
   useEffect(() => {
     const typeOfPizza: string = Object.keys(pizza.price)[0];
@@ -55,29 +64,16 @@ export default function ContentItem({ pizza, order }: ContentItemType) {
           {CURRENCY}
         </p>
 
-        {count ? (
-          <Button
-            name="Добавить"
-            styleButton="added"
-            type="button"
-            property="added"
-            count={count}
-            pizza={pizza}
-            price={price}
-            size={size}
-          />
-        ) : (
-          <Button
-            name="Добавить"
-            styleButton="add"
-            type="button"
-            property="add"
-            count={count}
-            pizza={pizza}
-            price={price}
-            size={size}
-          />
-        )}
+        <Button
+          name="Добавить"
+          styleButton={count ? 'added' : 'add'}
+          type="button"
+          property={count ? 'added' : 'add'}
+          count={count}
+          pizza={pizza}
+          price={price}
+          size={size}
+        />
       </div>
     </article>
   );

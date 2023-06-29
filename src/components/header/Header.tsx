@@ -1,14 +1,11 @@
-import { ReactNode } from 'react';
-import shoppingCart from '@assets/shoppingСart.svg';
-import { CURRENCY } from '@constants/constants';
 import icon from '@assets/pizzaLogo.svg';
 
 import { mainHeader } from '@assets/locale/ru.json';
 import { Props } from '@ts/interfaces/interfaces';
 import { useAppSelector } from '@hook/hook';
 
-import { SummaryButton } from '@components/button/Buttons';
-import { getSummaryPizzasCount, getTotalPrice } from '../../utils/utils';
+import SummaryButton from '@components/summaryButton/SummaryButton';
+import { getSummaryPizzasCount } from '../../utils/utils';
 
 import './Header.scss';
 
@@ -16,17 +13,6 @@ const translate = mainHeader;
 export default function Header({ navPanel }: Props) {
   const order = useAppSelector((state) => state.pizzas.order);
   const summaryPizzasCount: number = getSummaryPizzasCount(order);
-  const buttonContent = (): ReactNode => {
-    return (
-      <>
-        {getTotalPrice(order)}
-        {CURRENCY}
-        <div className="vertical-divider" />
-        <img alt="shopping cart" src={shoppingCart} className="cart" />
-        {summaryPizzasCount}
-      </>
-    );
-  };
 
   return (
     <header>
@@ -42,7 +28,7 @@ export default function Header({ navPanel }: Props) {
         {navPanel && (
           <SummaryButton
             summaryPizzasCount={summaryPizzasCount}
-            buttonContent={buttonContent}
+            order={order}
           />
         )}
       </article>

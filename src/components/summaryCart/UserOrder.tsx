@@ -12,9 +12,19 @@ export default function userOrder({
   order: PizzaOrder[];
   dispatch: (pizza: PayloadAction<PizzaOrder>) => void;
 }) {
-  return order?.map((el: PizzaOrder) => {
+  return order.map((el: PizzaOrder) => {
     const price = el.params.price * el.params.count;
     const { count } = el.params;
+
+    function handleDecrementPizza() {
+      dispatch(decrementPizza(el));
+    }
+    function handleAddPizza() {
+      dispatch(addPizza(el));
+    }
+    function handleDeletePizza() {
+      dispatch(deletePizza(el));
+    }
 
     return (
       <div key={uuidv4()}>
@@ -34,14 +44,14 @@ export default function userOrder({
               <button
                 type="button"
                 aria-label="Minus"
-                onClick={() => dispatch(decrementPizza(el))}
+                onClick={handleDecrementPizza}
                 className="circle minus"
               />
               <p>{count}</p>
               <button
                 type="button"
                 aria-label="Plus"
-                onClick={() => dispatch(addPizza(el))}
+                onClick={handleAddPizza}
                 className="circle plus"
               />
             </div>
@@ -53,7 +63,7 @@ export default function userOrder({
             <button
               type="button"
               aria-label="Cross"
-              onClick={() => dispatch(deletePizza(el))}
+              onClick={handleDeletePizza}
               className="circle-cross cross"
             />
           </div>

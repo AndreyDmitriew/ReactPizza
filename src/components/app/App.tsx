@@ -8,7 +8,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <section className="wrapper">
+      <section className="page-wrapper">
         <PrivateRoutes />
       </section>
     </QueryClientProvider>

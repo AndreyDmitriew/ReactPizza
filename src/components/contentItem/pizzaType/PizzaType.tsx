@@ -1,8 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
-import { TypeOfPizza } from '@ts/types/types';
+import { PizzaType as PizzaTSType } from '@ts/types/types';
 import { THIN, TRADITIONAL } from '@constants/constants';
 
 const pizzaTypes = [THIN, TRADITIONAL];
+
+type TypeOfPizza = {
+  pizza: PizzaTSType;
+  type: string;
+  onChange(pizzaType: string): void;
+};
 
 export default function PizzaType({ pizza, type, onChange }: TypeOfPizza) {
   function getClassName(index: number) {
@@ -20,6 +26,7 @@ export default function PizzaType({ pizza, type, onChange }: TypeOfPizza) {
 
     return 'form-radio-group-item';
   }
+
   return (
     <>
       {pizzaTypes.map((pizzaType, index) => (
@@ -30,7 +37,7 @@ export default function PizzaType({ pizza, type, onChange }: TypeOfPizza) {
           onClick={() => onChange(pizzaType)}
         >
           <input
-            id={`radio-${index + 1}`}
+            key={`radio-${index + 1}`}
             type="radio"
             name="dough"
             value="1"

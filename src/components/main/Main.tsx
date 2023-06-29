@@ -36,11 +36,12 @@ export default function Main() {
 
   useEffect(() => {
     const available = filerPizzas[filter];
+    const initialPizzas = initialPizzasData || [];
     if (filter === 'Все') {
-      setPizzas(initialPizzasData || []);
+      setPizzas(initialPizzas);
     } else {
       setPizzas(
-        (initialPizzasData || []).filter(({ name }: PizzaName) => {
+        initialPizzas.filter(({ name }: PizzaName) => {
           return available?.includes(name);
         })
       );
@@ -52,15 +53,13 @@ export default function Main() {
     setSortItem(e);
     switch (e) {
       case 'по популярности':
-        setPizzas(
-          (pizzas || []).sort((a, b) => (a.rating > b.rating ? 1 : -1))
-        );
+        setPizzas(pizzas.sort((a, b) => (a.rating > b.rating ? 1 : -1)));
         break;
       case 'по цене':
-        setPizzas((pizzas || []).sort((a, b) => (a.price < b.price ? 1 : -1)));
+        setPizzas(pizzas.sort((a, b) => (a.price < b.price ? 1 : -1)));
         break;
       case 'по алфавиту':
-        setPizzas((pizzas || []).sort((a, b) => (a.name > b.name ? 1 : -1)));
+        setPizzas(pizzas.sort((a, b) => (a.name > b.name ? 1 : -1)));
         break;
       default:
         setPizzas(order.map((pizzaOrder) => pizzaOrder.pizza));
