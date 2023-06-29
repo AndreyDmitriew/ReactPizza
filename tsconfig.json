@@ -9,13 +9,28 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node", "vite-svg-loader", "vite/client"],
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["components/*"],
+      "@router/*": ["router/*"],
+      "@constants/*": ["constants/*"],
+      "@ts/*": ["ts/*"],
+      "@store/*": ["store/*"],
+      "@assets/*": ["assets/*"],
+      "@locale/*": ["assets/locale/*"],
+      "@styles/*": ["styles/*"],
+      "@hook/*": ["hook/*"]
+    },
+    "baseUrl": "src"
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
 }

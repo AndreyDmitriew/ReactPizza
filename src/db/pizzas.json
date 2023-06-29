@@ -1,0 +1,136 @@
+{
+  "pizzas": [
+    {
+      "id": "0adf3b14-a7c1-4dfe-8375-fcc24tr06f91",
+      "image": "https://imageup.ru/img220/4271686/image-2.jpg",
+      "name": "Чизбургер-пицца",
+      "rating": 3.5,
+      "price": {
+        "thin": {
+          "26": 340,
+          "30": 359,
+          "40": 369
+        },
+        "traditional": {
+          "26": 360,
+          "30": 380,
+          "40": 396
+        }
+      }
+    },
+    {
+      "id": "0adf3b14-a7c1-4dfe-8375-fcc654t675786",
+      "image": "https://imageup.ru/img220/4271686/image-2.jpg",
+      "name": "Сырная",
+      "rating": 4,
+      "price": {
+        "thin": {
+          "26": 310
+        },
+        "traditional": {
+          "26": 360,
+          "40": 396
+        }
+      }
+    },
+    {
+      "id": "fd1e18e3-9eb2-4a6a-9415-2c5e64rt25958",
+      "image": "https://imageup.ru/img117/4271688/image-6.jpg",
+      "name": "Креветки по-азиатски",
+      "rating": 4.5,
+      "price": {
+        "thin": {
+          "30": 410
+        },
+        "traditional": {
+          "26": 360,
+          "40": 396
+        }
+      }
+    },
+    {
+      "id": "f5822806-006c-4269-ab96-450c764tr64c83",
+      "image": "https://imageup.ru/img260/4271687/image-5.jpg",
+      "name": "Сырный цыпленок",
+      "rating": 3.8,
+      "price": {
+        "thin": {
+          "26": 320,
+          "30": 367,
+          "40": 380
+        },
+        "traditional": {
+          "26": 420,
+          "30": 467,
+          "40": 480
+        }
+      }
+    },
+    {
+      "id": "0adf3b14-a7c1-4dfe-8375-fcc2675t45384",
+      "image": "https://imageup.ru/img220/4271686/image-2.jpg",
+      "name": "Чизбургер-пицца",
+      "rating": 3.7,
+      "price": {
+        "thin": {
+          "26": 340,
+          "30": 359,
+          "40": 369
+        },
+        "traditional": {
+          "26": 360,
+          "30": 380,
+          "40": 396
+        }
+      }
+    },
+    {
+      "id": "0adf3b14-a7c1-4dfe-8375-fcc264rt56419",
+      "image": "https://imageup.ru/img220/4271686/image-2.jpg",
+      "name": "Сырная",
+      "rating": 4.4,
+      "price": {
+        "thin": {
+          "26": 310
+        },
+        "traditional": {
+          "26": 360,
+          "40": 396
+        }
+      }
+    },
+    {
+      "id": "fd1e18e3-9eb2-4a6a-9415-2c5edc256y56458",
+      "image": "https://imageup.ru/img117/4271688/image-6.jpg",
+      "name": "Креветки по-азиатски",
+      "rating": 3.9,
+      "price": {
+        "thin": {
+          "30": 410
+        },
+        "traditional": {
+          "26": 360,
+          "40": 396
+        }
+      }
+    },
+    {
+      "id": "f5822806-006c-4269-ab96-450crty6453493",
+      "image": "https://imageup.ru/img260/4271687/image-5.jpg",
+      "name": "Сырный цыпленок",
+      "rating": 4.3,
+      "price": {
+        "thin": {
+          "26": 320,
+          "30": 367,
+          "40": 380
+        },
+        "traditional": {
+          "26": 420,
+          "30": 467,
+          "40": 480
+        }
+      }
+    }
+  ]
+}

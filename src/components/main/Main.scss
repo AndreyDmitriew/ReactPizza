@@ -1,0 +1,120 @@
+@import '@styles/colors';
+
+.main-title {
+  font-size: 25px;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.nav-panel {
+  display: flex;
+  justify-content: space-between;
+  margin: 36px 0 15px 0;
+  box-sizing: content-box;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 10px 0 0 0;
+  }
+
+  .filter-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    @media (max-width: 1210px) {
+      display: block;
+    }
+  }
+
+  .select {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+  }
+
+  .sort-list-select {
+    border: 1px solid white;
+    cursor: pointer;
+    color: $contractFontColor;
+    background-color: $mainBackgroundColor;
+    text-decoration: underline dotted $contractFontColor;
+    -webkit-appearance: none;
+    outline: none;
+    font-weight: 400;
+    -moz-appearance: none;
+    position: relative;
+    padding: 5px;
+    padding-right: 40px;
+
+    option {
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+      cursor: pointer;
+      border: none;
+    }
+    option:hover {
+      color: $contractFontColor;
+      background-color: $darkContractFontColor;
+    }
+  }
+
+  .sort {
+    display: flex;
+    position: relative;
+    align-items: baseline;
+    white-space: nowrap;
+    gap: 6px;
+
+    .vector {
+      width: 10px;
+      padding-bottom: 1px;
+    }
+
+    .sort-title {
+      width: max-content;
+    }
+
+    .sort-value {
+      border: none;
+      text-decoration: underline dotted $contractFontColor;
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer;
+      color: $contractFontColor;
+      font-weight: 400;
+      min-width: 115px;
+    }
+
+    .list-container {
+      border-radius: 10px;
+      background-color: $mainBackgroundColor;
+
+      position: absolute;
+      top: 37px;
+      left: 115px;
+
+      .sort-list {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+          padding: 10px 20px;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 17px;
+          cursor: pointer;
+        }
+        li:hover {
+          color: $contractFontColor;
+          background-color: $darkContractFontColor;
+        }
+      }
+    }
+  }
+}

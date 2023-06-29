@@ -1,0 +1,232 @@
+@import '@styles/colors';
+
+.main-cart-wrapper {
+  width: 680px;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 860px) {
+    width: auto;
+  }
+
+  .cart-container {
+    display: flex;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 476px) {
+      display: block;
+    }
+
+    .cart-name-container {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      .cart-image-container {
+        display: flex;
+        position: relative;
+
+        .cart {
+          padding: 0 5px 0 0;
+          border: none;
+        }
+      }
+    }
+
+    .trash-name-container {
+      padding: 0 15px;
+      border: none;
+      font: inherit;
+      color: inherit;
+      display: flex;
+      background-color: transparent;
+      align-items: center;
+      gap: 8px;
+
+      @media only screen and (max-width: 476px) {
+        padding-top: 10px;
+      }
+
+      .trash-name {
+        color: $crossColor;
+      }
+    }
+
+    .trash-name-container:hover {
+      box-shadow: 0 0 5px rgba(20, 33, 33, 0.1);
+    }
+  }
+
+  .item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 25px 0;
+
+    @media only screen and (max-width: 620px) {
+      display: block;
+    }
+
+    .item-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .item-name-set {
+      display: block;
+      max-width: 280px;
+
+      .item-name {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .item-parameters {
+        margin: 3px 0 0 0;
+        font-size: 14px;
+        font-family: serif;
+        white-space: nowrap;
+        color: $buttonTitleColor;
+      }
+    }
+
+    .item-image {
+      height: 80px;
+    }
+
+    .count {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .item-set-container {
+      display: flex;
+      width: 300px;
+      justify-content: space-between;
+
+      @media only screen and (max-width: 620px) {
+        max-width: 200px;
+      }
+
+      @media only screen and (max-width: 476px) {
+        display: flex;
+        width: auto;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  }
+
+  .circle {
+    border: 2px solid $contractFontColor;
+    background-color: $mainBackgroundColor;
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    position: relative;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .circle.plus:before,
+  .circle.plus:after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: $contractFontColor;
+  }
+  .circle.plus:before {
+    width: 2px;
+    margin: 2px auto;
+  }
+  .circle.plus:after {
+    margin: auto 2px;
+    height: 2px;
+  }
+
+  .circle.minus:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 6px;
+    right: 6px;
+    bottom: 0;
+    background: $contractFontColor;
+    margin: auto 2px;
+    height: 2px;
+  }
+
+  .circle-cross {
+    border: 2px solid $crossColor;
+    background-color: $mainBackgroundColor;
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    position: relative;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .circle-cross.cross:before,
+  .circle-cross.cross:after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: $crossColor;
+    transform: rotate(45deg);
+  }
+  .circle-cross.cross:before {
+    width: 2px;
+    margin: 2px auto;
+  }
+  .circle-cross.cross:after {
+    margin: auto 2px;
+    height: 2px;
+  }
+
+  .summary-text-container {
+    display: flex;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 576px) {
+      display: block;
+    }
+
+    .total-count {
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    .total-price-title {
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    .total-price-count {
+      font-weight: 700;
+      color: orange;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 27px;
+
+    @media only screen and (max-width: 576px) {
+      display: block;
+      text-align: center;
+    }
+  }
+}

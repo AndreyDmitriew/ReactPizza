@@ -1,0 +1,53 @@
+{
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "plugins": ["react", "@typescript-eslint", "import", "eslint-plugin-import"],
+  "rules": {
+    "@typescript-eslint/no-unsafe-return": "error",
+    "react/react-in-jsx-scope": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "no-param-reassign": "off",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-var-requires": "off"
+  },
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      },
+      "alias": [
+        ["@components", "./src/components"],
+        ["@router", "./src/router"],
+        ["@constants", "./src/constants"],
+        ["@ts", "./src/ts"],
+        ["@store", "./src/store"],
+        ["@assets", "./src/assets"],
+        ["@styles", "./src/styles"],
+        ["@locale", "./src/assets/locale"],
+        ["@hook", "./src/hook"]
+      ]
+    }
+  },
+
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "tsconfigRootDir": "./",
+    "sourceType": "module"
+  }
+}

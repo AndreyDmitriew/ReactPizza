@@ -1,0 +1,28 @@
+@import '@styles/colors';
+
+.main-cart-wrapper {
+  margin: 0 auto;
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .sub-title {
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: $buttonTitleColor;
+  }
+
+  .shopper {
+    display: block;
+    margin: 47px auto 87px;
+
+    @media only screen and (max-width: 576px) {
+      height: 160px;
+    }
+  }
+}
